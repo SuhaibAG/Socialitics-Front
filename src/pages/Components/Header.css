@@ -1,0 +1,60 @@
+nav{
+    display: grid;
+    background-color: white;
+    height: 80px;
+    grid-auto-flow: column;
+    gap: 10px;
+    align-items:center;
+    padding: 10px;
+    white-space: nowrap;
+}
+img{
+    height: 80px;
+    width: auto;
+    margin-left: 6px;
+}
+
+ul{
+    display:flex;
+    justify-content: flex-end;
+}
+li{
+    display: inline-block;
+    
+}
+button{
+    display: grid;
+    height: 30px;
+    text-align: center;
+    min-height: auto;
+    float:right;
+    border-radius: 10px;
+    width:100px;
+    background-color: white;
+    border: 0px;
+    cursor: pointer;
+
+
+}
+
+.signin{
+    border: black 2px solid;
+    background-color: rgb(226, 226, 226);
+    margin-left: 10px;
+    width: 150px;
+}
+.register{
+    background-color: black;
+    border: black 2px solid;
+    color: white;
+    margin-left: 10px;
+    width: 150px;
+
+}
+
+
+h3{
+    margin: auto;
+    font-family: 'inter', sans-serif;
+    font-weight: normal;
+}
