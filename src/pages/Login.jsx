@@ -1,26 +1,37 @@
-import { doSignInWithGoogle } from "../firebase/auth";
-import { useAuth } from "../contexts/authContext";
-import { useState } from "react";
+import { useEffect } from "react"
+import { getAuth } from "firebase/auth"
+import firebase from "firebase/compat/app"
+import * as firebaseui from "firebaseui"
+import "firebaseui/dist/firebaseui.css"
+
+import {app} from "../firebase/firebase"
+
 
 const Login = () =>{
 
-    const {userLoggedIn} = useAuth()
-    const [isSigningIn, setIsSigningIn] = useState(false)
+    useEffect(() =>{
+        const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(getAuth(app))
 
-    const onGoogleSignIn = async (e)=>{
-        e.preventDefault()
-        if(!isSigningIn){
-            setIsSigningIn(true)
-            doSignInWithGoogle().catch(err =>{
-                setIsSigningIn(false)
-            })
-        }
-    }
+        ui.start("#firebaseui-auth-container", {
+            //links to the redirict page
+            signInSuccessUrl: "/home",
+            signInOptions:[
+                //add all the sign in options only google for now 
+                {
+                provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+                clientId: "956529682713-967bjkq3uuplrts287ji4a8se7qp15f7.apps.googleusercontent.com"
+                },
+            ],
+            credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO
+        })
+
+    }, []);
+
 
     return(
-           <div>
-                <button onClick={(e) => {onGoogleSignIn(e)}}>Sign in with Gooogle</button>
-           </div>
+        <div>
+           <div id="firebaseui-auth-container"></div>
+        </div>
     )
 }
 export default Login;
