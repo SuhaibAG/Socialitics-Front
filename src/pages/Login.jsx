@@ -1,35 +1,30 @@
-import { useEffect } from "react"
-import { getAuth } from "firebase/auth"
-import firebase from "firebase/compat/app"
-import * as firebaseui from "firebaseui"
-import "firebaseui/dist/firebaseui.css"
-import {app} from "../firebase/firebase"
+
+import { useNavigate } from 'react-router-dom'
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 
 
 const Login = () =>{
-
     
-    useEffect(() =>{
-        const ui = firebaseui.auth.AuthUI.getInstance() || new firebaseui.auth.AuthUI(getAuth(app))
-        ui.start("#firebaseui-auth-container", {
-            signInSuccessUrl: "/dashboard",
-            signInOptions:[
-                //add all the sign in options only google for now 
-                {
-                provider: firebase.auth.GoogleAuthProvider.PROVIDER_ID,
-                clientId: "956529682713-967bjkq3uuplrts287ji4a8se7qp15f7.apps.googleusercontent.com",
-                },
-            ],
-            //automatic signup
-            credentialHelper: firebaseui.auth.CredentialHelper.GOOGLE_YOLO,
+    const navigate =  useNavigate()
 
-        })
-    }, []);
+    function googlelogin(){
+        const provider = new GoogleAuthProvider();
+        const auth = getAuth();
+         
+        signInWithPopup(auth, provider)
+        .then((result) => {
+            const user = result.user;
+            console.log(user)
+            navigate('/dashboard')
+        }).catch((eror) => {
+            console.log("error")
+        });
 
+    }
     
     return(
         <div>
-           <div id="firebaseui-auth-container"></div>
+           <div onClick={googlelogin}>sign in</div>
         </div>
     )
 }
