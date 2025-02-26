@@ -3,6 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import NoPage from "./pages/NoPage";
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 import Login from './pages/Login'
+
 function App() {
   return (
     <div className="App">
@@ -14,7 +15,6 @@ function App() {
           <Route path="*" element={<NoPage/>} />
         </Routes>
       </BrowserRouter>
-
     </div> 
   );
 }
