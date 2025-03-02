@@ -12,9 +12,8 @@ const Header = () =>{
                     <li><button><h3>Community</h3></button></li>
                     <li><button><h3>Resources</h3></button></li>
                     <li><button><h3>Pricing</h3></button></li>
-                    <li><button onClick={() =>navigate("/Dashboard")}><h3 >Contact</h3></button></li>
+                    <li><button><h3 >Contact</h3></button></li>
                     <li><button className='signin' onClick={() => navigate("/login")}><h3>Sign in</h3></button></li>
-                    <li><button className='register'><h3>Register</h3></button></li>
 
                 </ul>
             </nav>

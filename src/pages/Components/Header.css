@@ -38,21 +38,12 @@ button{
 }
 
 .signin{
-    border: black 2px solid;
-    background-color: rgb(226, 226, 226);
-    margin-left: 10px;
-    width: 150px;
-}
-.register{
     background-color: black;
     border: black 2px solid;
     color: white;
     margin-left: 10px;
     width: 150px;
-
 }
-
-
 h3{
     margin: auto;
     font-family: 'inter', sans-serif;

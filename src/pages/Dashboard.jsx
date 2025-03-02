@@ -1,12 +1,13 @@
 import { useEffect, useState } from "react";
-import { auth } from "../firebase/firebase";
-import { useNavigate } from 'react-router-dom'
 const Dashboard = () =>{
 
 
 
     return(
            <div>
+            <div>
+                <h1>this is the dashboard</h1>
+            </div>
            </div>
     )
 }
