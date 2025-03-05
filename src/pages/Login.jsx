@@ -6,6 +6,8 @@ import Header from './Components/Header';
 import { app } from '../firebase/firebase';
 import { useUser } from '../userhandlers/UserProvider';
 import { useEffect, useState } from 'react';
+import axios from "axios";
+
 const Login = () =>{
     
     const navigate =  useNavigate()
@@ -25,33 +27,34 @@ const Login = () =>{
         }).catch((eror) => {
             console.log("error")
         });
-        
-
-
     }
 
-
+    //on change checks if the user is null 
     useEffect(() => {
-        //make a request to backend to check if uid is in the db
-        if(exist && tempUser != null){
-            console.log(tempUser.uid)
-            navigate("/dashboard")
+        if(tempUser != null){
+            checkUserExists(tempUser.uid)
         }
-        
-        else if(!exist && tempUser != null){
-            navigate("/register")
-        }
-
-
     }, [tempUser]);
      
+
+    //makes api request to backend and checks if the user exists or not 
+    const checkUserExists = async (uid) => {
+        try {
+          const response = await axios.get(`http://localhost:3001/api/user`, {
+            params: { firebaseUID: uid },
+          });
+          console.log(response.data);
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      };
+
 
     
     return(
         
         <div>
             <Header/>
-
             <div className='login-box'>
 
 
