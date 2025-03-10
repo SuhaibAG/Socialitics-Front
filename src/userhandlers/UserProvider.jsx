@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
 const UserContext = createContext();
 
@@ -7,6 +7,12 @@ export const UserProvider = ({ children }) => {
 
   const login = (userData) => setUser(userData);
   const logout = () => setUser(null);
+
+  useEffect(() =>{
+    
+
+
+  }, []);
 
   return (
     <UserContext.Provider value={{ user, login, logout }}>
