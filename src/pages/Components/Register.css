@@ -1,0 +1,21 @@
+.register-box{
+    height: 20vh;
+    width: 40vh;
+    border:2px #919191 solid;
+    border-radius: 3%;
+
+    margin: auto;
+    margin-top: 20vh;
+
+
+}
+label {
+    display: flex;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+}
+input{
+    margin: auto;
+    justify-content: center; /* Centers horizontally */
+    align-items: center; /* Centers vertically */
+}

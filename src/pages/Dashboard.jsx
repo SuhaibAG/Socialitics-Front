@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
-import { auth } from "../firebase/firebase";
-import { useNavigate } from 'react-router-dom'
+import { useUser } from '../userhandlers/UserProvider';
 const Dashboard = () =>{
-
-
+    const { login, user } = useUser(false);
+    console.log(user)
 
     return(
            <div>
+            <div>
+                <h1>dashboard</h1>
+            </div>
            </div>
     )
 }
