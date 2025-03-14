@@ -1,10 +1,10 @@
-import Home from "./pages/Home";
-import Dashboard from "./pages/Dashboard";
+import Home from "./pages/HomePages/Home";
+import Dashboard from "./pages/DashboardPages/Dashboard";
 import NoPage from "./pages/NoPage";
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
-import Login from './pages/Login'
+import Login from './pages/HomePages/Login'
 import { UserProvider } from "./userhandlers/UserProvider";
-import Register from "./pages/Register";
+import Register from "./pages/HomePages/Register";
 
 function App() {
   return (

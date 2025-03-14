@@ -1,10 +1,10 @@
 
 import { useNavigate } from 'react-router-dom'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import "./Components/Login.css"
-import Header from './Components/Header';
-import { app } from '../firebase/firebase';
-import { useUser } from '../userhandlers/UserProvider';
+import "../Components/Login.css"
+import Header from '../Components/Header';
+import { app } from '../../firebase/firebase';
+import { useUser } from '../../userhandlers/UserProvider';
 import { useEffect, useState } from 'react';
 import axios from "axios";
 

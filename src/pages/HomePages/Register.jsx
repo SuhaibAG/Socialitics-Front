@@ -1,6 +1,6 @@
-import Header from "./Components/Header";
-import '../pages/Components/Register.css';
-import { useUser } from '../userhandlers/UserProvider'
+import Header from "../Components/Header";
+import '../Components/Register.css';
+import { useUser } from '../../userhandlers/UserProvider'
 const Register = () =>{
     //check if user is not registered go to settings
     //
