@@ -50,8 +50,15 @@ const Login = () =>{
       name: name,
       image: tempUser.photoURL
       }
-      registerUser(newUser)
-
+      console.log(exist)
+      
+      if(exist){
+        login(newUser)
+        navigate('/dashboard')
+      }
+      else{
+        registerUser(newUser)
+      }
     }
 
     //makes api request to backend and checks if the user exists or not 
@@ -60,14 +67,19 @@ const Login = () =>{
           const response = await axios.get(`http://localhost:3001/api/user`, {
             params: { firebaseUID: uid },
           });
-
-          if(!response){
-            setExist(false)
+          
+          console.log(response.data.isExist === false)
+          if(!response.data.isExist === false){
+            setExist(true)
+            console.log(exist)
           }
-          else if(response){
+          else if(response.data.isExist === true){
+            //should be changed later
+            //setExist(true)
+            //createUser(tempUser)
             setExist(true)
           }
-          console.log(response.data);
+
         } catch (error) {
           console.error("Error:", error);
         }
@@ -79,8 +91,7 @@ const Login = () =>{
         console.log(newUser)
         const response = await axios.post(`http://localhost:3001/api/user`, newUser);
 
-        login(response.data)
-        navigate('/dashboard')
+        
       } catch (error) {
         console.error("Error:", error);
       }

@@ -44,3 +44,24 @@
     align-items: center; /* Centers vertically */
 }
 
+input{
+    height: 4%;
+    margin-top: 20vh;
+    display: flex;
+    justify-content: center; 
+    align-items: center;
+    width: 80%;
+    margin-top: 50%;
+
+    border:2px #919191 solid;
+    border-radius: 1%;
+
+    font-family: "Google Sans", Roboto, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 3%;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 0.25px;
+
+}
