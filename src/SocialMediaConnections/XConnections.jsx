@@ -1,0 +1,39 @@
+import axios from "axios";
+import { useUser } from "../userhandlers/UserProvider";
+
+const CLIENT_ID = "OTQ5aEVTSmdUd3RtTW9EUnlJNU46MTpjaQ";
+const REDIRECT_URI = "http://localhost:3000/auth/callback";
+const API_URL = "https://X.com/i/oauth2/authorize";
+const BACKEND_URL = "http://localhost:3001";
+
+
+export const loginWithX = () => {
+    const authUrl = `${API_URL}?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(
+      REDIRECT_URI
+    )}&scope=tweet.read tweet.write users.read offline.access&state=xyz&code_challenge=challenge&code_challenge_method=plain`;
+    
+    window.location.href = authUrl;
+
+    
+  };
+
+  
+
+export const sendAuthCodeToBackend = async (authCode) => {
+    console.log(authCode)
+    try {
+      const response = await axios.post('http://localhost:3001/api/twitter', 
+        { 
+        auth_code: authCode,
+        redirect_uri:REDIRECT_URI
+        });
+      
+      // Store access token
+      localStorage.setItem("XUser", JSON.stringify(response.data));
+      return response.data;
+      
+    } catch (error) {
+      console.error("Failed to authenticate user", error);
+      return null;
+    }
+  };

@@ -43,12 +43,14 @@ const Login = () =>{
      
 
     function createUser(tempUser){
+      console.log(tempUser)
       const newUser ={
       firebaseUID: tempUser.uid,
       email: tempUser.email,
       bio: bio,
       name: name,
-      image: tempUser.photoURL
+      image: tempUser.photoURL,
+      accessToken:tempUser.accessToken
       }
       console.log(exist)
       
@@ -71,8 +73,9 @@ const Login = () =>{
           console.log(response.data.isExist === false)
           if(!response.data.isExist === false){
             setExist(true)
-            console.log(exist)
+
           }
+
           else if(response.data.isExist === true){
             //should be changed later
             //setExist(true)
@@ -85,10 +88,20 @@ const Login = () =>{
         }
       };
 
+
+    const getUser = async(user) =>{
+      try{
+        const response = await axios.get("")
+      } catch (error){
+        console.error("Error:", error)
+      }
+
+    }
+
+
     const registerUser = async (newUser) =>{
 
       try {
-        console.log(newUser)
         const response = await axios.post(`http://localhost:3001/api/user`, newUser);
 
         

@@ -1,36 +1,67 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import '../../../index.css'
+import { loginWithX } from '../../../SocialMediaConnections/XConnections'
 const DashboardSideBar = () =>{
 
     const [isOpen, setIsOpen] = useState(true)
 
-    
-    
+    const [filteredAccount, setFilteredAccount] = useState()
+    const [XUser, setXUser] = useState()
+    const [instagramUser, setinstagramUser] = useState()
+    useEffect(() => {
+        const storedUser = localStorage.getItem("XUser");
+        if (storedUser) {
+        setXUser(JSON.parse(storedUser));
+    }
+
+
+    }, [])
+
+
 
     return(
             <div className="flex">
                 <div className={"w-64 h-screen border p-5 text-black p-5 fixed"}>
 
-                    <nav className="space-y-4 block flex flex-col items-center justify-center h-screen">
+                    <nav className="space-y-4 block flex flex-col items-center justify-center h-screen -m-4">
 
                         
                         {/* X */}
-                        <button
-                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2'
-                        >   
-                            <p>Connect</p>
+                        {XUser != null?
+                            <button
+                            onClick={() => setFilteredAccount("X")}
+                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
+                             >   
+                            <p>{XUser}</p>
                             <img
                                 className='w-3 h-3' 
                                 src='https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg'
                                 alt='X logo'
-                                >
+                            >
                             </img>
-
                         </button>
+                        
+                        :
+
+                        <button
+                        onClick={() => setXUser(loginWithX())}
+                        className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
+                         >   
+                        <p>Connect</p>
+                        <img
+                            className='w-3 h-3' 
+                            src='https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg'
+                            alt='X logo'
+                            >
+                        </img>
+
+                        </button> 
+                        }
+                        
 
                         {/* instagram */}
                         <button
-                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2'
+                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x- m-2'
                         >   
                             <p>Connect</p>
                             <img
@@ -44,7 +75,7 @@ const DashboardSideBar = () =>{
                         
                         {/* facebook */}
                         <button
-                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2'
+                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
                         >   
                             <p>Connect</p>
                             <img
@@ -59,7 +90,7 @@ const DashboardSideBar = () =>{
                         
                         {/* Youtube */}
                         <button
-                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2'
+                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
                         >   
                             <p>Connect</p>
                             <img
@@ -73,7 +104,7 @@ const DashboardSideBar = () =>{
 
                         {/* Tiktok */}
                         <button
-                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2'
+                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
                         >   
                             <p>Connect</p>
                             <img
