@@ -1,5 +1,5 @@
-import Header from './Components/Header';
-import Adverts from './Components/Adverts';
+import Header from '../Components/Header';
+import Adverts from '../Components/Adverts';
 
 const Home = () =>{
     return(

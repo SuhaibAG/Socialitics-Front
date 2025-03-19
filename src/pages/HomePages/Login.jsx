@@ -1,10 +1,10 @@
 
 import { useNavigate } from 'react-router-dom'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import "./Components/Login.css"
-import Header from './Components/Header';
-import { app } from '../firebase/firebase';
-import { useUser } from '../userhandlers/UserProvider';
+import "../Components/Login.css"
+import Header from '../Components/Header';
+import { app } from '../../firebase/firebase';
+import { useUser } from '../../userhandlers/UserProvider';
 import { useEffect, useState } from 'react';
 import axios from "axios";
 
@@ -42,16 +42,20 @@ const Login = () =>{
     }, [tempUser]);
      
 
+
+
+    //creates new user
     function createUser(tempUser){
+
       const newUser ={
       firebaseUID: tempUser.uid,
       email: tempUser.email,
       bio: bio,
       name: name,
-      image: tempUser.photoURL
+      image: tempUser.photoURL,
       }
-      registerUser(newUser)
 
+      registerUser(newUser)
     }
 
     //makes api request to backend and checks if the user exists or not 
@@ -60,32 +64,58 @@ const Login = () =>{
           const response = await axios.get(`http://localhost:3001/api/user`, {
             params: { firebaseUID: uid },
           });
+          
+          console.log(response.data.isExist)
+          if(response.data.isExist === true){
+            getUser(uid)
 
-          if(!response){
-            setExist(false)
           }
-          else if(response){
+
+          else{
+            //should be changed later
             setExist(true)
           }
-          console.log(response.data);
+
         } catch (error) {
           console.error("Error:", error);
         }
       };
 
-    const registerUser = async (newUser) =>{
 
-      try {
-        console.log(newUser)
-        const response = await axios.post(`http://localhost:3001/api/user`, newUser);
+    const getUser = async(firebaseUID) =>{
+      console.log(firebaseUID)
+      try{
+        const response = await axios.get("http://localhost:3001/api/user/details", {
+          params: { firebaseUID: firebaseUID },
+        });
+        response.data.accessToken = tempUser.accessToken
 
         login(response.data)
         navigate('/dashboard')
+      } catch (error){
+        console.error("Error:", error)
+      }
+
+    }
+
+
+    const registerUser = async (newUser) =>{
+      
+      try {
+        const response = await axios.post(`http://localhost:3001/api/user`, newUser);
+        response.data.accessToken = tempUser.accessToken
+
+        login(response.data)
+        navigate('/dashboard')
+        
       } catch (error) {
         console.error("Error:", error);
       }
     };
-      
+
+
+
+
     
     return(
         
