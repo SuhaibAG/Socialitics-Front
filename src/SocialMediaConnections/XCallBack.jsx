@@ -5,24 +5,37 @@ import { useUser } from "../userhandlers/UserProvider";
 const CallbackX = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { user } = useUser()
+  const { login, user } = useUser()
 
 
   useEffect(() => {
-    
-    
-    if(user){
-      const params = new URLSearchParams(location.search);
-      const authCode = params.get("code");
+    const processAuth = async () => {
+      if (user) {
+        const params = new URLSearchParams(location.search);
+        const authCode = params.get("code");
+  
+        if (authCode) {
+          try {
+            const authenticatedUser = await sendAuthCodeToBackend(authCode, user.accessToken);
+            
+            if (authenticatedUser) {
+              user.TwitterUserName = authenticatedUser.data.userName 
+              login(user)
+              localStorage.setItem("user", JSON.stringify(user));
+              navigate("/dashboard")
+
+            }
+          } catch (error) {
+            console.error("Error during authentication:", error);
+          }
+        }
+      }
+    };
+
+
+    processAuth();
       
 
-      if (authCode) {
-        sendAuthCodeToBackend(authCode, user.accessToken).then((user) => {
-          if (user) navigate("/dashboard");
-        });
-      }
-    }
-    
   }, [location, navigate, user]);
 
   return <h2>Processing authentication...</h2>;

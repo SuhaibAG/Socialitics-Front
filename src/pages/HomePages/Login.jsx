@@ -42,25 +42,20 @@ const Login = () =>{
     }, [tempUser]);
      
 
+
+
+    //creates new user
     function createUser(tempUser){
-      console.log(tempUser)
+
       const newUser ={
       firebaseUID: tempUser.uid,
       email: tempUser.email,
       bio: bio,
       name: name,
       image: tempUser.photoURL,
-      accessToken:tempUser.accessToken
       }
-      console.log(exist)
-      
-      if(exist){
-        login(newUser)
-        navigate('/dashboard')
-      }
-      else{
-        registerUser(newUser)
-      }
+
+      registerUser(newUser)
     }
 
     //makes api request to backend and checks if the user exists or not 
@@ -70,16 +65,14 @@ const Login = () =>{
             params: { firebaseUID: uid },
           });
           
-          console.log(response.data.isExist === false)
-          if(!response.data.isExist === false){
-            setExist(true)
+          console.log(response.data.isExist)
+          if(response.data.isExist === true){
+            getUser(uid)
 
           }
 
-          else if(response.data.isExist === true){
+          else{
             //should be changed later
-            //setExist(true)
-            //createUser(tempUser)
             setExist(true)
           }
 
@@ -89,9 +82,16 @@ const Login = () =>{
       };
 
 
-    const getUser = async(user) =>{
+    const getUser = async(firebaseUID) =>{
+      console.log(firebaseUID)
       try{
-        const response = await axios.get("")
+        const response = await axios.get("http://localhost:3001/api/user/details", {
+          params: { firebaseUID: firebaseUID },
+        });
+        response.data.accessToken = tempUser.accessToken
+
+        login(response.data)
+        navigate('/dashboard')
       } catch (error){
         console.error("Error:", error)
       }
@@ -100,16 +100,22 @@ const Login = () =>{
 
 
     const registerUser = async (newUser) =>{
-
+      
       try {
         const response = await axios.post(`http://localhost:3001/api/user`, newUser);
+        response.data.accessToken = tempUser.accessToken
 
+        login(response.data)
+        navigate('/dashboard')
         
       } catch (error) {
         console.error("Error:", error);
       }
     };
-      
+
+
+
+
     
     return(
         

@@ -4,8 +4,9 @@ import DashboardHeader from "./Components/DashboardHeader";
 import DashboardSideBar from "./Components/DashboardSideBar";
 
 const Dashboard = () =>{
-    const { user } = useUser(false);
     
+    const { user } = useUser(false);
+    console.log(user)
     
 
     return(

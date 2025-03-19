@@ -22,8 +22,8 @@ export const loginWithX = () => {
   
 
 export const sendAuthCodeToBackend = async (authCode, accessToken) => {
-    console.log(authCode)
-    console.log(accessToken)
+    console.log("auth code:  " +authCode)
+    console.log("access token: " + accessToken)
     try {
       const response = await axios.post('http://localhost:3001/api/connections/twitter', 
         { 
@@ -35,17 +35,28 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
               Authorization: `Bearer ${accessToken}`, 
           },
         }
-      
-      
-      
       );
-      
-      // Store access token
-      localStorage.setItem("XUser", JSON.stringify(response.data));
-      return response.data;
-      
+      return response
     } catch (error) {
       console.error("Failed to authenticate user", error);
       return null;
     }
   };
+
+  export const getXUSer = async(uid, accessToken) => {
+    try{
+      const response = await axios.get("http://localhost:3001/api/connections/twitter", {
+        params: { firebaseUID: uid },
+        headers:{
+        'Content-Type': 'application/json',
+         Authorization: `Bearer ${accessToken}`, 
+        }});
+
+
+
+        return(response)
+      } catch (error){
+      console.error("Error:", error)
+    }
+
+  }

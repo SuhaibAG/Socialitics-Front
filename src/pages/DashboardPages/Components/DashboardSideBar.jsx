@@ -1,24 +1,23 @@
 import { useEffect, useState } from 'react'
 import '../../../index.css'
-import { loginWithX } from '../../../SocialMediaConnections/XConnections'
+import { loginWithX, getXUSer } from '../../../SocialMediaConnections/XConnections'
+import { useUser } from '../../../userhandlers/UserProvider'
 const DashboardSideBar = () =>{
+    const { user } = useUser(false);
+
 
     const [isOpen, setIsOpen] = useState(true)
-
     const [filteredAccount, setFilteredAccount] = useState()
     const [XUser, setXUser] = useState()
     const [instagramUser, setinstagramUser] = useState()
     useEffect(() => {
-        const storedUser = localStorage.getItem("XUser");
-        if (storedUser) {
-        setXUser(JSON.parse(storedUser));
-    }
+        if(XUser == null){
+            setXUser(user.TwitterUserName)
+        }
 
 
     }, [])
-
-
-
+   
     return(
             <div className="flex">
                 <div className={"w-64 h-screen border p-5 text-black p-5 fixed"}>
@@ -44,7 +43,7 @@ const DashboardSideBar = () =>{
                         :
 
                         <button
-                        onClick={() => setXUser(loginWithX())}
+                        onClick={() => setXUser(loginWithX().userName)}
                         className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
                          >   
                         <p>Connect</p>
