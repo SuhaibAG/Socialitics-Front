@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useUser } from '../../userhandlers/UserProvider';
 import DashboardHeader from "./Components/DashboardHeader";
 import DashboardSideBar from "./Components/DashboardSideBar";
-
+import Analysis from "./Components/Analysis";
 const Dashboard = () =>{
     
     const { user } = useUser(false);
@@ -16,7 +16,7 @@ const Dashboard = () =>{
                 <div>
                     <DashboardHeader />
                     <DashboardSideBar />
-
+                    <Analysis />
 
                 </div>
                     
