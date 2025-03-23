@@ -3,7 +3,7 @@ import axios from "axios";
 
 const CLIENT_ID = "c3093985fcdceca23924f18a29df7b26";
 const REDIRECT_URI = "http://localhost:3000/auth/callback/facebook";
-const API_URL = "https://www.facebook.com/v12.0/dialog/oauth";
+const API_URL = "https://www.facebook.com/v22.0/dialog/oauth";
 
 
 
@@ -11,7 +11,7 @@ const API_URL = "https://www.facebook.com/v12.0/dialog/oauth";
 export const loginWithFacebook = () => {
     const authUrl = `${API_URL}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(
       REDIRECT_URI
-    )}/auth&scope=public_profile,email,instagram_basic,pages_show_list,pages_read_engagement&response_type=code`;
+    )}/auth&scope=pages_read_user_content,public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,pages_manage_posts&response_type=code`;
     
     window.location.href = authUrl;
 

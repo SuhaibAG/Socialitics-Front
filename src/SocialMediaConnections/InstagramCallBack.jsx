@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { sendAuthCodeToBackend } from "./XConnections";
 import { useUser } from "../userhandlers/UserProvider";
-const CallbackX = () => {
+const InstagramCallBack = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { login, user } = useUser()
@@ -42,4 +42,4 @@ const CallbackX = () => {
   return <h2>Processing authentication...</h2>;
 };
 
-export default CallbackX;
+export default InstagramCallBack;

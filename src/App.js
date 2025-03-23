@@ -6,6 +6,8 @@ import Login from './pages/HomePages/Login'
 import { UserProvider } from "./userhandlers/UserProvider";
 import Register from "./pages/HomePages/Register";
 import CallbackX from "./SocialMediaConnections/XCallBack";
+import FacebookCallBack from "./SocialMediaConnections/FacebookCallBack";
+import InstagramCallBack from "./SocialMediaConnections/InstagramCallBack";
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />\
           <Route path="/auth/callback" element={<CallbackX/>} />
+          <Route path="/auth/callback/facebook" element={<FacebookCallBack/>} />
+          <Route path="/auth/callback/instagram" element={<InstagramCallBack/>} />
           <Route path="*" element={<NoPage/>} />
 
 
