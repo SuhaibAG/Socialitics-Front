@@ -21,7 +21,7 @@ const FacebookCallBack = () => {
             //const authenticatedUser = await sendAuthCodeToBackend(authCode, user.accessToken);
             if (authenticatedUser) {
             
-              user.FacebookUsername = authenticatedUser.data.userName 
+              user.FacebookUsernName = authenticatedUser.data.userName 
               login(user)
               localStorage.setItem("user", JSON.stringify(user));
               navigate("/dashboard")

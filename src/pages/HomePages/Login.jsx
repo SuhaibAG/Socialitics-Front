@@ -8,6 +8,8 @@ import { useUser } from '../../userhandlers/UserProvider';
 import { useEffect, useState } from 'react';
 import axios from "axios";
 
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 const Login = () =>{
     
     const navigate =  useNavigate()
@@ -61,7 +63,7 @@ const Login = () =>{
     //makes api request to backend and checks if the user exists or not 
     const checkUserExists = async (uid) => {
         try {
-          const response = await axios.get(`http://localhost:3001/api/user`, {
+          const response = await axios.get(`${BACKEND_URL}/api/user`, {
             params: { firebaseUID: uid },
           });
           
@@ -85,7 +87,7 @@ const Login = () =>{
     const getUser = async(firebaseUID) =>{
       console.log(firebaseUID)
       try{
-        const response = await axios.get("http://localhost:3001/api/user/details", {
+        const response = await axios.get(`${BACKEND_URL}/api/user/details`, {
           params: { firebaseUID: firebaseUID },
         });
         response.data.accessToken = tempUser.accessToken
@@ -102,7 +104,7 @@ const Login = () =>{
     const registerUser = async (newUser) =>{
       
       try {
-        const response = await axios.post(`http://localhost:3001/api/user`, newUser);
+        const response = await axios.post(`${BACKEND_URL}/api/user`, newUser);
         response.data.accessToken = tempUser.accessToken
 
         login(response.data)
