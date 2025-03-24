@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { sendAuthCodeToBackend } from "./XConnections";
+import { sendAuthCodeToBackend } from "./InstagramConnection";
 import { useUser } from "../userhandlers/UserProvider";
 const InstagramCallBack = () => {
   const navigate = useNavigate();
