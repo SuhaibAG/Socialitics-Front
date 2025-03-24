@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import { sendAuthCodeToBackend } from "./XConnections";
+import { sendAuthCodeToBackend } from "./FacebookConnections"
 import { useUser } from "../userhandlers/UserProvider";
 const FacebookCallBack = () => {
   const navigate = useNavigate();
