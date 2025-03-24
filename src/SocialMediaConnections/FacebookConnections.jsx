@@ -1,9 +1,11 @@
 import axios from "axios";
 
 
-const CLIENT_ID = "c3093985fcdceca23924f18a29df7b26";
-const REDIRECT_URI = "http://localhost:3000/auth/callback/facebook";
-const API_URL = "https://www.facebook.com/v22.0/dialog/oauth";
+const CLIENT_ID = process.env.REACT_APP_FB_CLIENT_ID
+const REDIRECT_URI = process.env.REACT_APP_FB_REDIRECT_URI
+const API_URL = process.env.REACT_APP_FB_API_URL
+const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
+
 
 
 
@@ -24,7 +26,7 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
     console.log("auth code:  " +authCode)
     console.log("access token: " + accessToken)
     try {
-      const response = await axios.post('http://localhost:3001/api/connections/facebook', 
+      const response = await axios.post(`${BACKEND_URL}/api/connections/facebook`, 
         { 
         auth_code: authCode,
         redirect_uri:REDIRECT_URI 

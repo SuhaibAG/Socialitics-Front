@@ -8,6 +8,9 @@ import Register from "./pages/HomePages/Register";
 import CallbackX from "./SocialMediaConnections/XCallBack";
 import FacebookCallBack from "./SocialMediaConnections/FacebookCallBack";
 import InstagramCallBack from "./SocialMediaConnections/InstagramCallBack";
+import TOS from "./pages/HomePages/TOS";
+import Privacy from "./pages/HomePages/Privacy";
+
 
 function App() {
   return (
@@ -18,8 +21,10 @@ function App() {
           <Route index element={<Home />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />\
-          <Route path="/auth/callback" element={<CallbackX/>} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/tos" element={<TOS />} />
+          <Route path="/privacypolicy" element={<Privacy />} />
+          <Route path="/auth/callback" element={<CallbackX/>} />  
           <Route path="/auth/callback/facebook" element={<FacebookCallBack/>} />
           <Route path="/auth/callback/instagram" element={<InstagramCallBack/>} />
           <Route path="*" element={<NoPage/>} />

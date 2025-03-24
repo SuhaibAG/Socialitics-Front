@@ -2,22 +2,14 @@ import { initializeApp } from "firebase/app";
 import { getAuth } from "firebase/auth";
 
 const firebaseConfig = {
-
-  apiKey: "AIzaSyBhVQSTJY8KBw9mRWkunUsKb7y6C3d_J8A",
-
-  authDomain: "socialitics-68026.firebaseapp.com",
-
-  projectId: "socialitics-68026",
-
-  storageBucket: "socialitics-68026.firebasestorage.app",
-
-  messagingSenderId: "956529682713",
-
-  appId: "1:956529682713:web:de277a2a1268ebfbf47d88",
-
-  measurementId: "G-Q2YTTSR3ZR"
+  apiKey: process.env.REACT_APP_FIRE_API_KEY,
+  authDomain: process.env.REACT_APP_FIRE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIRE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIRE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIRE_MESSAGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIRE_APP_ID,
+  measurementId: process.env.REACT_APP_FIRE_MEASUREMENT_ID
 };
-
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
