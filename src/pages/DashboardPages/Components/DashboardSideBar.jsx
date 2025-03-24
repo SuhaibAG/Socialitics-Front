@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import '../../../index.css'
 import { loginWithX, getXUSer } from '../../../SocialMediaConnections/XConnections'
 import { useUser } from '../../../userhandlers/UserProvider'
+import { loginWithInstagram } from '../../../SocialMediaConnections/InstagramConnection'
 const DashboardSideBar = () =>{
     const { user } = useUser(false);
 
@@ -15,7 +16,11 @@ const DashboardSideBar = () =>{
             setXUser(user.TwitterUserName)
         }
 
+        if(instagramUser == null){
+            setinstagramUser(user.InstagramUserName)
+        }
 
+ 
     }, [])
    
     return(
@@ -27,7 +32,7 @@ const DashboardSideBar = () =>{
                         
                         {/* X */}
                         {XUser != null?
-                            <button
+                        <button
                             onClick={() => setFilteredAccount("X")}
                             className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
                              >   
@@ -59,9 +64,26 @@ const DashboardSideBar = () =>{
                         
 
                         {/* instagram */}
+                        {instagramUser != null?
                         <button
+                        onClick={() => setFilteredAccount("Instagram")}
+                        className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
+                         >   
+                        <p>{XUser}</p>
+                        <img
+                            className='w-3 h-3' 
+                            src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/132px-Instagram_logo_2016.svg.png'
+                            alt='Instagram logo'
+                        >
+                        </img>
+                        </button>
+                    
+                            :
+                    
+                        <button
+                            onClick={() => setinstagramUser(loginWithInstagram)}
                             className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x- m-2'
-                        >   
+                            >   
                             <p>Connect</p>
                             <img
                                 className='w-3 h-3' 
@@ -71,8 +93,13 @@ const DashboardSideBar = () =>{
                             </img>
 
                         </button>
+                    
+                        }
+                        
                         
                         {/* facebook */}
+
+                        
                         <button
                             className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
                         >   
