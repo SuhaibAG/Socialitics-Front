@@ -15,12 +15,11 @@ const FacebookCallBack = () => {
         const authCode = params.get("code");
         console.log(authCode)
         
-        /*
+        
         if (authCode) {
           try {
-            //const authenticatedUser = await sendAuthCodeToBackend(authCode, user.accessToken);
-            if (authenticatedUser) {
-            
+            const authenticatedUser = await sendAuthCodeToBackend(authCode, user.accessToken);
+            if (authenticatedUser) {  
               user.FacebookUsernName = authenticatedUser.data.userName 
               login(user)
               localStorage.setItem("user", JSON.stringify(user));
@@ -31,7 +30,7 @@ const FacebookCallBack = () => {
             console.error("Error during authentication:", error);
           }
         }
-        */
+        
        
       }
     };
