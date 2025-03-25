@@ -69,7 +69,7 @@ const DashboardSideBar = () =>{
                         onClick={() => setFilteredAccount("Instagram")}
                         className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
                          >   
-                        <p>{XUser}</p>
+                        <p>{instagramUser}</p>
                         <img
                             className='w-3 h-3' 
                             src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/132px-Instagram_logo_2016.svg.png'
@@ -98,21 +98,38 @@ const DashboardSideBar = () =>{
                         
                         
                         {/* facebook */}
-
-                        
+                        {instagramUser != null?
                         <button
-                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
-                        >   
+                        onClick={() => setFilteredAccount("Facebook")}
+                        className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
+                         >   
+                        <p>{instagramUser}</p>
+                        <img
+                            className='w-3 h-3' 
+                            src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/132px-Instagram_logo_2016.svg.png'
+                            alt='Instagram logo'
+                        >
+                        </img>
+                        </button>
+                    
+                            :
+                    
+                        <button
+                            onClick={() => setinstagramUser(loginWithInstagram)}
+                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x- m-2'
+                            >   
                             <p>Connect</p>
                             <img
                                 className='w-3 h-3' 
-                                src='https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/512px-Facebook_f_logo_%282021%29.svg.png?20210818083032'
-                                alt='Facebook logo'
+                                src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/132px-Instagram_logo_2016.svg.png'
+                                alt='Instagram logo'
                                 >
                             </img>
 
                         </button>
-
+                    
+                        }
+                        
                         
                         {/* Youtube */}
                         <button
