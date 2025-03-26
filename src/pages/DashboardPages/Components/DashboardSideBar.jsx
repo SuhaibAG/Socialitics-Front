@@ -10,25 +10,14 @@ const DashboardSideBar = () =>{
 
     const [isOpen, setIsOpen] = useState(true)
     const [filteredAccount, setFilteredAccount] = useState()
-    const [XUser, setXUser] = useState()
-    const [instagramUser, setinstagramUser] = useState()
-    const [facebookUser, setFacebookUser] = useState()
-    useEffect(() => {
-        if(XUser == null){
-            setXUser(user.TwitterUserName)
-        }
+    const [XUser, setXUser] = useState(user.TwitterUserName)
+    const [instagramUser, setinstagramUser] = useState(user.InstagramUserName)
+    const [facebookUser, setFacebookUser] = useState(user.facebookUserName)
+    
+    console.log("sasd")
+    console.log(user)
+    console.log("sasd")
 
-        if(instagramUser == null){
-            setinstagramUser(user.InstagramUserName)
-        }
-
-        if(facebookUser == null){
-            setinstagramUser(user.facebookUserName)
-        }
-
- 
-    }, [XUser, instagramUser, facebookUser])
-   
     return(
             <div className="flex">
                 <div className={"w-64 h-screen border p-5 text-black p-5 fixed"}>
@@ -54,7 +43,7 @@ const DashboardSideBar = () =>{
                         :
 
                         <button
-                        onClick={() => setXUser(loginWithX().userName)}
+                        onClick={() => setXUser(loginWithX())}
                         className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
                          >   
                         <p>Connect</p>
@@ -90,7 +79,7 @@ const DashboardSideBar = () =>{
                             onClick={() => setinstagramUser(loginWithInstagram)}
                             className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x- m-2'
                             >   
-                            <p>Connect</p>
+                            <p>Connect {instagramUser}</p>
                             <img
                                 className='w-3 h-3' 
                                 src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/132px-Instagram_logo_2016.svg.png'

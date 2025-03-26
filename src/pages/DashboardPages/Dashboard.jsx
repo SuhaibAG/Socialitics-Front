@@ -6,9 +6,6 @@ import Analysis from "./Components/Analysis";
 const Dashboard = () =>{
     
     const { user } = useUser(false);
-    console.log(user)
-    
-
     return(
         
            <div>
