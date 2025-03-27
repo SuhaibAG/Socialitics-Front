@@ -10,7 +10,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 
 
-export const loginWithFacebook = () => {
+export const loginWithTiktok = () => {
     const authUrl = `${API_URL}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(
       REDIRECT_URI
     )}&scope=pages_read_user_content,public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,pages_manage_posts&response_type=code`;
@@ -26,7 +26,7 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
     console.log("auth code:  " +authCode)
     console.log("access token: " + accessToken)
     try {
-      const response = await axios.post(`${BACKEND_URL}/api/connections/facebook`, 
+      const response = await axios.post(`${BACKEND_URL}/api/connections/tiktok`, 
         { 
         auth_code: authCode,
         redirect_uri:REDIRECT_URI 

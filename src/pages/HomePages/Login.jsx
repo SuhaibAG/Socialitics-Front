@@ -32,7 +32,7 @@ const Login = () =>{
             setTempUser(result.user)
             
         }).catch((eror) => {
-            console.log("error")
+
         });
     }
 
@@ -67,7 +67,7 @@ const Login = () =>{
             params: { firebaseUID: uid },
           });
           
-          console.log(response.data.isExist)
+
           if(response.data.isExist === true){
             getUser(uid)
 
@@ -85,7 +85,6 @@ const Login = () =>{
 
 
     const getUser = async(firebaseUID) =>{
-      console.log(firebaseUID)
       try{
         const response = await axios.get(`${BACKEND_URL}/api/user/details`, {
           params: { firebaseUID: firebaseUID },

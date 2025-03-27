@@ -4,34 +4,20 @@ import { loginWithX, getXUSer } from '../../../SocialMediaConnections/XConnectio
 import { useUser } from '../../../userhandlers/UserProvider'
 import { loginWithInstagram } from '../../../SocialMediaConnections/InstagramConnection'
 import { loginWithFacebook } from '../../../SocialMediaConnections/FacebookConnections'
-const DashboardSideBar = () =>{
+const DashboardSideBar = ({filteredAccount, setFilteredAccount}) =>{
     const { user } = useUser(false);
 
 
     const [isOpen, setIsOpen] = useState(true)
-    const [filteredAccount, setFilteredAccount] = useState()
-    const [XUser, setXUser] = useState()
-    const [instagramUser, setinstagramUser] = useState()
-    const [facebookUser, setFacebookUser] = useState()
-    useEffect(() => {
-        if(XUser == null){
-            setXUser(user.TwitterUserName)
-        }
 
-        if(instagramUser == null){
-            setinstagramUser(user.InstagramUserName)
-        }
+    const [XUser, setXUser] = useState(user.TwitterUserName)
+    const [instagramUser, setinstagramUser] = useState(user.InstagramUserName)
+    const [facebookUser, setFacebookUser] = useState(user.facebookUserName)
 
-        if(facebookUser == null){
-            setinstagramUser(user.facebookUserName)
-        }
 
- 
-    }, [XUser, instagramUser, facebookUser])
-   
     return(
             <div className="flex">
-                <div className={"w-64 h-screen border p-5 text-black p-5 fixed"}>
+                <div className={"w-64 h-screen text-black p-5 fixed"}>
 
                     <nav className="space-y-4 block flex flex-col items-center justify-center h-screen -m-4">
 
@@ -40,11 +26,16 @@ const DashboardSideBar = () =>{
                         {XUser != null?
                         <button
                             onClick={() => setFilteredAccount("X")}
-                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
+                            className={
+                                filteredAccount == "X"?
+                                `border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2 bg-black w-40 text-white hover:bg-gray-800 transition`
+                                :
+                                `border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2 bg-white w-40 hover:bg-gray-300 transition`
+                                }
                              >   
                             <p>{XUser}</p>
                             <img
-                                className='w-3 h-3' 
+                                className='w-3 h-3 bg-white' 
                                 src='https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg'
                                 alt='X logo'
                             >
@@ -54,8 +45,8 @@ const DashboardSideBar = () =>{
                         :
 
                         <button
-                        onClick={() => setXUser(loginWithX().userName)}
-                        className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
+                        onClick={() => setXUser(loginWithX())}
+                        className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2 hover:bg-gray-300 transition'
                          >   
                         <p>Connect</p>
                         <img
@@ -73,7 +64,12 @@ const DashboardSideBar = () =>{
                         {instagramUser != null?
                         <button
                         onClick={() => setFilteredAccount("Instagram")}
-                        className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
+                        className={
+                            filteredAccount == "Instagram"?
+                            `border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2 bg-black w-40 text-white hover:bg-gray800 transition`
+                            :
+                            `border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2 bg-white w-40 hover:bg-gray-300 transition`
+                            }
                          >   
                         <p>{instagramUser}</p>
                         <img
@@ -88,7 +84,7 @@ const DashboardSideBar = () =>{
                     
                         <button
                             onClick={() => setinstagramUser(loginWithInstagram)}
-                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x- m-2'
+                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x- m-2 hover:bg-gray-300 transition'
                             >   
                             <p>Connect</p>
                             <img
@@ -104,12 +100,12 @@ const DashboardSideBar = () =>{
                         
                         
                         {/* facebook */}
-                        {instagramUser != null?
+                        {facebookUser != null?
                         <button
                         onClick={() => setFilteredAccount("Facebook")}
-                        className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
+                        className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2 hover:bg-gray-300 transition'
                          >   
-                        <p>{instagramUser}</p>
+                        <p>{facebookUser}</p>
                         <img
                             className='w-3 h-3' 
                             src='https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/512px-Facebook_f_logo_%282021%29.svg.png?20210818083032'
@@ -122,7 +118,7 @@ const DashboardSideBar = () =>{
                     
                         <button
                             onClick={() => setFacebookUser(loginWithFacebook)}
-                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x- m-2'
+                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x- m-2 hover:bg-gray-300 transition'
                         >   
                             <p>Connect</p>
                             <img
@@ -139,7 +135,7 @@ const DashboardSideBar = () =>{
                         
                         {/* Youtube */}
                         <button
-                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
+                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2 hover:bg-gray-300 transition'
                         >   
                             <p>Connect</p>
                             <img
@@ -153,7 +149,7 @@ const DashboardSideBar = () =>{
 
                         {/* Tiktok */}
                         <button
-                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2'
+                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2 hover:bg-gray-300 transition'
                         >   
                             <p>Connect</p>
                             <img
@@ -163,6 +159,11 @@ const DashboardSideBar = () =>{
                                 >
                             </img>
 
+                        </button>
+
+                        <button
+                        className='border  rounded-lg p-3 flex items-center justify-center space-x-2 m-2 bg-red-500 h-3 w-3 '>
+                            <p className='font-extrabold'>X</p>
                         </button>
 
                     </nav>
