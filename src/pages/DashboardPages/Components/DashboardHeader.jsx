@@ -14,7 +14,7 @@ const DashboardHeader = () =>{
             <header className="flex items-center justify-between px-6 py-4 bg-black text-white">
 
             <div className="text-xl font-bold">
-                <img 
+                <img  className="w-30 h-30 rounded-full object-cover "
                 src={logo}
                 ></img>
 
@@ -24,14 +24,7 @@ const DashboardHeader = () =>{
 
             <nav className="flex space-x-40 bg-black">
                 <button className=" bg-black hover:bg-gray-500 transition text-white">
-                Dashboard
-                </button>
-                <button className="h-12 bg-black hover:bg-gray-500 transition text-white">
-                <p>Social Media </p>
-                <p>Connections</p>
-                </button>
-                <button className=" bg-black hover:bg-gray-500 transition text-white">
-                Create
+                Analysis
                 </button>
                 <button className=" bg-black hover:bg-gray-500 transition text-white">
                 Publish
