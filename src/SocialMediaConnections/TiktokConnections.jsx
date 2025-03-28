@@ -1,9 +1,9 @@
 import axios from "axios";
 
 
-const CLIENT_ID = process.env.REACT_APP_FB_CLIENT_ID
-const REDIRECT_URI = process.env.REACT_APP_FB_REDIRECT_URI
-const API_URL = process.env.REACT_APP_FB_API_URL
+const CLIENT_ID = process.env.REACT_APP_Tiktok_CLIENT_ID
+const REDIRECT_URI = process.env.REACT_APP_Tiktok_REDIRECT_URI
+const API_URL = process.env.REACT_APP_Tiktok_API_URL
 const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 
@@ -11,9 +11,9 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 
 
 export const loginWithTiktok = () => {
-    const authUrl = `${API_URL}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(
+    const authUrl = `${API_URL}/?client_key=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(
       REDIRECT_URI
-    )}&scope=pages_read_user_content,public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,pages_manage_posts&response_type=code`;
+    )}&scope=user.info.basic,video.upload,video.publish,user.info.profile,user.info.stats`;
     
     window.location.href = authUrl;
 
