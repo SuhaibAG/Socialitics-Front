@@ -27,6 +27,7 @@ function App() {
           <Route path="/auth/callback" element={<CallbackX/>} />  
           <Route path="/auth/callback/facebook" element={<FacebookCallBack/>} />
           <Route path="/auth/callback/instagram" element={<InstagramCallBack/>} />
+          <Route path="/auth/callback/tiktok" element={<InstagramCallBack/>} />
           <Route path="*" element={<NoPage/>} />
 
 

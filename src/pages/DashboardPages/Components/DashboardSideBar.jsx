@@ -15,7 +15,6 @@ const DashboardSideBar = ({filteredAccount, setFilteredAccount}) =>{
     const [facebookUser, setFacebookUser] = useState(user.FaceBookUserName)
     const [tiktokUser, setTiktokUser] = useState(user.TiktokUsername)
 
-
     return(
             <div className="flex">
                 <div className={"w-64 h-screen text-black p-5 fixed"}>
