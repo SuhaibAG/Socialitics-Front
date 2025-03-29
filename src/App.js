@@ -10,6 +10,7 @@ import FacebookCallBack from "./SocialMediaConnections/FacebookCallBack";
 import InstagramCallBack from "./SocialMediaConnections/InstagramCallBack";
 import TOS from "./pages/HomePages/TOS";
 import Privacy from "./pages/HomePages/Privacy";
+import TiktokCallBack from "./SocialMediaConnections/TiktokCallBack";
 
 
 function App() {
@@ -27,7 +28,7 @@ function App() {
           <Route path="/auth/callback" element={<CallbackX/>} />  
           <Route path="/auth/callback/facebook" element={<FacebookCallBack/>} />
           <Route path="/auth/callback/instagram" element={<InstagramCallBack/>} />
-          <Route path="/auth/callback/tiktok" element={<InstagramCallBack/>} />
+          <Route path="/auth/callback/tiktok" element={<TiktokCallBack/>} />
           <Route path="*" element={<NoPage/>} />
 
 
