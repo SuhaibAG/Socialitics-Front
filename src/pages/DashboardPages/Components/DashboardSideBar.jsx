@@ -13,7 +13,7 @@ const DashboardSideBar = ({filteredAccount, setFilteredAccount}) =>{
     const [XUser, setXUser] = useState(user.TwitterUserName)
     const [instagramUser, setinstagramUser] = useState(user.InstagramUserName)
     const [facebookUser, setFacebookUser] = useState(user.FaceBookUserName)
-    const [tiktokUser, setTiktokUser] = useState(user.TiktokUsername)
+    const [tiktokUser, setTiktokUser] = useState(user.TiktokUserName)
 
     return(
             <div className="flex">
@@ -137,20 +137,6 @@ const DashboardSideBar = ({filteredAccount, setFilteredAccount}) =>{
                     
                         }
                         
-                        
-                        {/* Youtube */}
-                        <button
-                            className='border border-black border-solid rounded-lg p-4 flex items-center justify-center space-x-2 m-2 hover:bg-gray-300 transition'
-                        >   
-                            <p>Connect</p>
-                            <img
-                                className='w-3 h-3' 
-                                src='https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/YouTube_full-color_icon_%282024%29.svg/120px-YouTube_full-color_icon_%282024%29.svg.png'
-                                alt='Youtube logo'
-                                >
-                            </img>
-
-                        </button>
 
                         {/* Tiktok */}
                         {tiktokUser != null?
