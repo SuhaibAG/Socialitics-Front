@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useUser } from '../../userhandlers/UserProvider';
 import DashboardHeader from "./Components/DashboardHeader";
 import DashboardSideBar from "./Components/DashboardSideBar";
-import Analysis from "./Components/Analysis";
+import Publish from "./Components/Publish";
 import '../../index.css'
 
 const Dashboard = () =>{
@@ -19,7 +19,7 @@ const Dashboard = () =>{
                     filteredAccount={filteredAccount}
                     setFilteredAccount={setFilteredAccount}/>
                     <div className="ml-64">
-                        <Analysis />
+                        <Publish />
                     </div>
 
 

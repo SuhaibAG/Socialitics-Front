@@ -19,7 +19,7 @@ const DashboardSideBar = ({filteredAccount, setFilteredAccount}) =>{
             <div className="flex">
                 <div className={"w-64 h-screen text-black p-5 fixed"}>
 
-                    <nav className="space-y-4 block flex flex-col items-center justify-center h-screen -m-4">
+                    <nav className="space-y-4 block flex flex-col items-center justify-center h-screen -m-4 border-r-2">
 
                         
                         {/* X */}
@@ -127,7 +127,7 @@ const DashboardSideBar = ({filteredAccount, setFilteredAccount}) =>{
                         >   
                             <p>Connect</p>
                             <img
-                                className='w-3 h-3' 
+                                className='w-3 h-3 bg-white' 
                                 src='https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/512px-Facebook_f_logo_%282021%29.svg.png?20210818083032'
                                 alt='Instagram logo'
                                 >
