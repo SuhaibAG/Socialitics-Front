@@ -18,9 +18,9 @@ const PostPopUP = ({setPostData, setPosting}) =>{
                     </div>
 
                     <div
-                    className="flex items-center justify-center mt-12">
+                    className="flex items-center justify-center mt-12 ml-6">
                         <label> Post Title</label>
-                        
+                        <input></input>
                     </div>
 
                     <div
@@ -29,14 +29,19 @@ const PostPopUP = ({setPostData, setPosting}) =>{
 
                         
                     </div>
-
-
                     <div
                     className="flex items-center justify-center mt-2">
                         <textarea
                         className="w-2/3  border-2 solid border-gray-200 rounded-md resize-none"></textarea>
                         
                     </div>
+                    <div className="mt-12">
+                        <label>
+                            publish date
+                        </label>
+                        <input type="date" className="w-2/3 mt-2"></input>
+                    </div>
+                    <button className="mt-12 mr-4 bg-blue-500 w-20 h-10 justify-center items-center text-white hover:bg-blue-200 transition">Publish</button>
 
                 
             </div>
