@@ -1,23 +1,29 @@
-import '../../../index.css'
+import XAnalysis from "./Analysis Components/XAnalysis";
 
-const Analysis = () =>{
+const Analysis = ({filteredAccount}) =>{
 
-    
 
     return(
            <div>
-                <div className='flex flex-col h-screen'>
-                <div className="bg-pink-400 p-4 text-center">Top</div>
-
-                    <div className="flex flex-1">
-                        <div className="bg-blue-400 p-4 flex-1">Left</div>
-                        <div className="bg-green-400 p-4 flex-2">Center</div>
-                        <div className="bg-yellow-400 p-4 flex-1">Right</div>
-                    </div>
-
-                    <div className="bg-pink-400 p-4 text-center">Bottom</div>
-                </div>
+                {
+                filteredAccount ==="X"?
+                <XAnalysis />
+                :
+                filteredAccount ==="Instagram"?
+                <div>Insta</div>
+                :
+                filteredAccount ==="Facebook"?
+                <div>Facebook</div>
+                :
+                filteredAccount ==="Tiktok"?
+                <div>Tiktok</div>
+                :
+                <div>all filters</div>
+                }
            </div>
+           
+
+           
     )
 }
 export default Analysis;

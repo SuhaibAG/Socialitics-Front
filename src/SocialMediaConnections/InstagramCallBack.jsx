@@ -19,7 +19,6 @@ const InstagramCallBack = () => {
             const authenticatedUser = await sendAuthCodeToBackend(authCode, user.accessToken);
             
             if (authenticatedUser) {
-            
               user.InstagramUserName = authenticatedUser.data.userName 
               login(user)
               localStorage.setItem("user", JSON.stringify(user));

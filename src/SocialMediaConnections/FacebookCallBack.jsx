@@ -13,7 +13,6 @@ const FacebookCallBack = () => {
       if (user) {
         const params = new URLSearchParams(location.search);
         const authCode = params.get("code");
-        console.log(authCode)
         
         
         if (authCode) {
