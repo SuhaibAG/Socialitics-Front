@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useUser } from "../../../userhandlers/UserProvider";
 import '../../../index.css'
 import logo from '../../../pages/Components/Images/socialitics png-modified.png'
-const DashboardHeader = () =>{
+const DashboardHeader = ({setView}) =>{
     const { user } = useUser(false);
 
     
@@ -23,10 +23,12 @@ const DashboardHeader = () =>{
 
 
             <nav className="flex space-x-40 bg-black">
-                <button className=" bg-black hover:bg-gray-500 transition text-white">
+                <button className=" bg-black hover:bg-gray-500 transition text-white"
+                onClick={() => setView("Analysis")}>
                 Analysis
                 </button>
-                <button className=" bg-black hover:bg-gray-500 transition text-white">
+                <button className=" bg-black hover:bg-gray-500 transition text-white"
+                onClick={() => setView("Publish")}>
                 Publish
                 </button>
             </nav>

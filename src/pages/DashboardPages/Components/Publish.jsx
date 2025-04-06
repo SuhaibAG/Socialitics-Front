@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import '../../../index.css'
-import PostPopUP from './PostPopUp'
+import PostPopUP from './Publish Components/PostPopUp'
 
 const Publish = () =>{
     const posts = []

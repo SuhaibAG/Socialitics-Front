@@ -3,23 +3,34 @@ import { useUser } from '../../userhandlers/UserProvider';
 import DashboardHeader from "./Components/DashboardHeader";
 import DashboardSideBar from "./Components/DashboardSideBar";
 import Publish from "./Components/Publish";
+import Analysis from "./Components/Analysis";
 import '../../index.css'
 
 const Dashboard = () =>{
     
     const [filteredAccount, setFilteredAccount] = useState()
+    const [view, setView] = useState("Analysis")
     const { user } = useUser(false);
     return(
         
            <div>
                 {user? 
                 <div>
-                    <DashboardHeader />
+                    <DashboardHeader
+                    setView ={setView} />
                     <DashboardSideBar 
                     filteredAccount={filteredAccount}
-                    setFilteredAccount={setFilteredAccount}/>
+                    setFilteredAccount={setFilteredAccount}
+                    view={view}/>
                     <div className="ml-64">
-                        <Publish />
+                        {view === "Analysis"?
+                            
+                            <Analysis
+                            filteredAccount={filteredAccount} />
+                        :
+                             <Publish />
+                        }
+
                     </div>
 
 
