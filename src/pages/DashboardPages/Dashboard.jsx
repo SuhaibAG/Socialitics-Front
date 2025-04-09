@@ -5,6 +5,7 @@ import DashboardSideBar from "./Components/DashboardSideBar";
 import Publish from "./Components/Publish";
 import Analysis from "./Components/Analysis";
 import '../../index.css'
+import Settings from "./Components/Settings";
 
 const Dashboard = () =>{
     
@@ -15,21 +16,26 @@ const Dashboard = () =>{
         
            <div>
                 {user? 
-                <div>
+                <div className="bg-slate-50 h-screen">
                     <DashboardHeader
                     setView ={setView} />
                     <DashboardSideBar 
                     filteredAccount={filteredAccount}
                     setFilteredAccount={setFilteredAccount}
                     view={view}/>
+
+                    
                     <div className="ml-64">
                         {view === "Analysis"?
                             
                             <Analysis
                             filteredAccount={filteredAccount} />
                         :
+                        view ==="Publish"?
                              <Publish 
                              filteredAccount={filteredAccount}/>
+                        :
+                            <Settings />
                         }
 
                     </div>

@@ -25,7 +25,7 @@ const DashboardHeader = ({setView}) =>{
             <nav className="flex space-x-40 bg-black">
                 <button className=" bg-black hover:bg-gray-500 transition text-white"
                 onClick={() => setView("Analysis")}>
-                Analysis
+                Analyze
                 </button>
                 <button className=" bg-black hover:bg-gray-500 transition text-white"
                 onClick={() => setView("Publish")}>
@@ -36,9 +36,10 @@ const DashboardHeader = ({setView}) =>{
 
             <div>
                 <img
-                src={user.image}
-                className="w-10 h-10 rounded-full object-cover"
-                alt="User Profile"
+                    src={user.image}
+                    onClick={() => setView("Settings")}
+                    className="w-10 h-10 rounded-full object-cover hover: cursor-pointer"
+                    alt="User Profile"
                 />
             </div>
             </header>

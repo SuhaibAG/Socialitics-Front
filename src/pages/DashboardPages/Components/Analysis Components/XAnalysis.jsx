@@ -1,6 +1,8 @@
 import { useUser } from "../../../../userhandlers/UserProvider";
+import XTotalGrowth from "./XTotalGrowth";
+import XTopPost from "./XTopPost";
+import { useState } from "react";
 const XAnalysis = () =>{
-     const { user } = useUser(false);
     const sample= {
         "firebaseUID": "dedwfwefww",
         "twitterId": "000000",
@@ -46,9 +48,47 @@ const XAnalysis = () =>{
                     "diffTotalEngagements": "+20",
                     "totalImpressions": 300,
                     "diffTotalImpressions": "+50",
-                  }
+                  },
 
-                
+                  {
+                    "weekNumber": 4,
+                    "startDate": "6 Apr 2025",
+                    "endDate": "12 Apr 2025",
+                    "totalFollowers": 120,
+                    "diffTotalFollowers": "+10",
+                    "numOfPosts": 130,
+                    "diffNumOfPosts": "+2",
+                    "totalLikes": 100,
+                    "diffTotalLikes": "+20",
+                    "totalRetweets": 10,
+                    "diffTotalRetweets": "+10",
+                    "totalReplies": 5,
+                    "diffTotalReplies": "+5",
+                    "totalEngagements": 115,
+                    "diffTotalEngagements": "+20",
+                    "totalImpressions": 300,
+                    "diffTotalImpressions": "+50",
+                  } ,
+
+                  {
+                    "weekNumber": 5,
+                    "startDate": "6 Apr 2025",
+                    "endDate": "12 Apr 2025",
+                    "totalFollowers": 120,
+                    "diffTotalFollowers": "+10",
+                    "numOfPosts": 130,
+                    "diffNumOfPosts": "+2",
+                    "totalLikes": 100,
+                    "diffTotalLikes": "+20",
+                    "totalRetweets": 10,
+                    "diffTotalRetweets": "+10",
+                    "totalReplies": 5,
+                    "diffTotalReplies": "+5",
+                    "totalEngagements": 115,
+                    "diffTotalEngagements": "+20",
+                    "totalImpressions": 300,
+                    "diffTotalImpressions": "+50",
+                  }     
             ]
       }
 
@@ -66,108 +106,98 @@ const XAnalysis = () =>{
           "totalImpressions": 300,
         }
       }
+      const [week, setWeek] = useState(1)
+      const [lowest, setLowest] = useState(1)
+
+      const lower = ()=>{
+        if(lowest != 1){
+          if(week > lowest+2){
+            setWeek(lowest+2)
+          }
+          setLowest(lowest-1)
+        }
+      }
+      const increase = ()=>{
+        const array = sample.data
+        if(array.length > lowest + 2){
+          setLowest(lowest+1)
+        }
+      
+      }
+      console.log(week)
+      console.log(lowest)
+
+      
+
+
     return(
-        <div className="flex-col w-screen">
-           <div
-           className="flex h-screen w-[80%] ">
-                <div>
-                <div 
-                className="w-4/6 h-2/5 p-4 border-2 border-black border-solid rounded-lg ml-20 mt-20 mb-5 flex  gap-4 flex-wrap">
-                <div className="lex flex-row h-1/12 text-xl pl-12">Total Growth</div>
+        <div className="flex-row justify-center">
 
-                <div className="flex flex-row w-[100%]  h-2/6">
-                    {/*followers*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12 ">
-                        <div className="text-xl">Followers</div>
-                        <div><p className="inline text-xl">{ sample.data.totalFollowers }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data.diffTotalFollowers}</p></div>
-                    </div>
 
-                    {/*Likes*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-xl">Total Likes</div>
-                        <div><p className="inline text-xl">{ sample.data.totalLikes }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data.diffTotalLikes}</p></div>
-                    </div>
+              <div className="mt-12 ml-14 flex justify-start w-auto border-black border-solid rounded-lg ">
+                  <button 
+                    onClick={()=>lower()}
+                    className="border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center">{"<"}</button>
 
-                    {/*Number of Posts*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-xl">Number of Posts</div>
-                        <div><p className="inline text-xl">{ sample.data.totalLikes }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data.diffTotalLikes}</p></div>
-                    </div>
 
-                    {/*Total Retweets*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-xl">Total Retweets</div>
-                        <div><p className="inline text-xl">{ sample.data.totalRetweets }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data.diffTotalRetweets}</p></div>
-                    </div>
-                </div>
+                  <button 
+                    onClick={()=>setWeek(lowest)} 
 
-                <div className="flex flex-row w-[100%] h-2/6">
-                    {/*followers*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-xl">Followers</div>
-                        <div><p className="inline text-xl">{ sample.data.totalFollowers }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data.diffTotalFollowers}</p></div>
-                    </div>
+                    className={lowest === week? 
+                      `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center bg-black text-white`
+                    :
+                      `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center`
+                    }
+                    >{lowest}
+                  </button>
 
-                    {/*Likes*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-xl">Total Likes</div>
-                        <div><p className="inline text-xl">{ sample.data.totalLikes }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data.diffTotalLikes}</p></div>
-                    </div>
+                    <button 
+                    onClick={()=>setWeek(lowest + 1)} 
 
-                    {/*Number of Posts*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-xl">Number of Posts</div>
-                        <div><p className="inline text-xl">{ sample.data.totalLikes }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data.diffTotalLikes}</p></div>
-                    </div>
+                    className={lowest + 1 === week? 
+                      `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center bg-black text-white`
+                    :
+                      `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center`
+                    }
+                    >{lowest + 1}
+                  </button>
 
-                    {/*Total Retweets*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-xl">Total Retweets</div>
-                        <div><p className="inline text-xl">{ sample.data.totalRetweets }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data.diffTotalRetweets}</p></div>
-                    </div>
-                </div>
-            </div>
+                  <button 
+                    onClick={()=>setWeek(lowest + 2)} 
+
+                    className={lowest + 2=== week? 
+                      `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center bg-black text-white`
+                    :
+                      `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center`
+                    }
+                    >{lowest + 2}
+                  </button>
+
+                  <button 
+                    onClick={() =>increase()}
+                    className="border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center">{">"}</button>
+                    
+                  
+              </div>
+              <p className="ml-24">{sample.data[week].startDate} - {sample.data[week].endDate}</p>
+
+
+              <div>
+                <XTotalGrowth sample={sample} week={week - 1}/>
+                <XTopPost tweet={tweet} />
+              </div>
 
 
                 
 
-            <div 
-                className="w-4/6 h-2/5 p-4 border-2 border-black border-solid rounded-lg ml-20 mt-1 flex  gap-4 flex-wrap justify-center">
-                <div className="flex-row h-1/12 text-xl pl-12 w-[100%] ">Top Post</div>
-                <div className="w-[80%] border-2 solid border-black h-5/6 items-center">
-                    {/*followers*/}
-                    <div
-                    className="flex flex-wrap h-[100%] items-end">
-                        <div className="ml-5 text-xl w-[100%]">@{user.TwitterUserName}</div>
-                        <div className="ml-16 mt-[5%] mb-[15%] text-xl">{tweet.data.tweetContent}</div>
-                        <div className="flex border-2 border-t-black w-[100%] h-1/6 items-center justify-center ">
-                            <p>{tweet.data.totalLikes}</p>
-                            <p>{tweet.data.totalLikes}</p>
-                            <p>{tweet.data.totalLikes}</p>
+            
 
-                        
-                        </div>
-                    </div>
-                </div>
-                </div>
+
+
             </div>
-
-
-                </div>
            
-           <div className="bg-red-50">
-            sadasd
-           </div>
 
-        </div>
+
            
     )
 }
