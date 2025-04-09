@@ -28,7 +28,8 @@ const Dashboard = () =>{
                             <Analysis
                             filteredAccount={filteredAccount} />
                         :
-                             <Publish />
+                             <Publish 
+                             filteredAccount={filteredAccount}/>
                         }
 
                     </div>
