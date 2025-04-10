@@ -2,6 +2,8 @@ import { useUser } from "../../../../userhandlers/UserProvider";
 import XTotalGrowth from "./XTotalGrowth";
 import XTopPost from "./XTopPost";
 import { useState } from "react";
+import XGraph from "./XGraph";
+import WeekChooser from "./WeekChooser";
 const XAnalysis = () =>{
     const sample= {
         "firebaseUID": "dedwfwefww",
@@ -11,7 +13,7 @@ const XAnalysis = () =>{
         "data": 
             [
                 {
-                    "weekNumber": 2,
+                    "weekNumber": 1,
                     "startDate": "6 Apr 2025",
                     "endDate": "12 Apr 2025",
                     "totalFollowers": 100,
@@ -31,14 +33,14 @@ const XAnalysis = () =>{
                   },
 
                   {
-                    "weekNumber": 3,
-                    "startDate": "6 Apr 2025",
-                    "endDate": "12 Apr 2025",
+                    "weekNumber": 2,
+                    "startDate": "13 Apr 2025",
+                    "endDate": "19 Apr 2025",
                     "totalFollowers": 120,
                     "diffTotalFollowers": "+10",
                     "numOfPosts": 130,
                     "diffNumOfPosts": "+2",
-                    "totalLikes": 100,
+                    "totalLikes": 102,
                     "diffTotalLikes": "+20",
                     "totalRetweets": 10,
                     "diffTotalRetweets": "+10",
@@ -51,10 +53,10 @@ const XAnalysis = () =>{
                   },
 
                   {
-                    "weekNumber": 4,
-                    "startDate": "6 Apr 2025",
-                    "endDate": "12 Apr 2025",
-                    "totalFollowers": 120,
+                    "weekNumber": 3,
+                    "startDate": "20 Apr 2025",
+                    "endDate": "26 Apr 2025",
+                    "totalFollowers": 130,
                     "diffTotalFollowers": "+10",
                     "numOfPosts": 130,
                     "diffNumOfPosts": "+2",
@@ -71,14 +73,14 @@ const XAnalysis = () =>{
                   } ,
 
                   {
-                    "weekNumber": 5,
-                    "startDate": "6 Apr 2025",
-                    "endDate": "12 Apr 2025",
-                    "totalFollowers": 120,
+                    "weekNumber": 4,
+                    "startDate": "27 Apr 2025",
+                    "endDate": "2 May 2025",
+                    "totalFollowers": 200,
                     "diffTotalFollowers": "+10",
                     "numOfPosts": 130,
                     "diffNumOfPosts": "+2",
-                    "totalLikes": 100,
+                    "totalLikes": 130,
                     "diffTotalLikes": "+20",
                     "totalRetweets": 10,
                     "diffTotalRetweets": "+10",
@@ -88,7 +90,47 @@ const XAnalysis = () =>{
                     "diffTotalEngagements": "+20",
                     "totalImpressions": 300,
                     "diffTotalImpressions": "+50",
-                  }     
+                  }  ,
+
+                  {
+                    "weekNumber": 5,
+                    "startDate": "27 Apr 2025",
+                    "endDate": "2 May 2025",
+                    "totalFollowers": 230,
+                    "diffTotalFollowers": "+10",
+                    "numOfPosts": 130,
+                    "diffNumOfPosts": "+2",
+                    "totalLikes": 200,
+                    "diffTotalLikes": "+20",
+                    "totalRetweets": 10,
+                    "diffTotalRetweets": "+10",
+                    "totalReplies": 5,
+                    "diffTotalReplies": "+5",
+                    "totalEngagements": 115,
+                    "diffTotalEngagements": "+20",
+                    "totalImpressions": 300,
+                    "diffTotalImpressions": "+50",
+                  }  ,
+
+                  {
+                    "weekNumber": 6,
+                    "startDate": "27 Apr 2025",
+                    "endDate": "2 May 2025",
+                    "totalFollowers": 250,
+                    "diffTotalFollowers": "+10",
+                    "numOfPosts": 130,
+                    "diffNumOfPosts": "+2",
+                    "totalLikes": 500,
+                    "diffTotalLikes": "+20",
+                    "totalRetweets": 10,
+                    "diffTotalRetweets": "+10",
+                    "totalReplies": 5,
+                    "diffTotalReplies": "+5",
+                    "totalEngagements": 115,
+                    "diffTotalEngagements": "+20",
+                    "totalImpressions": 300,
+                    "diffTotalImpressions": "+50",
+                  }        
             ]
       }
 
@@ -107,84 +149,33 @@ const XAnalysis = () =>{
         }
       }
       const [week, setWeek] = useState(1)
-      const [lowest, setLowest] = useState(1)
-
-      const lower = ()=>{
-        if(lowest != 1){
-          if(week > lowest+2){
-            setWeek(lowest+2)
-          }
-          setLowest(lowest-1)
-        }
-      }
-      const increase = ()=>{
-        const array = sample.data
-        if(array.length > lowest + 2){
-          setLowest(lowest+1)
-        }
       
-      }
-      console.log(week)
-      console.log(lowest)
+
 
       
 
 
     return(
-        <div className="flex-row justify-center">
+        <div>
+              
+              
 
 
-              <div className="mt-12 ml-14 flex justify-start w-auto border-black border-solid rounded-lg ">
-                  <button 
-                    onClick={()=>lower()}
-                    className="border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center">{"<"}</button>
+              <div className="flex-row mr-20 ml-20 h-screen">
 
+                  <div className=" mt-10  flex h-2/6">
+                        <XGraph data={sample.data}/>
+                  </div>
 
-                  <button 
-                    onClick={()=>setWeek(lowest)} 
+                  <div className="mt-12  flex justify-start w-auto border-black border-solid rounded-lg h-1/12 items-center">
+                      <WeekChooser setWeek={setWeek} sample={sample} week={week}/>
+                  </div>
 
-                    className={lowest === week? 
-                      `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center bg-black text-white`
-                    :
-                      `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center`
-                    }
-                    >{lowest}
-                  </button>
+                    <div className="flex mt-8 w-auto h-2/6">
+                    <XTotalGrowth sample={sample} week={week - 1}/>
+                    <XTopPost tweet={tweet} />
+                  </div>
 
-                    <button 
-                    onClick={()=>setWeek(lowest + 1)} 
-
-                    className={lowest + 1 === week? 
-                      `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center bg-black text-white`
-                    :
-                      `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center`
-                    }
-                    >{lowest + 1}
-                  </button>
-
-                  <button 
-                    onClick={()=>setWeek(lowest + 2)} 
-
-                    className={lowest + 2=== week? 
-                      `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center bg-black text-white`
-                    :
-                      `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center`
-                    }
-                    >{lowest + 2}
-                  </button>
-
-                  <button 
-                    onClick={() =>increase()}
-                    className="border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center">{">"}</button>
-                    
-                  
-              </div>
-              <p className="ml-24">{sample.data[week].startDate} - {sample.data[week].endDate}</p>
-
-
-              <div>
-                <XTotalGrowth sample={sample} week={week - 1}/>
-                <XTopPost tweet={tweet} />
               </div>
 
 

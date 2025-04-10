@@ -4,8 +4,8 @@ const XTotalGrowth = ({sample, week}) =>{
     return(
         <div>
         <div 
-            className=" h-2/5 p-4 border-2 border-black border-solid rounded-lg ml-20 mt-20 mb-5 flex  gap-4 flex-wrap w-[80%] bg-white">
-                <div className="flex flex-row h-1/12 text-2xl pl-12">Total Growth : </div>
+            className=" h-80 border-2 border-black border-solid rounded-lg mb-5 flex  gap-4 flex-wrap  bg-white w-6/6 p-4">
+                <div className="flex-row h-1/12 text-2xl pl-12 w-[100%]">Total Growth : </div>
 
 
                 <div className="flex flex-row w-[100%]  h-2/6">
@@ -56,7 +56,7 @@ const XTotalGrowth = ({sample, week}) =>{
                     {/*Impressions*/}
                     <div
                     className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-xl">Number of Impressions</div>
+                        <div className="text-xl">Total Impressions</div>
                         <div><p className="inline text-xl">{ sample.data[week].totalImpressions }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalImpressions}</p></div>
                     </div>
                 </div>
