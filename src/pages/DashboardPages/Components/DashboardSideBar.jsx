@@ -17,9 +17,9 @@ const DashboardSideBar = ({filteredAccount, setFilteredAccount, view}) =>{
 
     return(
             <div className="flex">
-                <div className={"w-64 h-screen text-black p-5 fixed"}>
+                <div className={"w-64 h-screen text-black p-5  bg-white  border-r-2 border-black "}>
 
-                    <nav className="space-y-4 block flex flex-col items-center justify-center h-screen -m-4 border-r-2">
+                    <nav className="space-y-4  flex flex-col items-center justify-center h-screen -m-4 ">
                         {view==="Analysis"?
                         <div>
 

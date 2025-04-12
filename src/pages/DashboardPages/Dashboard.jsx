@@ -14,44 +14,42 @@ const Dashboard = () =>{
     const { user } = useUser(false);
     return(
         
-           <div>
-                {user? 
-                <div className="bg-slate-50 h-screen">
-                    <DashboardHeader
-                    setView ={setView} />
-                    <DashboardSideBar 
-                    filteredAccount={filteredAccount}
-                    setFilteredAccount={setFilteredAccount}
-                    view={view}/>
+        <div>
+  {user ? (
+    <div className="bg-slate-50 h-screen flex flex-col">
+      {/* Header at the top */}
+      <DashboardHeader setView={setView} />
 
-                    
-                    <div className="ml-64">
-                        {view === "Analysis"?
-                            
-                            <Analysis
-                            filteredAccount={filteredAccount} />
-                        :
-                        view ==="Publish"?
-                             <Publish 
-                             filteredAccount={filteredAccount}/>
-                        :
-                            <Settings />
-                        }
+      {/* Below the header: sidebar + content */}
+      <div className="flex flex-1 overflow-hidden">
+        {/* Sidebar on the left */}
+        <DashboardSideBar 
+          filteredAccount={filteredAccount}
+          setFilteredAccount={setFilteredAccount}
+          view={view}
+        />
 
-                    </div>
+        <div className="flex-1 overflow-y-auto">
+          {view === "Analysis" ? (
+            <Analysis filteredAccount={filteredAccount} />
+            )
+           :
+            view === "Publish" ? (
+            <Publish filteredAccount={filteredAccount} />
+            ) 
+            : 
+            (
+                <Settings />
+            )}
 
-
-                </div>
-                    
-                :
-                    <div>
-
-                    </div>
-                }
-
-
-
-           </div>
+          
+        </div>
+      </div>
+    </div>
+  ) : (
+    <div></div>
+  )}
+</div>
     )
 }
 export default Dashboard;

@@ -5,23 +5,13 @@ import XPublish from './Publish Components/XPublish'
 
 const Publish = ({filteredAccount}) =>{
     const posts = []
-    const [posting, setPosting] = useState(false)
-    const [postData, setPostData] = useState()
+
+
     const [postType, setPostType] = useState("Queue")
 
     return(
-           <div>
-            {posting?
-            <div>
-                <PostPopUP 
-                setPostData ={setPostData}
-                setPosting ={setPosting}/>
-            </div>
-            :
-            <div>
-                
-            </div>
-            }
+           <div className='bg-slate-50 '>
+            
                 <div className='m-10 text-xl'>
                     {filteredAccount?
                     <p>{filteredAccount}</p>
@@ -31,9 +21,9 @@ const Publish = ({filteredAccount}) =>{
                 </div>
 
 
-                <div className='flex mt-10'>         
+                <div className='flex mt-10 '>         
                     <button
-                        className={`border-b-2 border-solid rounded-none ${
+                        className={`bg-slate-50 border-b-2 border-solid rounded-none ${
                             postType === "Queue" ? "border-black" : "border-transparent"
                         }`}
                         onClick={() => setPostType("Queue")}
@@ -42,7 +32,7 @@ const Publish = ({filteredAccount}) =>{
                     </button>
 
                     <button
-                    className={`border-b-2 border-solid rounded-none ${
+                    className={`bg-slate-50 border-b-2 border-solid rounded-none ${
                         postType === "Draft" ? "border-black" : "border-transparent"
                     }`}
                     onClick={() => setPostType("Draft")}
@@ -51,7 +41,7 @@ const Publish = ({filteredAccount}) =>{
                     </button>
 
                     <button
-                    className={`border-b-2 border-solid rounded-none ${
+                    className={`bg-slate-50 border-b-2 border-solid rounded-none ${
                         postType === "Posted" ? "border-black" : "border-transparent"
                     }`}
                     onClick={() => setPostType("Posted")}
@@ -60,9 +50,9 @@ const Publish = ({filteredAccount}) =>{
                     </button>
                 </div>
                     
-                    <div>
+                    <div className='-mt-10  flex justify-center '>
                         {filteredAccount =="X"?
-                        <XPublish />
+                        <XPublish  postType={postType}/>
                         :
                         filteredAccount =="Instagram"?
                         <div></div>
@@ -88,14 +78,7 @@ const Publish = ({filteredAccount}) =>{
 
                     
                 
-                <div>
-                    {<button  
-                        onClick={() => setPosting(true)}
-                        className='bg-blue-500 w-20 h-10 justify-center items-center text-white text-2xl hover:bg-blue-200 transition m-4'>
-                            +
-                    </button>}
-                </div>
-                        
+               
                 
            </div>
     )

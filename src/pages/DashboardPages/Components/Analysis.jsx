@@ -4,7 +4,7 @@ const Analysis = ({filteredAccount}) =>{
 
 
     return(
-           <div>
+           <div className="bg-slate-50">
                 {
                 filteredAccount ==="X"?
                 <XAnalysis />

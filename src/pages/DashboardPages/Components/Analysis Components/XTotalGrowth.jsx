@@ -4,7 +4,7 @@ const XTotalGrowth = ({sample, week}) =>{
     return(
         <div>
         <div 
-            className=" h-80 border-2 border-black border-solid rounded-lg mb-5 flex  gap-4 flex-wrap  bg-white w-6/6 p-4">
+            className=" h-80 border-2 shadow-md rounded-lg mb-5 flex  gap-4 flex-wrap  bg-white w-6/6 p-4">
                 <div className="flex-row h-1/12 text-2xl pl-12 w-[100%]">Total Growth : </div>
 
 

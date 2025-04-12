@@ -11,7 +11,7 @@ const DashboardHeader = ({setView}) =>{
     return(
            <div>
             <div>
-            <header className="flex items-center justify-between px-6 py-4 bg-black text-white">
+            <header className="flex items-center justify-between px-6 py-4 bg-black text-white z-10">
 
             <div className="text-xl font-bold">
                 <img  className="w-30 h-30 rounded-full object-cover "
