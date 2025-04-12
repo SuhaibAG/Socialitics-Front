@@ -11,6 +11,7 @@ import InstagramCallBack from "./SocialMediaConnections/InstagramCallBack";
 import TOS from "./pages/HomePages/TOS";
 import Privacy from "./pages/HomePages/Privacy";
 import TiktokCallBack from "./SocialMediaConnections/TiktokCallBack";
+import Settings from "./pages/DashboardPages/Components/Settings";
 
 
 function App() {

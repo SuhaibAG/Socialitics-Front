@@ -1,28 +1,199 @@
+import { useUser } from "../../../../userhandlers/UserProvider";
+import XTotalGrowth from "./XTotalGrowth";
 
+import { useState } from "react";
+import XGraph from "./XGraph";
+import WeekChooser from "./WeekChooser";
+import XPost from "../XPost";
 const XAnalysis = () =>{
+    const sample= {
+        "firebaseUID": "dedwfwefww",
+        "twitterId": "000000",
+        "userName": "xxxxx",
+        
+        "data": 
+            [
+                {
+                    "weekNumber": 1,
+                    "startDate": "6 Apr 2025",
+                    "endDate": "12 Apr 2025",
+                    "totalFollowers": 100,
+                    "diffTotalFollowers": "+10",
+                    "numOfPosts": 10,
+                    "diffNumOfPosts": "+2",
+                    "totalLikes": 100,
+                    "diffTotalLikes": "+20",
+                    "totalRetweets": 10,
+                    "diffTotalRetweets": "+10",
+                    "totalReplies": 5,
+                    "diffTotalReplies": "+5",
+                    "totalEngagements": 115,
+                    "diffTotalEngagements": "+20",
+                    "totalImpressions": 300,
+                    "diffTotalImpressions": "+50",
+                  },
+
+                  {
+                    "weekNumber": 2,
+                    "startDate": "13 Apr 2025",
+                    "endDate": "19 Apr 2025",
+                    "totalFollowers": 120,
+                    "diffTotalFollowers": "+10",
+                    "numOfPosts": 130,
+                    "diffNumOfPosts": "+2",
+                    "totalLikes": 102,
+                    "diffTotalLikes": "+20",
+                    "totalRetweets": 10,
+                    "diffTotalRetweets": "+10",
+                    "totalReplies": 5,
+                    "diffTotalReplies": "+5",
+                    "totalEngagements": 115,
+                    "diffTotalEngagements": "+20",
+                    "totalImpressions": 300,
+                    "diffTotalImpressions": "+50",
+                  },
+
+                  {
+                    "weekNumber": 3,
+                    "startDate": "20 Apr 2025",
+                    "endDate": "26 Apr 2025",
+                    "totalFollowers": 130,
+                    "diffTotalFollowers": "+10",
+                    "numOfPosts": 130,
+                    "diffNumOfPosts": "+2",
+                    "totalLikes": 100,
+                    "diffTotalLikes": "+20",
+                    "totalRetweets": 10,
+                    "diffTotalRetweets": "+10",
+                    "totalReplies": 5,
+                    "diffTotalReplies": "+5",
+                    "totalEngagements": 115,
+                    "diffTotalEngagements": "+20",
+                    "totalImpressions": 300,
+                    "diffTotalImpressions": "+50",
+                  } ,
+
+                  {
+                    "weekNumber": 4,
+                    "startDate": "27 Apr 2025",
+                    "endDate": "2 May 2025",
+                    "totalFollowers": 200,
+                    "diffTotalFollowers": "+10",
+                    "numOfPosts": 130,
+                    "diffNumOfPosts": "+2",
+                    "totalLikes": 130,
+                    "diffTotalLikes": "+20",
+                    "totalRetweets": 10,
+                    "diffTotalRetweets": "+10",
+                    "totalReplies": 5,
+                    "diffTotalReplies": "+5",
+                    "totalEngagements": 115,
+                    "diffTotalEngagements": "+20",
+                    "totalImpressions": 300,
+                    "diffTotalImpressions": "+50",
+                  }  ,
+
+                  {
+                    "weekNumber": 5,
+                    "startDate": "27 Apr 2025",
+                    "endDate": "2 May 2025",
+                    "totalFollowers": 230,
+                    "diffTotalFollowers": "+10",
+                    "numOfPosts": 130,
+                    "diffNumOfPosts": "+2",
+                    "totalLikes": 200,
+                    "diffTotalLikes": "+20",
+                    "totalRetweets": 10,
+                    "diffTotalRetweets": "+10",
+                    "totalReplies": 5,
+                    "diffTotalReplies": "+5",
+                    "totalEngagements": 115,
+                    "diffTotalEngagements": "+20",
+                    "totalImpressions": 300,
+                    "diffTotalImpressions": "+50",
+                  }  ,
+
+                  {
+                    "weekNumber": 6,
+                    "startDate": "27 Apr 2025",
+                    "endDate": "2 May 2025",
+                    "totalFollowers": 250,
+                    "diffTotalFollowers": "+10",
+                    "numOfPosts": 130,
+                    "diffNumOfPosts": "+2",
+                    "totalLikes": 500,
+                    "diffTotalLikes": "+20",
+                    "totalRetweets": 10,
+                    "diffTotalRetweets": "+10",
+                    "totalReplies": 5,
+                    "diffTotalReplies": "+5",
+                    "totalEngagements": 115,
+                    "diffTotalEngagements": "+20",
+                    "totalImpressions": 300,
+                    "diffTotalImpressions": "+50",
+                  }        
+            ]
+      }
+
+
+    const tweet = {
+        "firebaseUID": "dedwfwefww",
+        "twitterId": "000000",
+        "userName": "xxxxx",
+        "data": {
+          "tweetId": "000000",
+          "tweetContent": "Hello everyone",
+          "totalLikes": 100,
+          "totalRetweets": 10,
+          "totalEngagements": 115,
+          "totalImpressions": 300,
+        }
+      }
+      const [week, setWeek] = useState(1)
+      
+
+
+      
 
 
     return(
-           <div
-           className="flex flex-wrap h-screen">
-                <div 
-                className="w-3/6 h-2/5 p-4 border-2 border-black border-solid rounded-lg m-20 ">
-                    Total Growth
-                </div>
-                <div 
-                className="w-1/6 h-2/5 p-4 border-2 border-black border-solid rounded-lg m-20 ">
-                    <p className="flex justify-center">📊Total Engagement(Monthly)</p>
+        <div>
+              
+              
 
 
-                </div>
-                <div 
-                className="w-3/6 h-2/5 p-4 border-2 border-black border-solid rounded-lg m-20 ">
-                    <p className="flex justify-center">Most Popular Post</p>
+              <div className="flex-row mr-20 ml-20 h-screen ">
+
+                  <div className=" mt-10  flex h-5/12 overflow-auto max-w-full">
+                        <XGraph data={sample.data}/>
+                  </div>
+
+                  <div className="mt-12  flex justify-start w-auto  rounded-lg h-1/12 items-center">
+                      <WeekChooser setWeek={setWeek} sample={sample} week={week}/>
+                  </div>
+
+                    <div className="flex mt-8 w-auto h-2/6 ">
+                    <XTotalGrowth sample={sample} week={week - 1}/>
+                    
+                    <div className="w-4/6 h-80 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20  flex  gap-4 flex-wrap justify-center bg-white ">
+                      <div className="flex-row h-[1%] text-2xl pl-12 w-[100%] ">Top Post : </div>
+                      <XPost tweet={tweet.data} userName={tweet.userName}/>
+                    </div>
+                    
+                  </div>
+
+              </div>
 
 
-                </div>
-           </div>
+                
+
+            
+
+
+
+            </div>
            
+
 
            
     )
