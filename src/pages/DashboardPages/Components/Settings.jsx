@@ -37,13 +37,13 @@ const Settings = () => {
                             />
                             <div className="flex justify-end mt-2">
                                 <button
-                                    className="bg-blue-400 text-black px-4 py-2 rounded-md mr-2"
+                                    className="bg-blue-400 text-black px-4  rounded-md mr-2 border-2 border-solid"
                                     onClick={handleSave}
                                 >
                                     Save
                                 </button>
                                 <button
-                                    className="bg-red-400 text-black-700 px-4 py-2 rounded-md"
+                                    className="bg-red-400 text-black px-4 rounded-md border-2 border-solid"
                                     onClick={() => setIsEditing(false)}
                                 >
                                     Cancel
@@ -56,7 +56,7 @@ const Settings = () => {
                 </h3>
                 {!isEditing && (
                     <button
-                        className="mt-4 bg-blue-400 text-black px-2 py-2 rounded-md"
+                        className="mt-4 bg-inherit text-black px-2 py-1 rounded-md outline outline-offset-2"
                         onClick={() => setIsEditing(true)}
                     >
                         Edit Bio

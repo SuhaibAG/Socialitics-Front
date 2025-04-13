@@ -15,7 +15,7 @@ const XPublish = ({postType}) =>{
             "totalRetweets": 10,
             "totalEngagements": 115,
             "totalImpressions": 300,
-            "date":12/4/2025
+            "date":"12/4/2025"
           },
           {
             "tweetId": "000000",
@@ -24,7 +24,7 @@ const XPublish = ({postType}) =>{
             "totalRetweets": 10,
             "totalEngagements": 115,
             "totalImpressions": 300,
-            "date":20/5/2025
+            "date":"20/5/2025"
           }, 
           {
             "tweetId": "000000",
@@ -33,7 +33,7 @@ const XPublish = ({postType}) =>{
             "totalRetweets": 10,
             "totalEngagements": 115,
             "totalImpressions": 300,
-            "date":30/6/2025
+            "date":"30/6/2025"
           } 
          ] 
       }
@@ -49,7 +49,7 @@ const XPublish = ({postType}) =>{
             "totalRetweets": 10,
             "totalEngagements": 115,
             "totalImpressions": 300,
-            "date":12/4/2025
+            "date":"12/4/2025"
           },
           {
             "tweetId": "000000",
@@ -58,7 +58,7 @@ const XPublish = ({postType}) =>{
             "totalRetweets": 10,
             "totalEngagements": 115,
             "totalImpressions": 300,
-            "date":20/5/2025
+            "date":"20/5/2025"
           }, 
           {
             "tweetId": "000000",
@@ -67,7 +67,7 @@ const XPublish = ({postType}) =>{
             "totalRetweets": 10,
             "totalEngagements": 115,
             "totalImpressions": 300,
-            "date":30/6/2025
+            "date":"30/6/2025"
           } 
          ] 
       }
@@ -83,7 +83,7 @@ const XPublish = ({postType}) =>{
             "totalRetweets": 10,
             "totalEngagements": 115,
             "totalImpressions": 300,
-            "date":12/4/2025
+            "date":"12/4/2025"
           },
           {
             "tweetId": "000000",
@@ -92,7 +92,7 @@ const XPublish = ({postType}) =>{
             "totalRetweets": 10,
             "totalEngagements": 115,
             "totalImpressions": 300,
-            "date":20/5/2025
+            "date":"20/5/2025"
           }, 
           {
             "tweetId": "000000",
@@ -101,13 +101,13 @@ const XPublish = ({postType}) =>{
             "totalRetweets": 10,
             "totalEngagements": 115,
             "totalImpressions": 300,
-            "date":30/6/2025
+            "date":"30/6/2025"
           } 
          ] 
       }
-    const [queue, setQueue] = useState(sample)
-    const [draft, setDraft] = useState(sample2)
-    const [poseted, setPosted] = useState(sample3)
+    const [queue, setQueue] = useState(sample.data)
+    const [draft, setDraft] = useState(sample2.data)
+    const [poseted, setPosted] = useState(sample3.data)
     
     const [mapper, setMapper] = useState(queue)
     
@@ -129,7 +129,7 @@ const XPublish = ({postType}) =>{
         console.log(postType)
       }
 
-    },[postType])
+    },[postType, queue, draft, poseted])
 
     return(
       
@@ -138,7 +138,11 @@ const XPublish = ({postType}) =>{
         {posting?
             <div>
                 <PostPopUP 
+                queue={queue}
+                draft={draft}
                 setPostData ={setPostData}
+                setQueue={setQueue}
+                setDraft={setDraft}
                 setPosting ={setPosting}/>
             </div>
             :
@@ -155,11 +159,12 @@ const XPublish = ({postType}) =>{
         }
 
 
-      <div className="flex flex-col justify-start items-center mt-24 shadow-md bg-white  h-[90vh] rounded-lg overflow-y-auto space-y-4 p-4 ">
+      <div className="flex flex-col justify-start items-center mt-24 shadow-md bg-white rounded-lg  space-y-4 p-4 ">
 
-      {mapper.data.map((tweet, index) => (
-        <div key={index} className="flex justify-center h-72 w-full">
+      {mapper.map((tweet, index) => (
+        <div key={index} className="flex justify-center h-full w-full">
           <div className="w-full">
+            <div className="mb-4 text-sm">{tweet.date}</div>
             <XPost tweet={tweet} userName={mapper.userName} />
           <button className="bg-blue-500 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400"> Post Now</button>
           <button className="bg-gray-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center w-40 hover:bg-gray-500 transition-colors"> Send to Draft</button>

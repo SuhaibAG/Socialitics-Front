@@ -13,7 +13,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 export const loginWithTiktok = () => {
     const authUrl = `${API_URL}/?client_key=${CLIENT_ID}&response_type=code&redirect_uri=${encodeURIComponent(
       REDIRECT_URI
-    )}&scope=user.info.basic,video.upload,video.publish,user.info.profile,user.info.stats`;
+    )}&scope=user.info.basic,video.upload,video.publish,user.info.profile,user.info.stats,video.list`;
     
     window.location.href = authUrl;
 
