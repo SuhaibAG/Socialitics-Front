@@ -32,25 +32,25 @@ const Publish = ({filteredAccount}) =>{
                     </button>
 
                     <button
-                    className={`bg-slate-50 border-b-2 border-solid rounded-none ${
-                        postType === "Draft" ? "border-black" : "border-transparent"
-                    }`}
-                    onClick={() => setPostType("Draft")}
-                    >
-                    Draft
+                        className={`bg-slate-50 border-b-2 border-solid rounded-none ${
+                            postType === "Draft" ? "border-black" : "border-transparent"
+                        }`}
+                        onClick={() => setPostType("Draft")}
+                        >
+                        Draft
                     </button>
 
                     <button
-                    className={`bg-slate-50 border-b-2 border-solid rounded-none ${
-                        postType === "Posted" ? "border-black" : "border-transparent"
-                    }`}
-                    onClick={() => setPostType("Posted")}
-                    >
-                    Posted
+                        className={`bg-slate-50 border-b-2 border-solid rounded-none ${
+                            postType === "Posted" ? "border-black" : "border-transparent"
+                        }`}
+                        onClick={() => setPostType("Posted")}
+                        >
+                        Posted
                     </button>
                 </div>
                     
-                    <div className='-mt-10  flex justify-center '>
+                    <div className='-mt-10  flex justify-center'>
                         {filteredAccount =="X"?
                         <XPublish  postType={postType}/>
                         :

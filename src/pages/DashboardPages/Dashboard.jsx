@@ -16,13 +16,11 @@ const Dashboard = () =>{
         
         <div>
   {user ? (
-    <div className="bg-slate-50 h-screen flex flex-col">
-      {/* Header at the top */}
+    <div className="bg-slate-50 h-screen flex flex-col bg=">
+
       <DashboardHeader setView={setView} />
 
-      {/* Below the header: sidebar + content */}
       <div className="flex flex-1 overflow-hidden">
-        {/* Sidebar on the left */}
         <DashboardSideBar 
           filteredAccount={filteredAccount}
           setFilteredAccount={setFilteredAccount}
@@ -41,7 +39,6 @@ const Dashboard = () =>{
             (
                 <Settings />
             )}
-
           
         </div>
       </div>

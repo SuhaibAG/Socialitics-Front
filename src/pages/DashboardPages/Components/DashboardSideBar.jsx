@@ -7,8 +7,6 @@ import { loginWithFacebook } from '../../../SocialMediaConnections/FacebookConne
 import { loginWithTiktok } from '../../../SocialMediaConnections/TiktokConnections'
 const DashboardSideBar = ({filteredAccount, setFilteredAccount, view}) =>{
     const { user } = useUser(false);
-
-
     const [isOpen, setIsOpen] = useState(true)
     const [XUser, setXUser] = useState(user.TwitterUserName)
     const [instagramUser, setinstagramUser] = useState(user.InstagramUserName)
@@ -16,8 +14,7 @@ const DashboardSideBar = ({filteredAccount, setFilteredAccount, view}) =>{
     const [tiktokUser, setTiktokUser] = useState(user.TiktokUserName)
 
     return(
-            <div className="flex">
-                <div className={"w-64 h-screen text-black p-5  bg-white  border-r-2 border-black "}>
+                <div className={"w-64 h-screen text-black p-5    border-r-2 border-black "}>
 
                     <nav className="space-y-4  flex flex-col items-center justify-center h-screen -m-4 ">
                         {view==="Analysis"?
@@ -195,7 +192,6 @@ const DashboardSideBar = ({filteredAccount, setFilteredAccount, view}) =>{
                         }
                     </nav>
                 </div>
-            </div>
     )
 }
 export default DashboardSideBar;

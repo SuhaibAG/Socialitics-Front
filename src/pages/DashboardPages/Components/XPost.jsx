@@ -3,7 +3,7 @@ const XPost = ({tweet, userName}) =>{
 
     return(
 
-                <div className=" border-2 solid border-black  rounded-lg items-center h-[80%]">
+                <div className=" border-2 solid border-black  rounded-lg items-center h-72">
                     <div
                     className="flex flex-wrap  h-full">
                         <div className="ml-5 text-l w-[100%] h-1/12">@{userName}</div>
