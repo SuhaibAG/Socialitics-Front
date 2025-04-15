@@ -1,11 +1,11 @@
 import { useUser } from "../../../../userhandlers/UserProvider";
 import XTotalGrowth from "./XTotalGrowth";
-
+import TikTokPost from "../TiktokPost";
 import { useState } from "react";
 import XGraph from "./Graph";
 import WeekChooser from "./WeekChooser";
 import XPost from "../XPost";
-const XAnalysis = () =>{
+const TikTokAnalysis = () =>{
     const sample= {
         "firebaseUID": "dedwfwefww",
         "twitterId": "000000",
@@ -166,15 +166,14 @@ const XAnalysis = () =>{
 
                   <div className="mt-12  flex justify-start w-auto  rounded-lg h-1/12 items-center">
                       <WeekChooser setWeek={setWeek} sample={sample} week={week}/>
-                      <div></div>
                   </div>
 
                     <div className="flex mt-8 w-auto h-2/6 ">
-                    <XTotalGrowth sample={sample} week={week - 1} />
+                    <XTotalGrowth sample={sample} week={week - 1}/>
                     
                     <div className="w-4/6 h-96 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20  flex  gap-4 flex-wrap justify-center bg-white">
                       <div className="flex-col  text-2xl pl-12 w-[100%] ">Top Post : </div>
-                      <div className="h-screen w-[80%]"><XPost tweet={tweet.data} userName={tweet.userName}/></div>
+                      <div className="h-screen w-[80%]"><TikTokPost post={tweet.data} userName={tweet.userName}/></div>
 
                     </div>
                     
@@ -184,4 +183,4 @@ const XAnalysis = () =>{
             </div>
     )
 }
-export default XAnalysis;
+export default TikTokAnalysis;

@@ -1,8 +1,9 @@
+import TikTokAnalysis from "./Analysis Components/TikTokAnalysis";
 import XAnalysis from "./Analysis Components/XAnalysis";
 
 const Analysis = ({filteredAccount}) =>{
 
-
+    console.log(filteredAccount)
     return(
            <div className="bg-slate-50">
                 {
@@ -16,7 +17,7 @@ const Analysis = ({filteredAccount}) =>{
                 <div>Facebook</div>
                 :
                 filteredAccount ==="Tiktok"?
-                <div>Tiktok</div>
+                <TikTokAnalysis />
                 :
                 <div>all filters</div>
                 }

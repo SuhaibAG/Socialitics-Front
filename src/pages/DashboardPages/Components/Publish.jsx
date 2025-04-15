@@ -2,6 +2,7 @@ import { useState } from 'react'
 import '../../../index.css'
 import PostPopUP from './Publish Components/PostPopUp'
 import XPublish from './Publish Components/XPublish'
+import TiktokPublish from './Publish Components/TiktokPublish'
 
 const Publish = ({filteredAccount}) =>{
     const posts = []
@@ -61,7 +62,7 @@ const Publish = ({filteredAccount}) =>{
                         <div></div>
                         :
                         filteredAccount =="Tiktok"?
-                        <div></div>
+                        <TiktokPublish postType={postType}/>
                         :
                         <div className="flex justify-center items-center h-[100%] w-[100%]">
                             <h1 className='ml'>Choose a Social media Account</h1>
