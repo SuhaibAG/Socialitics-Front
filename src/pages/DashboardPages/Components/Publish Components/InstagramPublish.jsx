@@ -1,5 +1,5 @@
 import { useState } from "react";
-import XPost from "../XPost";
+import XPost from "../Posts/XPost";
 import PostPopUP from "./PostPopUp";
 const InstagramPublishj = ({postType}) =>{
 

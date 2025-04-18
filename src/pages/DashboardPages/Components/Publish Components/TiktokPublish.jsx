@@ -1,7 +1,5 @@
 import { useEffect, useState } from "react";
-import XPost from "../XPost";
-import PostPopUP from "./PostPopUp";
-import TikTokPost from "../TiktokPost";
+import TikTokPost from "../Posts/TiktokPost";
 import TiktokPopUp from "./TiktokPopUp";
 const TiktokPublish = ({postType}) =>{
 

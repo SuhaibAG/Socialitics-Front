@@ -4,7 +4,8 @@ import XTotalGrowth from "./XTotalGrowth";
 import { useState } from "react";
 import XGraph from "./Graph";
 import WeekChooser from "./WeekChooser";
-import XPost from "../XPost";
+import XPost from "../Posts/XPost";
+import Graph from "./Graph";
 const XAnalysis = () =>{
     const sample= {
         "firebaseUID": "dedwfwefww",
@@ -161,7 +162,7 @@ const XAnalysis = () =>{
               <div className="flex-row mr-20 ml-20 h-screen ">
 
                   <div className=" mt-10  flex h-5/12 overflow-auto max-w-full">
-                        <XGraph data={sample.data} collumns={["totalLikes", "totalFollowers"]}/>
+                        <Graph data={sample.data} collumns={["totalLikes", "totalFollowers"]}/>
                   </div>
 
                   <div className="mt-12  flex justify-start w-auto  rounded-lg h-1/12 items-center">

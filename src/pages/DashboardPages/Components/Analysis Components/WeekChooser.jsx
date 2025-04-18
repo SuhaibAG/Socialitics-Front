@@ -1,5 +1,5 @@
 import { useState } from "react"
-const WeekChooser = ({week, sample, setWeek}) =>{
+const WeekChooser = ({week, sample, setWeek, max}) =>{
     const [lowest, setLowest] = useState(1)
 
       const lower = ()=>{
@@ -36,6 +36,8 @@ const WeekChooser = ({week, sample, setWeek}) =>{
                     >{lowest}
                   </button>
 
+
+                  {sample.data[(lowest)] != null?
                     <button 
                     onClick={()=>setWeek(lowest + 1)} 
 
@@ -45,9 +47,14 @@ const WeekChooser = ({week, sample, setWeek}) =>{
                       `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center`
                     }
                     >{lowest + 1}
-                  </button>
+                   </button>
+                  
+                  :
+                    <div>das</div>
+                  }
 
-                  <button 
+                  {sample.data[(lowest +1)] != null?
+                    <button 
                     onClick={()=>setWeek(lowest + 2)} 
 
                     className={lowest + 2=== week? 
@@ -56,7 +63,11 @@ const WeekChooser = ({week, sample, setWeek}) =>{
                       `border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center`
                     }
                     >{lowest + 2}
-                  </button>
+                   </button>
+                  :
+                  <div></div>
+                  }
+                  
 
                   <button 
                     onClick={() =>increase()}

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import XPost from "../XPost";
+import XPost from "../Posts/XPost";
 import PostPopUP from "./PostPopUp";
 import XPopUP from "./XPopUp";
 const XPublish = ({postType}) =>{
@@ -119,15 +119,12 @@ const XPublish = ({postType}) =>{
     useEffect(()=>{
       if(postType == "Queue"){
         setMapper(queue)
-        console.log(postType)
       }
       else if(postType == "Draft"){
         setMapper(draft)
-        console.log(postType)
       }
       else if(postType == "Posted"){
         setMapper(poseted)
-        console.log(postType)
       }
 
     },[postType, queue, draft, poseted])

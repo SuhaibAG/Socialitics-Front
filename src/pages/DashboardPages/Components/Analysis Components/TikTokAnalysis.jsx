@@ -1,141 +1,73 @@
-import { useUser } from "../../../../userhandlers/UserProvider";
-import XTotalGrowth from "./XTotalGrowth";
-import TikTokPost from "../TiktokPost";
+import TikTokPost from "../Posts/TiktokPost";
 import { useState } from "react";
-import XGraph from "./Graph";
 import WeekChooser from "./WeekChooser";
-import XPost from "../XPost";
+import Graph from "./Graph";
+import TiktokTotalGrowth from "./TiktokTotalGrowth";
 const TikTokAnalysis = () =>{
-    const sample= {
-        "firebaseUID": "dedwfwefww",
-        "twitterId": "000000",
-        "userName": "xxxxx",
-        
-        "data": 
-            [
-                {
-                    "weekNumber": 1,
-                    "startDate": "6 Apr 2025",
-                    "endDate": "12 Apr 2025",
-                    "totalFollowers": 100,
-                    "diffTotalFollowers": "+10",
-                    "numOfPosts": 10,
-                    "diffNumOfPosts": "+2",
-                    "totalLikes": 100,
-                    "diffTotalLikes": "+20",
-                    "totalRetweets": 10,
-                    "diffTotalRetweets": "+10",
-                    "totalReplies": 5,
-                    "diffTotalReplies": "+5",
-                    "totalEngagements": 115,
-                    "diffTotalEngagements": "+20",
-                    "totalImpressions": 300,
-                    "diffTotalImpressions": "+50",
-                  },
-
-                  {
-                    "weekNumber": 2,
-                    "startDate": "13 Apr 2025",
-                    "endDate": "19 Apr 2025",
-                    "totalFollowers": 120,
-                    "diffTotalFollowers": "+10",
-                    "numOfPosts": 130,
-                    "diffNumOfPosts": "+2",
-                    "totalLikes": 102,
-                    "diffTotalLikes": "+20",
-                    "totalRetweets": 10,
-                    "diffTotalRetweets": "+10",
-                    "totalReplies": 5,
-                    "diffTotalReplies": "+5",
-                    "totalEngagements": 115,
-                    "diffTotalEngagements": "+20",
-                    "totalImpressions": 300,
-                    "diffTotalImpressions": "+50",
-                  },
-
-                  {
-                    "weekNumber": 3,
-                    "startDate": "20 Apr 2025",
-                    "endDate": "26 Apr 2025",
-                    "totalFollowers": 130,
-                    "diffTotalFollowers": "+10",
-                    "numOfPosts": 130,
-                    "diffNumOfPosts": "+2",
-                    "totalLikes": 100,
-                    "diffTotalLikes": "+20",
-                    "totalRetweets": 10,
-                    "diffTotalRetweets": "+10",
-                    "totalReplies": 5,
-                    "diffTotalReplies": "+5",
-                    "totalEngagements": 115,
-                    "diffTotalEngagements": "+20",
-                    "totalImpressions": 300,
-                    "diffTotalImpressions": "+50",
-                  } ,
-
-                  {
-                    "weekNumber": 4,
-                    "startDate": "27 Apr 2025",
-                    "endDate": "2 May 2025",
-                    "totalFollowers": 200,
-                    "diffTotalFollowers": "+10",
-                    "numOfPosts": 130,
-                    "diffNumOfPosts": "+2",
-                    "totalLikes": 130,
-                    "diffTotalLikes": "+20",
-                    "totalRetweets": 10,
-                    "diffTotalRetweets": "+10",
-                    "totalReplies": 5,
-                    "diffTotalReplies": "+5",
-                    "totalEngagements": 115,
-                    "diffTotalEngagements": "+20",
-                    "totalImpressions": 300,
-                    "diffTotalImpressions": "+50",
-                  }  ,
-
-                  {
-                    "weekNumber": 5,
-                    "startDate": "27 Apr 2025",
-                    "endDate": "2 May 2025",
-                    "totalFollowers": 230,
-                    "diffTotalFollowers": "+10",
-                    "numOfPosts": 130,
-                    "diffNumOfPosts": "+2",
-                    "totalLikes": 200,
-                    "diffTotalLikes": "+20",
-                    "totalRetweets": 10,
-                    "diffTotalRetweets": "+10",
-                    "totalReplies": 5,
-                    "diffTotalReplies": "+5",
-                    "totalEngagements": 115,
-                    "diffTotalEngagements": "+20",
-                    "totalImpressions": 300,
-                    "diffTotalImpressions": "+50",
-                  }  ,
-
-                  {
-                    "weekNumber": 6,
-                    "startDate": "27 Apr 2025",
-                    "endDate": "2 May 2025",
-                    "totalFollowers": 250,
-                    "diffTotalFollowers": "+10",
-                    "numOfPosts": 130,
-                    "diffNumOfPosts": "+2",
-                    "totalLikes": 500,
-                    "diffTotalLikes": "+20",
-                    "totalRetweets": 10,
-                    "diffTotalRetweets": "+10",
-                    "totalReplies": 5,
-                    "diffTotalReplies": "+5",
-                    "totalEngagements": 115,
-                    "diffTotalEngagements": "+20",
-                    "totalImpressions": 300,
-                    "diffTotalImpressions": "+50",
-                  }        
-            ]
+    const sample={
+      "firebaseUID": "VpJOUX05QSh86FNf44Gb4jGYEF02",
+      "tiktokID": "-0009jFDhljex-k7MXGeQK6uDs3ssoHsXOvo",
+      "userName": "socialitics0",
+      "data": [
+          {
+              "weekNumber": 1,
+              "startDate": "7 Apr 2025",
+              "endDate": "14 Apr 2025",
+              "totalFollowers": 2,
+              "diffTotalFollowers": "+0",
+              "numOfPosts": 2,
+              "diffNumOfPosts": "+0",
+              "totalLikes": 21,
+              "diffTotalLikes": "+0",
+              "totalShares": 1,
+              "diffTotalShares": "+0",
+              "totalComments": 1,
+              "diffTotalComments": "+0",
+              "totalViews": 159,
+              "diffTotalViews": "+0",
+              "engagementRate": 7.232704402515723,
+              "diffEngagementRate": "+0"
+          },
+          {
+            "weekNumber": 2,
+            "startDate": "7 Apr 2025",
+            "endDate": "14 Apr 2025",
+            "totalFollowers": 5,
+            "diffTotalFollowers": "+0",
+            "numOfPosts": 6,
+            "diffNumOfPosts": "+0",
+            "totalLikes": 110,
+            "diffTotalLikes": "+0",
+            "totalShares": 1,
+            "diffTotalShares": "+0",
+            "totalComments": 1,
+            "diffTotalComments": "+0",
+            "totalViews": 159,
+            "diffTotalViews": "+0",
+            "engagementRate": 7.232704402515723,
+            "diffEngagementRate": "+0"
+        },
+        {
+          "weekNumber": 3,
+          "startDate": "7 Apr 2025",
+          "endDate": "14 Apr 2025",
+          "totalFollowers": 20,
+          "diffTotalFollowers": "+0",
+          "numOfPosts": 2,
+          "diffNumOfPosts": "+0",
+          "totalLikes": 130,
+          "diffTotalLikes": "+0",
+          "totalShares": 1,
+          "diffTotalShares": "+0",
+          "totalComments": 1,
+          "diffTotalComments": "+0",
+          "totalViews": 159,
+          "diffTotalViews": "+0",
+          "engagementRate": 7.232704402515723,
+          "diffEngagementRate": "+0"
       }
-
-
+      ]
+  }
     const tweet = {
         "firebaseUID": "dedwfwefww",
         "twitterId": "000000",
@@ -161,7 +93,7 @@ const TikTokAnalysis = () =>{
               <div className="flex-row mr-20 ml-20 h-screen ">
 
                   <div className=" mt-10  flex h-5/12 overflow-auto max-w-full">
-                        <XGraph data={sample.data} collumns={["totalLikes", "totalFollowers"]}/>
+                        <Graph data={sample.data} collumns={["totalLikes", "totalFollowers"]}/>
                   </div>
 
                   <div className="mt-12  flex justify-start w-auto  rounded-lg h-1/12 items-center">
@@ -169,7 +101,7 @@ const TikTokAnalysis = () =>{
                   </div>
 
                     <div className="flex mt-8 w-auto h-2/6 ">
-                    <XTotalGrowth sample={sample} week={week - 1}/>
+                    <TiktokTotalGrowth sample={sample} week={week - 1}/>
                     
                     <div className="w-4/6 h-96 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20  flex  gap-4 flex-wrap justify-center bg-white">
                       <div className="flex-col  text-2xl pl-12 w-[100%] ">Top Post : </div>
