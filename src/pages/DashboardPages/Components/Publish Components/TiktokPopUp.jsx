@@ -1,14 +1,14 @@
 import { useState } from "react";
 
-const XPopUP = ({queue, draft, setDraft, setQueue, setPosting}) =>{
+const TiktokPopUp = ({queue, draft, setDraft, setQueue, setPosting}) =>{
     const [content, setContent] = useState(null)
     const [date, setDate] = useState(null)
+    const [file, setFile] = useState(null)
 
    
 
     const addQueue = () =>{
-        console.log(date)
-        console.log(content)
+
         if(content !=null && date!=null){
             const post ={
                 "tweetId": "000000",
@@ -38,8 +38,13 @@ const XPopUP = ({queue, draft, setDraft, setQueue, setPosting}) =>{
                 <div className='shadow-md rounded-lg bg-white  h-2/3 w-1/3 m-auto z-10 absolute inset-0'>
 
                     <div className="flex flex-col justify-center items-center h-2/6 mt-4">
-                        <p className="text-center mb-4">Content</p>
-                        <textarea className="border p-2 w-1/2 h-full resize-none" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+                        <p className="text-center mb-4">Upload File</p>
+                        <input type="file" className="border p-2 w-1/2 h-full resize-none bg-gray-50" value={file} onChange={(e) => setFile(e.target.value)}></input>
+                    </div>
+
+                    <div className="flex flex-col justify-center items-center h-1/6 mt-4">
+                        <p className="text-center mb-4">Video Description</p>
+                        <textarea className="border p-2 w-1/2 h-1/12 resize-none" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
                     </div>
                 
 
@@ -60,4 +65,4 @@ const XPopUP = ({queue, draft, setDraft, setQueue, setPosting}) =>{
            </div>
     )
 }
-export default XPopUP;
+export default TiktokPopUp;

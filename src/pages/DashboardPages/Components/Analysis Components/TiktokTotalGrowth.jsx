@@ -1,4 +1,4 @@
-const XTotalGrowth = ({sample, week}) =>{
+const TiktokTotalGrowth = ({sample, week}) =>{
 
 
     return(
@@ -30,20 +30,20 @@ const XTotalGrowth = ({sample, week}) =>{
                         <div><p className="inline text-xl">{ sample.data[week].totalLikes }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalLikes}</p></div>
                     </div>
 
-                    {/*Total Retweets*/}
+                    {/*Total Shares*/}
                     <div
                     className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-xl">Total Retweets</div>
-                        <div><p className="inline text-xl">{ sample.data[week].totalRetweets }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalRetweets}</p></div>
+                        <div className="text-xl">Total Shares</div>
+                        <div><p className="inline text-xl">{ sample.data[week].totalShares }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalShares}</p></div>
                     </div>
                 </div>
 
                 <div className="flex flex-row w-[100%] h-2/6 ">
-                    {/*totalReplies*/}
+                    {/*totalComments*/}
                     <div
                     className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-xl">Total Replies</div>
-                        <div><p className="inline text-xl">{ sample.data[week].totalReplies }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalReplies}</p></div>
+                        <div className="text-xl">Total Comments</div>
+                        <div><p className="inline text-xl">{ sample.data[week].totalComments }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalComments}</p></div>
                     </div>
 
                     {/*totalEngagements*/}
@@ -65,4 +65,4 @@ const XTotalGrowth = ({sample, week}) =>{
 
     )
 }
-export default XTotalGrowth;
+export default TiktokTotalGrowth;

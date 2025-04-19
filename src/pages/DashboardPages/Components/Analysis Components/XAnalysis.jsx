@@ -2,9 +2,10 @@ import { useUser } from "../../../../userhandlers/UserProvider";
 import XTotalGrowth from "./XTotalGrowth";
 
 import { useState } from "react";
-import XGraph from "./XGraph";
+import XGraph from "./Graph";
 import WeekChooser from "./WeekChooser";
-import XPost from "../XPost";
+import XPost from "../Posts/XPost";
+import Graph from "./Graph";
 const XAnalysis = () =>{
     const sample= {
         "firebaseUID": "dedwfwefww",
@@ -158,44 +159,30 @@ const XAnalysis = () =>{
 
     return(
         <div>
-              
-              
-
-
               <div className="flex-row mr-20 ml-20 h-screen ">
 
                   <div className=" mt-10  flex h-5/12 overflow-auto max-w-full">
-                        <XGraph data={sample.data}/>
+                        <Graph data={sample.data} collumns={["totalLikes", "totalFollowers"]}/>
                   </div>
 
                   <div className="mt-12  flex justify-start w-auto  rounded-lg h-1/12 items-center">
                       <WeekChooser setWeek={setWeek} sample={sample} week={week}/>
+                      <div></div>
                   </div>
 
                     <div className="flex mt-8 w-auto h-2/6 ">
-                    <XTotalGrowth sample={sample} week={week - 1}/>
+                    <XTotalGrowth sample={sample} week={week - 1} />
                     
-                    <div className="w-4/6 h-80 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20  flex  gap-4 flex-wrap justify-center bg-white ">
-                      <div className="flex-row h-[1%] text-2xl pl-12 w-[100%] ">Top Post : </div>
-                      <XPost tweet={tweet.data} userName={tweet.userName}/>
+                    <div className="w-4/6 h-96 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20  flex  gap-4 flex-wrap justify-center bg-white overflow-y-auto">
+                      <div className="flex-col  text-2xl pl-12 w-[100%] ">Top Post : </div>
+                      <div className="h-screen w-[80%]"><XPost tweet={tweet.data} userName={tweet.userName}/></div>
+
                     </div>
                     
                   </div>
 
               </div>
-
-
-                
-
-            
-
-
-
             </div>
-           
-
-
-           
     )
 }
 export default XAnalysis;
