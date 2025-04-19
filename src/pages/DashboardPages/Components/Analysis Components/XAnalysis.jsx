@@ -173,7 +173,7 @@ const XAnalysis = () =>{
                     <div className="flex mt-8 w-auto h-2/6 ">
                     <XTotalGrowth sample={sample} week={week - 1} />
                     
-                    <div className="w-4/6 h-96 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20  flex  gap-4 flex-wrap justify-center bg-white">
+                    <div className="w-4/6 h-96 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20  flex  gap-4 flex-wrap justify-center bg-white overflow-y-auto">
                       <div className="flex-col  text-2xl pl-12 w-[100%] ">Top Post : </div>
                       <div className="h-screen w-[80%]"><XPost tweet={tweet.data} userName={tweet.userName}/></div>
 

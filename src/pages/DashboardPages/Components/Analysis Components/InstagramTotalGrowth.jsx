@@ -1,4 +1,4 @@
-const FacebookTotalGrowth = ({sample, week}) =>{
+const InstagramTotalGrowth = ({sample, week}) =>{
 
 
     return(
@@ -46,24 +46,18 @@ const FacebookTotalGrowth = ({sample, week}) =>{
                         <div><p className="inline text-xl">{ sample.data[week].totalComments }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalComments}</p></div>
                     </div>
 
-                    {/*totalEngagementRate*/}
+                    {/*totalEngagements*/}
                     <div
                     className="flex flex-col justify-center items-center w-3/12">
                         <div className="text-xl">Total Engagements</div>
-                        <div><p className="inline text-xl">{ sample.data[week].totalEngagementRate }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalEngagementRate}</p></div>
+                        <div><p className="inline text-xl">{ sample.data[week].totalEngagements }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalEngagements}</p></div>
                     </div>
 
-                    {/*totalHahas*/}
+                    {/*Impressions*/}
                     <div
                     className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-xl">Total Hahas</div>
-                        <div><p className="inline text-xl">{ sample.data[week].totalHahas }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalHahas}</p></div>
-                    </div>
-                    {/*totalHahas*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-xl">Total Hearts</div>
-                        <div><p className="inline text-xl">{ sample.data[week].totalHearts }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalHearts}</p></div>
+                        <div className="text-xl">Total Impressions</div>
+                        <div><p className="inline text-xl">{ sample.data[week].totalImpressions }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalImpressions}</p></div>
                     </div>
                 </div>
             </div>    
@@ -71,4 +65,4 @@ const FacebookTotalGrowth = ({sample, week}) =>{
 
     )
 }
-export default FacebookTotalGrowth;
+export default InstagramTotalGrowth;

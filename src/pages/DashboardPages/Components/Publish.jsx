@@ -3,6 +3,7 @@ import '../../../index.css'
 import PostPopUP from './Publish Components/PostPopUp'
 import XPublish from './Publish Components/XPublish'
 import TiktokPublish from './Publish Components/TiktokPublish'
+import InstagrmaPublish from './Publish Components/InstagramPublish'
 
 const Publish = ({filteredAccount}) =>{
     const posts = []
@@ -56,7 +57,7 @@ const Publish = ({filteredAccount}) =>{
                         <XPublish  postType={postType}/>
                         :
                         filteredAccount =="Instagram"?
-                        <div></div>
+                        <InstagrmaPublish postType={postType}/>
                         :
                         filteredAccount =="Facebook"?
                         <div></div>

@@ -1,4 +1,5 @@
 import FacebookAnalysis from "./Analysis Components/FacebookAnalysis";
+import InstagramAnalysis from "./Analysis Components/InstagramAnalysis";
 import TikTokAnalysis from "./Analysis Components/TikTokAnalysis";
 import XAnalysis from "./Analysis Components/XAnalysis";
 
@@ -12,7 +13,7 @@ const Analysis = ({filteredAccount}) =>{
                 <XAnalysis />
                 :
                 filteredAccount ==="Instagram"?
-                <div>Insta</div>
+                <InstagramAnalysis />
                 :
                 filteredAccount ==="Facebook"?
                 <FacebookAnalysis />

@@ -3,9 +3,9 @@ const InstagramPost = ({embedLink}) =>{
 
 
     return(
-                <div className="items-center overflow-y-auto ">
+                <div className="items-center">
                     <div
-                    className="flex flex-wrap rounded-lg  h-72 justify-center">
+                    className="flex flex-wrap rounded-lg  h-72 justify-center ">
                         <iframe
                         className="rounded-lg"
                         src={embedLink}
