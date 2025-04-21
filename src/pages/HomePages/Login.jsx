@@ -16,7 +16,7 @@ const Login = () =>{
     const { login, user } = useUser(false);
     const [tempUser, setTempUser] = useState()
     const [exist, setExist] = useState(false)
-    const [userName, setUsername] = useState(false)
+
     const [bio, setBio] = useState("")
     const [name, setName] = useState("")
     const [image, setImage] = useState(false)

@@ -3,9 +3,10 @@ import InstagramAnalysis from "./Analysis Components/InstagramAnalysis";
 import TikTokAnalysis from "./Analysis Components/TikTokAnalysis";
 import XAnalysis from "./Analysis Components/XAnalysis";
 
+
+//chooses which area of the analysis will be loaded
 const Analysis = ({filteredAccount}) =>{
 
-    console.log(filteredAccount)
     return(
            <div className="bg-slate-50">
                 {

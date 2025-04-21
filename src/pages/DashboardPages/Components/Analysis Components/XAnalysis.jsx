@@ -166,7 +166,7 @@ const XAnalysis = () =>{
                   </div>
 
                   <div className="mt-12  flex justify-start w-auto  rounded-lg h-1/12 items-center">
-                      <WeekChooser setWeek={setWeek} sample={sample} week={week}/>
+                      <WeekChooser setWeek={setWeek} sample={sample.data} week={week}/>
                       <div></div>
                   </div>
 

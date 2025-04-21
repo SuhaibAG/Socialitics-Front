@@ -1,6 +1,5 @@
 import axios from "axios";
 
-
 const CLIENT_ID = process.env.REACT_APP_Tiktok_CLIENT_ID
 const REDIRECT_URI = process.env.REACT_APP_Tiktok_REDIRECT_URI
 const API_URL = process.env.REACT_APP_Tiktok_API_URL
@@ -23,8 +22,7 @@ export const loginWithTiktok = () => {
   
 
 export const sendAuthCodeToBackend = async (authCode, accessToken) => {
-    console.log("auth code:  " +authCode)
-    console.log("access token: " + accessToken)
+    
     try {
       const response = await axios.post(`${BACKEND_URL}/api/connections/tiktok`, 
         { 
@@ -36,10 +34,47 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
               Authorization: `Bearer ${accessToken}`, 
           },
         }
+        
       );
-      return response
+      
     } catch (error) {
       console.error("Failed to authenticate user", error);
       return null;
     }
   };
+
+export const getTiktokAnalysis = async (firebaseUID, accessToken) => {
+  try{
+    const response = await axios.get(`${BACKEND_URL}/tiktok/scheduler/analysis`,{
+          params:{ firebaseUID,},
+          headers:{
+             'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`, 
+          },
+        }
+      );
+    return(response.data)
+  } catch (error) {
+    console.error("Failed to authenticate user", error);
+    return null;
+  }
+}
+
+export const getTiktokTopPost = async (firebaseUID, accessToken) => {
+
+
+  try{
+    const response = await axios.get(`${BACKEND_URL}/tiktok/scheduler/topPosts`,{
+        params:{ firebaseUID,},
+          headers:{
+             'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`, 
+          },
+        }
+      );
+    return(response)
+  } catch (error) {
+    console.error("Failed to authenticate user", error);
+    return null;
+  }
+}

@@ -11,13 +11,12 @@ const WeekChooser = ({week, sample, setWeek, max}) =>{
         }
       }
       const increase = ()=>{
-        const array = sample.data
+        const array = sample
         if(array.length > lowest + 2){
           setLowest(lowest+1)
         }
       
       }
-
     return(
         <div className="flex">
             <button 
@@ -37,7 +36,7 @@ const WeekChooser = ({week, sample, setWeek, max}) =>{
                   </button>
 
 
-                  {sample.data[(lowest)] != null?
+                  {sample[(lowest)] != null?
                     <button 
                     onClick={()=>setWeek(lowest + 1)} 
 
@@ -50,10 +49,10 @@ const WeekChooser = ({week, sample, setWeek, max}) =>{
                    </button>
                   
                   :
-                    <div>das</div>
+                    <div></div>
                   }
 
-                  {sample.data[(lowest +1)] != null?
+                  {sample[(lowest +1)] != null?
                     <button 
                     onClick={()=>setWeek(lowest + 2)} 
 
@@ -73,7 +72,7 @@ const WeekChooser = ({week, sample, setWeek, max}) =>{
                     onClick={() =>increase()}
                     className="border-black border-solid border-2 rounded-full  w-7 text-xl flex items-center justify-center">{">"}</button>
                     
-                    <p className="ml-24">{sample.data[week -1].startDate} - {sample.data[week -1].endDate}</p>
+                    <p className="ml-24">{sample[week -1].startDate} - {sample[week -1].endDate}</p>
         </div>
     )
 }
