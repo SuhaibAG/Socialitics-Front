@@ -1,6 +1,6 @@
 import axios from "axios";
 import * as aws4 from "aws4";
-import crypto from "crypto";
+
 
 const R2_EndPoint = process.env.REACT_APP_R2_URL;
 const R2_AccessKey = process.env.REACT_APP_R2_AccessKey;
