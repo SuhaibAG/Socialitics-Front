@@ -1,7 +1,7 @@
 
 const TikTokPost = ({embedLink}) =>{
 
-    console.log(embedLink)
+
     return(
                 <div className="items-center overflow-y-auto ">
                     <div
