@@ -3,24 +3,31 @@ import { createContext, useContext, useEffect, useState } from "react";
 const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
-  const [user, setUser] = useState(null); 
+  const [user, setUser] = useState(null);
 
   const login = (userData) => setUser(userData);
   const logout = () => setUser(null);
 
-
-
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     if (storedUser) {
-      setUser(JSON.parse(storedUser));
+      const parsed = JSON.parse(storedUser);
+      if (Date.now() > parsed.expiry) {
+        // Token/user expired
+        localStorage.removeItem("user");
+      } else {
+        setUser(parsed.data);
+      }
     }
   }, []);
 
-  
   useEffect(() => {
     if (user) {
-      localStorage.setItem("user", JSON.stringify(user));
+      const userWithExpiry = {
+        data: user,
+        expiry: Date.now() + 1000 * 60 * 30, 
+      };
+      localStorage.setItem("user", JSON.stringify(userWithExpiry));
     } else {
       localStorage.removeItem("user");
     }
@@ -34,4 +41,3 @@ export const UserProvider = ({ children }) => {
 };
 
 export const useUser = () => useContext(UserContext);
-

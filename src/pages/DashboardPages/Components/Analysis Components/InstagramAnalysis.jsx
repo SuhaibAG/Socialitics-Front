@@ -98,7 +98,7 @@ const InstagramAnalysis = () =>{
                   </div>
 
                   <div className="mt-12  flex justify-start w-auto  rounded-lg h-1/12 items-center">
-                      <WeekChooser setWeek={setWeek} sample={sample} week={week} max={post.length}/>
+                      <WeekChooser setWeek={setWeek} sample={sample.data} week={week} max={post.length}/>
                       <div></div>
                   </div>
 

@@ -13,7 +13,7 @@ const Publish = ({filteredAccount}) =>{
 
     return(
            <div className='bg-slate-50 '>
-            
+                {/*if no social media account is chosen this will be shown*/}
                 <div className='m-10 text-xl'>
                     {filteredAccount?
                     <p>{filteredAccount}</p>

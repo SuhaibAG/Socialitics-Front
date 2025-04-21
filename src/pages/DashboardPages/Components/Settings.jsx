@@ -1,11 +1,12 @@
 import { useState } from "react";
-import { useUser } from "../../../userhandlers/UserProvider";
+import { UserProvider, useUser } from "../../../userhandlers/UserProvider";
 import Dashboard from "../Dashboard";
 import DashboardHeader from "./DashboardHeader";
 import DashboardSideBar from "./DashboardSideBar";
+import { useNavigate } from "react-router-dom";
 
 const Settings = () => {
-    const { user } = useUser(false);
+    const { user, logout } = useUser(false);
     const [isEditing, setIsEditing] = useState(false);
     const [bio, setBio] = useState(user?.bio || "No bio available");
 
@@ -16,6 +17,12 @@ const Settings = () => {
         setIsEditing(false);
     };
 
+    const navigate =  useNavigate()
+    const handleLogout = () =>{
+        logout()
+        navigate("/login")        
+    }
+ 
     return (
         <div className="flex flex-col items-center py-10  ">
             <h1 className="text-3xl font-bold text-gray-800 mb-6">User Information</h1>
@@ -56,13 +63,24 @@ const Settings = () => {
                 </h3>
                 {!isEditing && (
                     <button
-                        className="mt-4 bg-inherit text-black px-2 py-1 rounded-md outline outline-offset-2"
+                        className=" flex mt-4 bg-inherit text-black px-2 py-1 rounded-lg border-black border-2 border-solid justify-center items-center"
                         onClick={() => setIsEditing(true)}
                     >
                         Edit Bio
                     </button>
                 )}
+                <div className="flex w-full justify-end">
+                <button
+                        className="flex mt-4 bg-inherit text-black px-2 py-1 rounded-lg border-black border-2 border-solid justify-center items-center bg-red-400"
+                        onClick={() => handleLogout()}
+                    >
+                        Sign out
+                </button>
+
+                </div>
+                
             </div>
+            
         </div>
     );
 };

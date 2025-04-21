@@ -13,7 +13,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 export const loginWithFacebook = () => {
     const authUrl = `${API_URL}?client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(
       REDIRECT_URI
-    )}&scope=pages_read_user_content,public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,pages_manage_posts&response_type=code`;
+    )}&scope=publish_video,pages_read_user_content,public_profile,email,instagram_basic,pages_show_list,pages_read_engagement,pages_manage_engagement,pages_manage_posts&response_type=code`;
     
     window.location.href = authUrl;
 
@@ -43,3 +43,38 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
       return null;
     }
   };
+
+  export const getFacebookAnalysis = async (firebaseUID, accessToken) => {
+
+
+    try{
+      const response = await axios.get(`${BACKEND_URL}/facebook/scheduler/analysis`,
+        {
+          params: { firebaseUID },
+          headers:{
+           Authorization: `Bearer ${accessToken}`,
+        },
+      }
+      );
+    } catch (error) {
+      console.error("Failed to authenticate user", error);
+      return null;
+    }
+  }
+  export const getFacebookTopPost = async (firebaseUID, accessToken) => {
+
+
+    try{
+      const response = await axios.get(`${BACKEND_URL}/facebook/scheduler/topPosts`,
+        {
+          params: { firebaseUID },
+          headers:{
+           Authorization: `Bearer ${accessToken}`,
+        },
+      }
+      );
+    } catch (error) {
+      console.error("Failed to authenticate user", error);
+      return null;
+    }
+  }

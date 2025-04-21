@@ -11,7 +11,7 @@ const BACKEND_URL = process.env.REACT_APP_BACKEND_URL;
 export const loginWithX = () => {
     const authUrl = `${API_URL}?response_type=code&client_id=${CLIENT_ID}&redirect_uri=${encodeURIComponent(
       REDIRECT_URI
-    )}&scope=tweet.read tweet.write users.read offline.access&state=xyz&code_challenge=challenge&code_challenge_method=plain`;
+    )}&scope=tweet.read tweet.write users.read media.write offline.access&state=xyz&code_challenge=challenge&code_challenge_method=plain`;
     
     window.location.href = authUrl;
 
@@ -43,22 +43,37 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
   };
 
 
-  /*
-  export const getXUSer = async(uid, accessToken) => {
+  export const getXAnalysis = async (firebaseUID, accessToken) => {
+
+
     try{
-      const response = await axios.get("http://localhost:3001/api/connections/twitter", {
-        params: { firebaseUID: uid },
-        headers:{
-        'Content-Type': 'application/json',
-         Authorization: `Bearer ${accessToken}`, 
-        }});
-
-
-
-        return(response)
-      } catch (error){
-      console.error("Error:", error)
+      const response = await axios.get(`${BACKEND_URL}/twitter/scheduler/analysis`,
+        {
+          params: { firebaseUID },
+          headers:{
+           Authorization: `Bearer ${accessToken}`,
+        },
+      }
+      );
+    } catch (error) {
+      console.error("Failed to authenticate user", error);
+      return null;
     }
-
   }
-  */
+  export const getXTopPost = async (firebaseUID, accessToken) => {
+
+
+    try{
+      const response = await axios.get(`${BACKEND_URL}/twitter/scheduler/topPosts`,
+        {
+          params: { firebaseUID  },
+          headers:{
+           Authorization: `Bearer ${accessToken}`,
+        },
+      }
+      );
+    } catch (error) {
+      console.error("Failed to authenticate user", error);
+      return null;
+    }
+  }
