@@ -1,35 +1,32 @@
 import { useState } from "react";
-import { useUser } from "../../../../userhandlers/UserProvider";
-import { uploadToR2 } from "../../../../storage/R2Storage";
+
 const TiktokPopUp = ({queue, draft, setDraft, setQueue, setPosting}) =>{
     const [content, setContent] = useState(null)
     const [date, setDate] = useState(null)
     const [file, setFile] = useState(null)
-    const [mediaURL, setMediaUrl] = useState(null)
-    const { user } = useUser()
+
    
 
     const addQueue = () =>{
 
         if(content !=null && date!=null){
             const post ={
-                "firebaseUID": user.firebaseUID,
-                "text": content,
-                "mediaURL": mediaURL,
+                "tweetId": "000000",
+                "tweetContent": content,
+                "totalLikes": 0,
+                "totalRetweets": 0,
+                "totalEngagements": 0,
+                "totalImpressions": 0,
                 "date":date
                 }
-            
+    
+                const newQueue = [...queue, post]
+                setQueue(newQueue)
             setPosting(false)
         }
 
         
     }
-
-    const uploadMedia = async ()=>{
-        uploadToR2(file, date)
-    }
-
-    
 
     return(
 
@@ -60,6 +57,7 @@ const TiktokPopUp = ({queue, draft, setDraft, setQueue, setPosting}) =>{
                     
                     <div className="mt-12 justify-center items-center mr-24">
                         <button onClick={() => addQueue()} className=" bg-blue-500 text-white rounded-xl flex justify-center items-center w-4/12 hover:bg-blue-400 transition-color">Add to Queue</button>
+                        <button className=" bg-gray-600 text-white rounded-xl flex justify-center items-center w-4/12 hover:bg-gray-500 transition-color">Draft</button>
                     </div>
 
                     

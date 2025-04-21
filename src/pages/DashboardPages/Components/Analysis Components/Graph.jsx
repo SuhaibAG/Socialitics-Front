@@ -14,7 +14,7 @@ const Graph = ({data, collumns}) =>{
         setFilters([...filters, col])
       }
     }
-
+    console.log(filters)
     return (
         <div className="w-full h-96 bg-white shadow-lg rounded-lg mt-4 p-4">
           <div>

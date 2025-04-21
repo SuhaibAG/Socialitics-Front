@@ -1,11 +1,11 @@
 import { useUser } from "../../../../userhandlers/UserProvider";
 import XTotalGrowth from "./XTotalGrowth";
-import { useState, useEffect } from "react";
+
+import { useState } from "react";
 import XGraph from "./Graph";
 import WeekChooser from "./WeekChooser";
 import XPost from "../Posts/XPost";
 import Graph from "./Graph";
-import { getXAnalysis, getXTopPost } from "../../../../SocialMediaConnections/XConnections";
 const XAnalysis = () =>{
     const sample= {
         "firebaseUID": "dedwfwefww",
@@ -139,10 +139,10 @@ const XAnalysis = () =>{
 
     const tweet = {
         "firebaseUID": "dedwfwefww",
-        "twitterId": "1909722853223940609",
-        "userName": "socialitics0",
+        "twitterId": "000000",
+        "userName": "xxxxx",
         "data": {
-          "tweetId": "1909722853223940609",
+          "tweetId": "000000",
           "tweetContent": "Hello everyone",
           "totalLikes": 100,
           "totalRetweets": 10,
@@ -151,34 +151,6 @@ const XAnalysis = () =>{
         }
       }
       const [week, setWeek] = useState(1)
-      const [analysis, setAnalysis] = useState(null);
-      const [topPost, setTopPost] =useState(null)
-      const { user } = useUser()
-            useEffect(() => {
-              const getAnalysis = async () => {
-                try {
-                  if (analysis === null) {
-                    const result = await getXAnalysis(user.firebaseUID, user.accessToken);
-                    setAnalysis(result.data);
-                  }
-                } catch (error) {
-                  getAnalysis();
-                }
-              };
-              /*
-              const getTopPost = async () => {
-                try {
-                  if (topPost === null) {
-                    const result = await getXTopPost(user.firebaseUID, user.accessToken);
-                    setTopPost(result.data);
-                  }
-                } catch (error) {
-                  getTopPost();
-                }
-              };*/
-              getAnalysis();
-              //getTopPost();
-            }, []);
       
 
 
@@ -187,20 +159,19 @@ const XAnalysis = () =>{
 
     return(
         <div>
-          {analysis != null?
               <div className="flex-row mr-20 ml-20 h-screen ">
 
                   <div className=" mt-10  flex h-5/12 overflow-auto max-w-full">
-                        <Graph data={analysis} collumns={["totalLikes", "totalFollowers"]}/>
+                        <Graph data={sample.data} collumns={["totalLikes", "totalFollowers"]}/>
                   </div>
 
                   <div className="mt-12  flex justify-start w-auto  rounded-lg h-1/12 items-center">
-                      <WeekChooser setWeek={setWeek} sample={analysis} week={week}/>
+                      <WeekChooser setWeek={setWeek} sample={sample.data} week={week}/>
                       <div></div>
                   </div>
 
                     <div className="flex mt-8 w-auto h-2/6 ">
-                    <XTotalGrowth sample={analysis} week={week - 1} />
+                    <XTotalGrowth sample={sample} week={week - 1} />
                     
                     <div className="w-4/6 h-96 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20  flex  gap-4 flex-wrap justify-center bg-white overflow-y-auto">
                       <div className="flex-col  text-2xl pl-12 w-[100%] ">Top Post : </div>
@@ -211,9 +182,6 @@ const XAnalysis = () =>{
                   </div>
 
               </div>
-            :
-            <div>Loading...</div>}
-
             </div>
     )
 }

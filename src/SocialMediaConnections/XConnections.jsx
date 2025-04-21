@@ -44,35 +44,34 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
 
 
   export const getXAnalysis = async (firebaseUID, accessToken) => {
+
+
     try{
-      const response = await axios.get(`${BACKEND_URL}/twitter/scheduler/analysis`,{
-            params:{ firebaseUID,},
-            headers:{
-               'Content-Type': 'application/json',
-                Authorization: `Bearer ${accessToken}`, 
-            },
-          }
-        );
-      return(response.data)
+      const response = await axios.get(`${BACKEND_URL}/twitter/scheduler/analysis`,
+        {
+          params: { firebaseUID },
+          headers:{
+           Authorization: `Bearer ${accessToken}`,
+        },
+      }
+      );
     } catch (error) {
       console.error("Failed to authenticate user", error);
       return null;
     }
   }
-  
   export const getXTopPost = async (firebaseUID, accessToken) => {
-  
-  
+
+
     try{
-      const response = await axios.get(`${BACKEND_URL}/twitter/scheduler/topPosts`,{
-          params:{ firebaseUID,},
-            headers:{
-               'Content-Type': 'application/json',
-                Authorization: `Bearer ${accessToken}`, 
-            },
-          }
-        );
-      return(response)
+      const response = await axios.get(`${BACKEND_URL}/twitter/scheduler/topPosts`,
+        {
+          params: { firebaseUID  },
+          headers:{
+           Authorization: `Bearer ${accessToken}`,
+        },
+      }
+      );
     } catch (error) {
       console.error("Failed to authenticate user", error);
       return null;

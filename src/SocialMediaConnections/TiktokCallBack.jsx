@@ -13,7 +13,9 @@ const TiktokCallBack = () => {
       if (user) {
         const params = new URLSearchParams(location.search);
         const authCode = params.get("code");
-         
+        console.log(authCode)
+        
+        
         if (authCode) {
           try {
             const authenticatedUser = await sendAuthCodeToBackend(authCode, user.accessToken);
