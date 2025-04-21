@@ -27,7 +27,7 @@ const XPopUP = ({queue, draft, setDraft, setQueue, setPosting}) =>{
 
         
     }
-
+    console.log(Date(date).getTime())
     return(
 
            <div >
@@ -47,12 +47,11 @@ const XPopUP = ({queue, draft, setDraft, setQueue, setPosting}) =>{
                         <label>
                             Publish Date
                         </label>
-                        <input type="date" className="w-2/3 mt-2 rounded-lg" value={date} onChange={(e) => setDate(e.target.value)}></input>
+                        <input type="datetime-local" className="w-2/3 mt-2 rounded-lg" value={date} onChange={(e) => setDate(e.target.value)}></input>
                     </div>
                     
                     <div className="mt-12 justify-center items-center mr-24">
                         <button onClick={() => addQueue()} className=" bg-blue-500 text-white rounded-xl flex justify-center items-center w-4/12 hover:bg-blue-400 transition-color">Add to Queue</button>
-                        <button className=" bg-gray-600 text-white rounded-xl flex justify-center items-center w-4/12 hover:bg-gray-500 transition-color">Draft</button>
                     </div>
 
                     
