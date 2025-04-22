@@ -24,7 +24,8 @@ const TiktokPopUp = ({queue, draft, setDraft, setQueue, setPosting}) =>{
         
     }
     const uploadFile = () =>{
-        return(UploadToR2(file, date))
+        //return(UploadToR2(file, date))
+        console.log(file)
     }
 
   

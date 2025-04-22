@@ -1,6 +1,7 @@
+import axios from "axios";
 import { useState } from "react";
-
-const XPopUP = ({queue, draft, setDraft, setQueue, setPosting}) =>{
+const backend_url = process.env.REACT_APP_BACKEND_URL
+const XPopUP = ({queue, setQueue, setPosting}) =>{
     const [content, setContent] = useState(null)
     const [date, setDate] = useState(null)
 
@@ -27,7 +28,15 @@ const XPopUP = ({queue, draft, setDraft, setQueue, setPosting}) =>{
 
         
     }
-    console.log(Date(date).getTime())
+    const requestPost = async () =>{
+        try{
+            const response  = await axios.post(`${backend_url}/api/connections/instagram`)
+        }
+        catch(err){
+            console.log(err)
+        }
+    }
+
     return(
 
            <div >
@@ -47,7 +56,7 @@ const XPopUP = ({queue, draft, setDraft, setQueue, setPosting}) =>{
                         <label>
                             Publish Date
                         </label>
-                        <input type="datetime-local" className="w-2/3 mt-2 rounded-lg" value={date} onChange={(e) => setDate(e.target.value)}></input>
+                        <input type="datetime-local" className="w-2/3 mt-2 rounded-lg" value={date} onChange={(e) => setDate(new Date(e.target.value).getTime())}></input>
                     </div>
                     
                     <div className="mt-12 justify-center items-center mr-24">

@@ -7,8 +7,6 @@ const region = 'auto';
 const endpoint = process.env.REACT_APP_R2_URL;
 const bucket = process.env.REACT_APP_R2_BUCKET;
 
-
-
 AWS.config.update({
   accessKeyId,
   secretAccessKey,
