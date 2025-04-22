@@ -1,44 +1,54 @@
-import axios from "axios";
-import * as aws4 from "aws4";
+import axios from 'axios'
+import AWS from 'aws-sdk';
+
+const accessKeyId = process.env.REACT_APP_R2_ACCESSKEY;
+const secretAccessKey = process.env.REACT_APP_R2_SECRETKEY;
+const region = 'auto';
+const endpoint = process.env.REACT_APP_R2_URL;
+const bucket = process.env.REACT_APP_R2_BUCKET;
 
 
-const R2_EndPoint = process.env.REACT_APP_R2_URL;
-const R2_AccessKey = process.env.REACT_APP_R2_AccessKey;
-const R2_SecretKey = process.env.REACT_APP_R2_SecretKey;
-const bucket = "socialitics"
-const region = "auto";
 
-export async function uploadToR2(file, time) {
-    const fileName = `${file.name}${time}`
-    const url= `${R2_EndPoint}/${bucket}/${fileName}`
+AWS.config.update({
+  accessKeyId,
+  secretAccessKey,
+  region,
+  endpoint: new AWS.Endpoint(endpoint),
+});
 
+const s3 = new AWS.S3({
+  signatureVersion: 'v4',
+  s3ForcePathStyle: true, 
+});
 
-    const opts = {
-        host: new URL(url).host,
-        method: "PUT",
-        path: `/${bucket}/${file.name}${time}`,
-        headers: {
-          "Content-Type": file.type
-        },
-        body: file,
-        service: "s3",
-        region,
-    };
-
-    aws4.sign(opts, { R2_AccessKey, R2_SecretKey});
-
-    try {
-        const res = await axios.put(url, file, {
-          headers: opts.headers,
-        });
+export default async function UploadToR2(file, time) {
+  const filename = file.name + time;
     
-        if (res.status >= 200 && res.status < 300) {
-          console.log("upload Successful");
-          return `https://pub-818396e115b04010a25c6986301df2bc.r2.dev/${fileName}`;
-        } else {
-          console.error(res.statusText);
-        }
-      } catch (err) {
-        console.error(err);
-      }
+  const params = {
+    Bucket: bucket,
+    Key: filename, 
+    Expires: 3600,
+    ContentType: file.type, 
+  };
+  
+  try {
+
+    const preSignedUrl = await s3.getSignedUrlPromise('putObject', params);
+    console.log(preSignedUrl)
+    // Upload the file using the pre-signed URL
+    const res = await axios.put(preSignedUrl, file, {
+      headers: {
+        "Content-Type": file.type, // Set file type header
+      },
+    });
+
+    if (res.status === 200) {
+      alert("Upload successful!");
+    } else {
+      alert(`Upload failed: ${res.statusText}`);
     }
+  } catch (err) {
+    console.error("Upload error:", err);
+    alert("Upload failed. Please try again.");
+  }
+}
