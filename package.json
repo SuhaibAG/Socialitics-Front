@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "aws-sdk": "^2.1692.0",
     "aws4": "^1.13.2",
+    "aws4-browser": "^1.0.0",
     "axios": "^1.8.1",
     "cra-template": "1.2.0",
     "dotenv": "^16.4.7",
