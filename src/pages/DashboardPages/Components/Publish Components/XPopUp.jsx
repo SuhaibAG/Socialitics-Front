@@ -1,33 +1,30 @@
+import axios from "axios";
 import { useState } from "react";
-
-const XPopUP = ({queue, draft, setDraft, setQueue, setPosting}) =>{
+import { useUser } from "../../../../userhandlers/UserProvider";
+import { sendXPost } from "../../../../SocialMediaConnections/XConnections";
+const backend_url = process.env.REACT_APP_BACKEND_URL
+const XPopUP = ({queue, setQueue, setPosting}) =>{
     const [content, setContent] = useState(null)
     const [date, setDate] = useState(null)
-
+    const {user} = useUser()
    
 
     const addQueue = () =>{
-        console.log(date)
-        console.log(content)
-        if(content !=null && date!=null){
+        const milliDate = new Date(date).getTime()
+        if(content !=null && date!=null &&  milliDate > Date.now()){
             const post ={
-                "tweetId": "000000",
-                "tweetContent": content,
-                "totalLikes": 0,
-                "totalRetweets": 0,
-                "totalEngagements": 0,
-                "totalImpressions": 0,
-                "date":date
+                "firebaseUID": user.firebaseUID,
+                "content": content,
+                "scheduleDate":date
                 }
     
-                const newQueue = [...queue, post]
-                setQueue(newQueue)
+                sendXPost(user.accessToken, post)
             setPosting(false)
         }
-
         
     }
-    console.log(Date(date).getTime())
+
+
     return(
 
            <div >

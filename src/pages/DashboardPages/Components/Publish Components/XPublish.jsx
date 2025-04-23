@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import XPost from "../Posts/XPost";
-import PostPopUP from "./PostPopUp";
 import XPopUP from "./XPopUp";
-const XPublish = ({postType}) =>{
+const XPublish = ({postType, posts}) =>{
 
 
     const sample = {
@@ -108,20 +107,14 @@ const XPublish = ({postType}) =>{
       }
     const [queue, setQueue] = useState(sample.data)
     const [draft, setDraft] = useState(sample2.data)
-    const [poseted, setPosted] = useState(sample3.data)
-    
+    const [poseted, setPosted] = useState(sample3.data)   
     const [mapper, setMapper] = useState(queue)
-    
-  
     const [posting, setPosting] = useState(false)
     const [postData, setPostData] = useState()
     
     useEffect(()=>{
       if(postType == "Queue"){
         setMapper(queue)
-      }
-      else if(postType == "Draft"){
-        setMapper(draft)
       }
       else if(postType == "Posted"){
         setMapper(poseted)
@@ -164,9 +157,14 @@ const XPublish = ({postType}) =>{
           <div className="w-full">
             <div className="mb-4 text-sm">{tweet.date}</div>
             <XPost tweet={tweet} userName={mapper.userName} />
-          <button className="bg-blue-500 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400"> Post Now</button>
-          <button className="bg-gray-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center w-40 hover:bg-gray-500 transition-colors"> Send to Draft</button>
-
+            {postType != "Posted"?
+                <div className="flex justify-center">
+                    <button className="bg-red-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400">Delete</button>                    
+                    <button className="bg-blue-500 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400"> Post Now</button>
+                </div>
+            :
+                <div></div>
+            }
           </div>
         </div>
       ))}

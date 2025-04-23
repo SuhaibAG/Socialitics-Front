@@ -7,8 +7,6 @@ const region = 'auto';
 const endpoint = process.env.REACT_APP_R2_URL;
 const bucket = process.env.REACT_APP_R2_BUCKET;
 
-
-
 AWS.config.update({
   accessKeyId,
   secretAccessKey,
@@ -21,8 +19,8 @@ const s3 = new AWS.S3({
   s3ForcePathStyle: true, 
 });
 
-export default async function UploadToR2(file, time) {
-  const filename = file.name + time;
+export default async function UploadToR2(file) {
+  const filename = `${ new Date().getTime()}${file.name}`;
     
   const params = {
     Bucket: bucket,
@@ -32,23 +30,21 @@ export default async function UploadToR2(file, time) {
   };
   
   try {
-
     const preSignedUrl = await s3.getSignedUrlPromise('putObject', params);
-    console.log(preSignedUrl)
-    // Upload the file using the pre-signed URL
     const res = await axios.put(preSignedUrl, file, {
       headers: {
-        "Content-Type": file.type, // Set file type header
+        "Content-Type": file.type,
       },
     });
 
     if (res.status === 200) {
-      alert("Upload successful!");
+      alert("Upload successful");
+      return(`https://pub-818396e115b04010a25c6986301df2bc.r2.dev/${filename}`)
     } else {
       alert(`Upload failed: ${res.statusText}`);
     }
   } catch (err) {
     console.error("Upload error:", err);
-    alert("Upload failed. Please try again.");
+    alert("Upload failed");
   }
 }

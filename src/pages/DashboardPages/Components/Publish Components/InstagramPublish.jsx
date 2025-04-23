@@ -2,7 +2,8 @@ import { useEffect, useState } from "react";
 import TikTokPost from "../Posts/TiktokPost";
 import TiktokPopUp from "./TiktokPopUp";
 import InstagramPost from "../Posts/InstagramPost";
-const TiktokPublish = ({postType}) =>{
+import InstagramPopUp from "./InstagramPopUp";
+const InstagramPublish = ({postType, posts}) =>{
 
 
     const sample = {
@@ -67,43 +68,25 @@ const TiktokPublish = ({postType}) =>{
   
     const [posting, setPosting] = useState(false)
     const [postData, setPostData] = useState()
-
-
-    const sendToDraft = (index) =>{
-      setDraft([...draft, queue[index]])
-      setQueue(queue.filter(item => item != queue[index]))
-    }
-
-    const addToQueue = (index) =>{
-      setQueue([...queue, draft[index]])
-      setDraft(draft.filter(item => item != draft[index]))
-    }
     
     useEffect(()=>{
       if(postType == "Queue"){
         setMapper(queue)
       }
-      else if(postType == "Draft"){
-        setMapper(draft)
-      }
+
       else if(postType == "Posted"){
         setMapper(poseted)
       }
 
     },[postType, queue, draft, poseted])
-    {console.log(postType)}
+ 
     return(
       
           
       <div className="flex-col w-1/2">
         {posting?
             <div>
-                <TiktokPopUp 
-                queue={queue}
-                draft={draft}
-                setPostData ={setPostData}
-                setQueue={setQueue}
-                setDraft={setDraft}
+                <InstagramPopUp 
                 setPosting ={setPosting}/>
             </div>
             :
@@ -131,19 +114,8 @@ const TiktokPublish = ({postType}) =>{
             {postType != "Posted"?
                 <div className="flex justify-center">
                     <button className="bg-red-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400">Delete</button>                    
-                    {postType == "Queue"?
-                     <button className="bg-gray-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center w-40 hover:bg-gray-500 transition-colors"
-                      onClick={() =>sendToDraft(index)}> Send to Draft</button>
-                    :
-                     <button className="bg-gray-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center w-40 hover:bg-gray-500 transition-colors"
-                     onClick={() =>addToQueue(index)}>
-                      Add to Queue</button>
-                    }
-
                     <button className="bg-blue-500 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400"> Post Now</button>
                 </div>
-
-            
             :
                 <div></div>
             }
@@ -158,4 +130,4 @@ const TiktokPublish = ({postType}) =>{
 
 }
 
-export default TiktokPublish;
+export default InstagramPublish;

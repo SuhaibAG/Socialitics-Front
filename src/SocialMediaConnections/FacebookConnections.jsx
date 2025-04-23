@@ -62,8 +62,6 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
     }
   }
   export const getFacebookTopPost = async (firebaseUID, accessToken) => {
-
-
     try{
       const response = await axios.get(`${BACKEND_URL}/facebook/scheduler/topPosts`,
         {
@@ -78,3 +76,27 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
       return null;
     }
   }
+
+  export const sendFacebookPost = async ( accessToken, postData ) => {
+    
+    try {
+      const response = await axios.post(`${BACKEND_URL}/posts/scheduler/facebook`, 
+        { 
+          firebaseUID: postData.firebaseUID,
+          content: postData.content,
+          scheduleDate: postData.scheduleDate,
+          mediaUrl: postData.mediaUrl
+        },{
+          headers:{
+             'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`, 
+          },
+        }
+        
+      );
+      
+    } catch (error) {
+      console.error("Failed to authenticate user", error);
+      return null;
+    }
+  };

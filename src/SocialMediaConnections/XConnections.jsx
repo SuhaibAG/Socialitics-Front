@@ -65,7 +65,7 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
   
     try{
       const response = await axios.get(`${BACKEND_URL}/twitter/scheduler/topPosts`,{
-          params:{ firebaseUID,},
+          params:{ firebaseUID },
             headers:{
                'Content-Type': 'application/json',
                 Authorization: `Bearer ${accessToken}`, 
@@ -78,3 +78,26 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
       return null;
     }
   }
+
+  export const sendXPost = async ( accessToken, postData ) => {
+    
+    try {
+      const response = await axios.post(`${BACKEND_URL}/posts/scheduler/twitter`, 
+        { 
+          firebaseUID: postData.firebaseUID,
+          content: postData.content,
+          scheduleDate: postData.scheduleDate,
+        },{
+          headers:{
+             'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`, 
+          },
+        }
+        
+      );
+      
+    } catch (error) {
+      console.error("Failed to authenticate user", error);
+      return null;
+    }
+  };
