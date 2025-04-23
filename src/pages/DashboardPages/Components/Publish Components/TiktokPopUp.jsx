@@ -1,31 +1,31 @@
 import { useState } from "react";
 import { useUser } from "../../../../userhandlers/UserProvider";
-import UploadToR2, { uploadToR2 } from "../../../../storage/R2Storage";
-const TiktokPopUp = ({queue, draft, setDraft, setQueue, setPosting}) =>{
+import UploadToR2 from "../../../../storage/R2Storage";
+import { sendTiktokPost } from "../../../../SocialMediaConnections/TiktokConnections";
+const TiktokPopUp = ({setPosting}) =>{
     const [content, setContent] = useState(null)
+    const [text, setText] = useState(null)
     const [date, setDate] = useState(null)
-    const [file, setFile] = useState(null)
-    const [mediaURL, setMediaUrl] = useState(null)
     const { user } = useUser()
    
 
-    const addQueue = () =>{
+    const addQueue = async () =>{
 
         if(content !=null && date!=null){
-            const post ={
-                "firebaseUID": user.firebaseUID,
-                "text": content,
-                "mediaURL": mediaURL,
-                "date":date
-                }
-            uploadFile()
-        }
+            const mediaURL = await UploadToR2(content, date)
+            if(mediaURL != null){
 
-        
-    }
-    const uploadFile = () =>{
-        //return(UploadToR2(file, date))
-        console.log(file)
+                const post ={
+                    "firebaseUID": user.firebaseUID,
+                    "content": text,
+                    "scheduleDate":date,
+                    "mediaUrl": mediaURL
+                }
+                sendTiktokPost(user.accessToken, post)
+                setPosting(false)
+            }
+            
+        }  
     }
 
   
@@ -42,12 +42,19 @@ const TiktokPopUp = ({queue, draft, setDraft, setQueue, setPosting}) =>{
 
                     <div className="flex flex-col justify-center items-center h-2/6 mt-4">
                         <p className="text-center mb-4">Upload File</p>
-                        <input type="file" className="border p-2 w-1/2 h-full resize-none bg-gray-50" value={file} onChange={(e) => setFile(e.target.value)}></input>
+                        <input type="file" className="border p-2 w-1/2 h-full resize-none bg-gray-50" accept="video/mp4"
+                            onChange={(e) => {
+                                const file = e.target.files?.[0];
+                                if (file) {
+                                setContent(file);
+                                }
+                            }}
+                        />
                     </div>
 
                     <div className="flex flex-col justify-center items-center h-1/6 mt-4">
                         <p className="text-center mb-4">Video Description</p>
-                        <textarea className="border p-2 w-1/2 h-1/12 resize-none" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+                        <textarea className="border p-2 w-1/2 h-1/12 resize-none" value={text} onChange={(e) => setText(e.target.value)}></textarea>
                     </div>
                 
 

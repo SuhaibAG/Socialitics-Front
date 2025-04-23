@@ -75,3 +75,27 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
       return null;
     }
   }
+
+  export const sendInstagramPost = async ( accessToken, postData ) => {
+    
+    try {
+      const response = await axios.post(`${BACKEND_URL}/posts/scheduler/instagram`, 
+        { 
+          firebaseUID: postData.firebaseUID,
+          content: postData.content,
+          scheduleDate: postData.scheduleDate,
+          mediaUrl: postData.mediaUrl
+        },{
+          headers:{
+             'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`, 
+          },
+        }
+        
+      );
+      
+    } catch (error) {
+      console.error("Failed to authenticate user", error);
+      return null;
+    }
+  };

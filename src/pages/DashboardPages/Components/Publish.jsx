@@ -35,15 +35,6 @@ const Publish = ({filteredAccount}) =>{
 
                     <button
                         className={`bg-slate-50 border-b-2 border-solid rounded-none ${
-                            postType === "Draft" ? "border-black" : "border-transparent"
-                        }`}
-                        onClick={() => setPostType("Draft")}
-                        >
-                        Draft
-                    </button>
-
-                    <button
-                        className={`bg-slate-50 border-b-2 border-solid rounded-none ${
                             postType === "Posted" ? "border-black" : "border-transparent"
                         }`}
                         onClick={() => setPostType("Posted")}

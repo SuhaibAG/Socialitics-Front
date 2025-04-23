@@ -7,8 +7,10 @@ const PostPopUP = ({queue, draft, setDraft, setQueue, setPosting}) =>{
    
 
     const addQueue = () =>{
+
         console.log(date)
         console.log(content)
+
         if(content !=null && date!=null){
             const post ={
                 "tweetId": "000000",
@@ -39,7 +41,7 @@ const PostPopUP = ({queue, draft, setDraft, setQueue, setPosting}) =>{
 
                     <div className="flex flex-col justify-center items-center h-2/6 mt-4">
                         <p className="text-center mb-4">Content</p>
-                        <textarea className="border p-2 w-1/2 h-full resize-none" value={content} onChange={(e) => setContent(e.target.value)}></textarea>
+                        <textarea className="border p-2 w-1/2 h-full resize-none" value={content} onChange={(e) => setContent(e.target.files[0])}></textarea>
                     </div>
                 
 

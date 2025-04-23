@@ -122,9 +122,6 @@ const TiktokPublish = ({postType}) =>{
       if(postType == "Queue"){
         setMapper(queue)
       }
-      else if(postType == "Draft"){
-        setMapper(draft)
-      }
       else if(postType == "Posted"){
         setMapper(poseted)
       }
@@ -138,11 +135,6 @@ const TiktokPublish = ({postType}) =>{
         {posting?
             <div>
                 <TiktokPopUp 
-                queue={queue}
-                draft={draft}
-                setPostData ={setPostData}
-                setQueue={setQueue}
-                setDraft={setDraft}
                 setPosting ={setPosting}/>
             </div>
             :
@@ -170,19 +162,8 @@ const TiktokPublish = ({postType}) =>{
             {postType != "Posted"?
                 <div className="flex justify-center">
                     <button className="bg-red-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400">Delete</button>                    
-                    {postType == "Queue"?
-                     <button className="bg-gray-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center w-40 hover:bg-gray-500 transition-colors"
-                      onClick={() =>sendToDraft(index)}> Send to Draft</button>
-                    :
-                     <button className="bg-gray-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center w-40 hover:bg-gray-500 transition-colors"
-                     onClick={() =>addToQueue(index)}>
-                      Add to Queue</button>
-                    }
-
                     <button className="bg-blue-500 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400"> Post Now</button>
                 </div>
-
-            
             :
                 <div></div>
             }
