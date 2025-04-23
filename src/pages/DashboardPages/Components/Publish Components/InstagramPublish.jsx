@@ -3,7 +3,7 @@ import TikTokPost from "../Posts/TiktokPost";
 import TiktokPopUp from "./TiktokPopUp";
 import InstagramPost from "../Posts/InstagramPost";
 import InstagramPopUp from "./InstagramPopUp";
-const TiktokPublish = ({postType}) =>{
+const InstagramPublish = ({postType, posts}) =>{
 
 
     const sample = {
@@ -79,7 +79,7 @@ const TiktokPublish = ({postType}) =>{
       }
 
     },[postType, queue, draft, poseted])
-    {console.log(postType)}
+ 
     return(
       
           
@@ -130,4 +130,4 @@ const TiktokPublish = ({postType}) =>{
 
 }
 
-export default TiktokPublish;
+export default InstagramPublish;

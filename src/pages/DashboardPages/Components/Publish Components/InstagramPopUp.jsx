@@ -10,7 +10,6 @@ const InstagramPopUp = ({setPosting}) =>{
    
 
     const addQueue = async () =>{
-
         if(content !=null && date!=null){
             const mediaURL = await UploadToR2(content, date)
             if(mediaURL != null){
@@ -42,7 +41,7 @@ const InstagramPopUp = ({setPosting}) =>{
 
                     <div className="flex flex-col justify-center items-center h-2/6 mt-4">
                         <p className="text-center mb-4">Upload File</p>
-                        <input type="file" className="border p-2 w-1/2 h-full resize-none bg-gray-50" accept="video/mp4"
+                        <input type="file" className="border p-2 w-1/2 h-full resize-none bg-gray-50" accept="video/*,image/*"
                             onChange={(e) => {
                                 const file = e.target.files?.[0];
                                 if (file) {

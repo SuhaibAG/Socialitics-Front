@@ -62,8 +62,6 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
     }
   }
   export const getFacebookTopPost = async (firebaseUID, accessToken) => {
-
-
     try{
       const response = await axios.get(`${BACKEND_URL}/facebook/scheduler/topPosts`,
         {

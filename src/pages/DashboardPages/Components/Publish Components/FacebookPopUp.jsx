@@ -1,8 +1,9 @@
 import { useState } from "react";
 import { useUser } from "../../../../userhandlers/UserProvider";
 import UploadToR2 from "../../../../storage/R2Storage";
-import { sendTiktokPost } from "../../../../SocialMediaConnections/TiktokConnections";
-const TiktokPopUp = ({setPosting}) =>{
+import { sendInstagramPost } from "../../../../SocialMediaConnections/InstagramConnection";
+import { sendFacebookPost } from "../../../../SocialMediaConnections/FacebookConnections";
+const FacebookPopUp = ({setPosting}) =>{
     const [content, setContent] = useState(null)
     const [text, setText] = useState(null)
     const [date, setDate] = useState(null)
@@ -10,16 +11,18 @@ const TiktokPopUp = ({setPosting}) =>{
    
 
     const addQueue = async () =>{
+
         if(content !=null && date!=null){
             const mediaURL = await UploadToR2(content, date)
             if(mediaURL != null){
+
                 const post ={
                     "firebaseUID": user.firebaseUID,
                     "content": text,
                     "scheduleDate":date,
                     "mediaUrl": mediaURL
                 }
-                sendTiktokPost(user.accessToken, post)
+                sendFacebookPost(user.accessToken, post)
                 setPosting(false)
             }
             
@@ -34,12 +37,13 @@ const TiktokPopUp = ({setPosting}) =>{
            <div >
                 <button className=" bg-gray-500 opacity-45 h-screen w-screen m-auto z-10 absolute inset-0 hover:cursor-default"
                                 onClick={() => setPosting(false)}></button>
+
     
                 <div className='shadow-md rounded-lg bg-white  h-2/3 w-1/3 m-auto z-10 absolute inset-0'>
 
                     <div className="flex flex-col justify-center items-center h-2/6 mt-4">
                         <p className="text-center mb-4">Upload File</p>
-                        <input type="file" className="border p-2 w-1/2 h-full resize-none bg-gray-50" accept="video/*"
+                        <input type="file" className="border p-2 w-1/2 h-full resize-none bg-gray-50" accept="video/*,image/*"
                             onChange={(e) => {
                                 const file = e.target.files?.[0];
                                 if (file) {
@@ -70,4 +74,4 @@ const TiktokPopUp = ({setPosting}) =>{
            </div>
     )
 }
-export default TiktokPopUp;
+export default FacebookPopUp;

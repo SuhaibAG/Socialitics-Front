@@ -65,7 +65,7 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
   
     try{
       const response = await axios.get(`${BACKEND_URL}/twitter/scheduler/topPosts`,{
-          params:{ firebaseUID,},
+          params:{ firebaseUID },
             headers:{
                'Content-Type': 'application/json',
                 Authorization: `Bearer ${accessToken}`, 

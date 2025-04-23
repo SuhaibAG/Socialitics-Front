@@ -10,8 +10,6 @@ const XPopUP = ({queue, setQueue, setPosting}) =>{
    
 
     const addQueue = () =>{
-        console.log(date)
-        console.log(content)
         const milliDate = new Date(date).getTime()
         if(content !=null && date!=null &&  milliDate > Date.now()){
             const post ={

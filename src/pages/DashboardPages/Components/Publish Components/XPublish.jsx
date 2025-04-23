@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import XPost from "../Posts/XPost";
-import PostPopUP from "./PostPopUp";
 import XPopUP from "./XPopUp";
-const XPublish = ({postType}) =>{
+const XPublish = ({postType, posts}) =>{
 
 
     const sample = {
