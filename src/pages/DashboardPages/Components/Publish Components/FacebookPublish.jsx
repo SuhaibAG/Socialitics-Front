@@ -82,8 +82,6 @@ const FacebookPublish = ({postType, posts}) =>{
     },[postType, queue, draft, poseted])
  
     return(
-      
-          
       <div className="flex-col w-1/2">
         {posting?
             <div>

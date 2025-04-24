@@ -42,34 +42,33 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
   };
 
   export const getInstagramAnalysis = async (firebaseUID, accessToken) => {
-
-
     try{
-      const response = await axios.get(`${BACKEND_URL}/instagram/scheduler/analysis`,
-        {
-          params: { firebaseUID },
-          headers:{
-           Authorization: `Bearer ${accessToken}`,
-        },
-      }
-      );
+      const response = await axios.get(`${BACKEND_URL}/Instagram/scheduler/analysis`,{
+            params:{ firebaseUID,},
+            headers:{
+               'Content-Type': 'application/json',
+                Authorization: `Bearer ${accessToken}`, 
+            },
+          }
+        );
+      return(response.data)
     } catch (error) {
       console.error("Failed to authenticate user", error);
       return null;
     }
   }
+  
   export const getInstagramTopPosts = async (firebaseUID, accessToken) => {
-
-
     try{
-      const response = await axios.get(`${BACKEND_URL}/instagram/scheduler/topPosts`,
-        {
-          params: { firebaseUID },
-          headers:{
-           Authorization: `Bearer ${accessToken}`,
-        },
-      }
-      );
+      const response = await axios.get(`${BACKEND_URL}/Instagram/scheduler/topPosts`,{
+          params:{ firebaseUID,},
+            headers:{
+               'Content-Type': 'application/json',
+                Authorization: `Bearer ${accessToken}`, 
+            },
+          }
+        );
+      return(response)
     } catch (error) {
       console.error("Failed to authenticate user", error);
       return null;

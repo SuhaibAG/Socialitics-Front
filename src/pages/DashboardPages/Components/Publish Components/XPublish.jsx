@@ -151,7 +151,6 @@ const XPublish = ({postType, posts}) =>{
 
 
       <div className="flex flex-col justify-start items-center mt-24 shadow-md bg-white rounded-lg  space-y-4 p-4 ">
-
       {mapper.map((tweet, index) => (
         <div key={index} className="flex justify-center h-full w-full">
           <div className="w-full">

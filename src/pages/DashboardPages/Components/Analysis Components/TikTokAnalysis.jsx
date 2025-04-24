@@ -6,8 +6,10 @@ import TiktokTotalGrowth from "./TiktokTotalGrowth";
 import { getTiktokAnalysis, getTiktokTopPost } from "../../../../SocialMediaConnections/TiktokConnections";
 import {  useUser } from "../../../../userhandlers/UserProvider";
 
+
+
 const TikTokAnalysis = () =>{
-  const { user } = useUser(false);
+      const { user } = useUser(false);
       const [week, setWeek] = useState(1)
       const [analysis, setAnalysis] = useState(null);
       const [topPost, setTopPost] =useState(null)
@@ -19,7 +21,7 @@ const TikTokAnalysis = () =>{
               setAnalysis(result.data);
             }
           } catch (error) {
-            getAnalysis();
+
           }
         };
         
@@ -30,7 +32,7 @@ const TikTokAnalysis = () =>{
               setTopPost(result.data);
             }
           } catch (error) {
-            getTopPost();
+
           }
         };
         getAnalysis();

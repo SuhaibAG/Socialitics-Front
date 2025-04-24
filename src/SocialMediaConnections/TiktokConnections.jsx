@@ -61,8 +61,6 @@ export const getTiktokAnalysis = async (firebaseUID, accessToken) => {
 }
 
 export const getTiktokTopPost = async (firebaseUID, accessToken) => {
-
-
   try{
     const response = await axios.get(`${BACKEND_URL}/tiktok/scheduler/topPosts`,{
         params:{ firebaseUID,},

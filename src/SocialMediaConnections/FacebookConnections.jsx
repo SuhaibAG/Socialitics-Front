@@ -45,38 +45,38 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
   };
 
   export const getFacebookAnalysis = async (firebaseUID, accessToken) => {
-
-
     try{
-      const response = await axios.get(`${BACKEND_URL}/facebook/scheduler/analysis`,
-        {
-          params: { firebaseUID },
-          headers:{
-           Authorization: `Bearer ${accessToken}`,
-        },
-      }
-      );
+      const response = await axios.get(`${BACKEND_URL}/facebook/scheduler/analysis`,{
+            params:{ firebaseUID,},
+            headers:{
+               'Content-Type': 'application/json',
+                Authorization: `Bearer ${accessToken}`, 
+            },
+          }
+        );
+      return(response.data)
     } catch (error) {
       console.error("Failed to authenticate user", error);
       return null;
     }
   }
+  
   export const getFacebookTopPost = async (firebaseUID, accessToken) => {
     try{
-      const response = await axios.get(`${BACKEND_URL}/facebook/scheduler/topPosts`,
-        {
-          params: { firebaseUID },
-          headers:{
-           Authorization: `Bearer ${accessToken}`,
-        },
-      }
-      );
+      const response = await axios.get(`${BACKEND_URL}/facebook/scheduler/topPosts`,{
+          params:{ firebaseUID,},
+            headers:{
+               'Content-Type': 'application/json',
+                Authorization: `Bearer ${accessToken}`, 
+            },
+          }
+        );
+      return(response)
     } catch (error) {
       console.error("Failed to authenticate user", error);
       return null;
     }
   }
-
   export const sendFacebookPost = async ( accessToken, postData ) => {
     
     try {

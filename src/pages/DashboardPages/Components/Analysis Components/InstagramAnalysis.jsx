@@ -1,120 +1,73 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import WeekChooser from "./WeekChooser";
 import Graph from "./Graph";
 import InstagramTotalGrowth from "./InstagramTotalGrowth";
 import InstagramPost from "../Posts/InstagramPost";
+import { getInstagramAnalysis, getInstagramTopPosts } from "../../../../SocialMediaConnections/InstagramConnection";
+import { useUser } from "../../../../userhandlers/UserProvider";
 
 const InstagramAnalysis = () =>{
-    const sample= {
-        "firebaseUID": "qK6JRZhA6Zg3PnnDI14ORW7LSxk1",
-        "pageID": "644636182057774",
-        "userName": "Suhaib Alghamdi",
-        "data": [
-            {
-                "weekNumber": 1,
-                "startDate": "10 Apr 2025",
-                "endDate": "17 Apr 2025",
-                "totalFollowers": 1,
-                "diffTotalFollowers": "+0",
-                "totalPosts": 2,
-                "diffTotalPosts": "+0",
-                "totalLikes": 4,
-                "diffTotalLikes": "+0",
-                "totalComments": 3,
-                "diffTotalComments": "+0",
-                "totalHahas": 2,
-                "diffTotalHahas": "+0",
-                "totalShares": 1,
-                "diffTotalShares": "+0",
-                "totalHearts": 0,
-                "diffTotalHearts": "+0",
-                "totalEngagementRate": 400,
-                "diffTotalEngagementRate": "+0"
-            },
-            {
-                "weekNumber": 2,
-                "startDate": "10 Apr 2025",
-                "endDate": "17 Apr 2025",
-                "totalFollowers": 1,
-                "diffTotalFollowers": "+0",
-                "totalPosts": 2,
-                "diffTotalPosts": "+0",
-                "totalLikes": 4,
-                "diffTotalLikes": "+0",
-                "totalComments": 3,
-                "diffTotalComments": "+0",
-                "totalHahas": 2,
-                "diffTotalHahas": "+0",
-                "totalShares": 1,
-                "diffTotalShares": "+0",
-                "totalHearts": 0,
-                "diffTotalHearts": "+0",
-                "totalEngagementRate": 400,
-                "diffTotalEngagementRate": "+0"
-            }
-        ]
-    }
+    const { user } = useUser(false);
+    const [week, setWeek] = useState(1)
+    const [analysis, setAnalysis] = useState(null);
+    const [topPost, setTopPost] =useState(null)
+    useEffect(() => {
+                const getAnalysis = async () => {
+                  try {
+                    if (analysis === null) {
+                      const result = await getInstagramAnalysis(user.firebaseUID, user.accessToken);
+                      setAnalysis(result.data)
+                     
+                    }
+                  } catch (error) {
+    
+                  }
+                };
+                
+                const getTopPost = async () => {
+                  try {
+                    if (topPost === null) {
+                      const result = await getInstagramTopPosts(user.firebaseUID, user.accessToken);
+                      setTopPost(result.data);
+                    }
+                  } catch (error) {
+    
+                  }
+                };
+                getAnalysis();
+                getTopPost();
+            }, []);
 
+  return(
+    analysis != null? (
+      <div>
 
-    const post =[
-        {
-            "weekNumber": 1,
-            "postId": "644636182057774_122103590978819223",
-            "userName": "Suhaib Alghamdi",
-            "content": "test 2",
-            "likes": 2,
-            "comments": 1,
-            "haha": 1,
-            "shares": 1,
-            "loves": 0,
-            "permalinkUrl": "https://www.instagram.com/p/DIj9LNTNXug/embed/"
-        },
-        {
-            "weekNumber": 2,
-            "postId": "644636182057774_122103590978819223",
-            "userName": "Suhaib Alghamdi",
-            "content": "test 2",
-            "likes": 2,
-            "comments": 1,
-            "haha": 1,
-            "shares": 1,
-            "loves": 0,
-            "permalinkUrl": "https://www.instagram.com/p/DHedKn_tRw1/embed/"
-        }
-    ]
-      const [week, setWeek] = useState(1)
-      
+           <div className="flex-row mr-20 ml-20 h-screen ">
 
+                <div className=" mt-10  flex h-5/12 overflow-auto max-w-full">                  
+                  <Graph data={analysis} collumns={["totalLikes", "totalFollowers", "totalViews", "totalComments"]}/>
+                </div>
 
-      
+                <div className="mt-12  flex justify-start w-auto  rounded-lg h-1/12 items-center">
+                    <WeekChooser setWeek={setWeek} sample={analysis} week={week}/>
+                </div>
 
-
-    return(
-        <div>
-              <div className="flex-row mr-20 ml-20 h-screen ">
-
-                  <div className=" mt-10  flex h-5/12 overflow-auto max-w-full">
-                        <Graph data={sample.data} collumns={["totalLikes", "totalFollowers"]}/>
-                  </div>
-
-                  <div className="mt-12  flex justify-start w-auto  rounded-lg h-1/12 items-center">
-                      <WeekChooser setWeek={setWeek} sample={sample.data} week={week} max={post.length}/>
-                      <div></div>
-                  </div>
-
-                    <div className="flex mt-8 w-auto h-2/6 ">
-                    <InstagramTotalGrowth sample={sample} week={week - 1} />
-                    
+                <div className="flex mt-8 w-auto h-2/6 ">
+                  <InstagramTotalGrowth sample={analysis} week={week - 1}/>
+                  
+                  {topPost != null?
                     <div className="w-4/6 h-96 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20  flex  gap-4 flex-wrap justify-center bg-white">
-                      <div className="flex-col  text-2xl pl-12 w-[100%] ">Top Post : </div>
-                      <div className="h-screen w-[80%]"><InstagramPost embedLink={post[week-1].permalinkUrl}/></div>
-
-                    </div>
-                    
+                    <div className="flex-col  text-2xl pl-12 w-[100%] ">Top Post : </div>
+                    <div className="h-screen w-[80%]"><InstagramPost embedLink={topPost[week -1].embedUrl}/></div>
                   </div>
+                  :
+                  <div>loading....</div>
+                  }
+                </div>
 
-              </div>
             </div>
-    )
+          </div>
+  ) : <div>Loading...</div>
+  )
 }
 export default InstagramAnalysis;
