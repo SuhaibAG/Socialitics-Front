@@ -13,28 +13,36 @@ const FacebookTotalGrowth = ({sample, week}) =>{
                     <div
                     className="flex flex-col justify-center items-center w-3/12">
                         <div className="text-xl">Followers</div>
-                        <div><p className="inline text-xl">{ sample.data[week].totalFollowers }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalFollowers}</p></div>
+                        <div><p className="inline text-xl">{ sample[week].totalFollowers }</p> 
+                        <p className={`inline text-sm ${sample[week].diffTotalFollwers < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
+                            {sample[week].diffTotalFollwers}</p></div>
                     </div>
 
                     {/*Likes*/}
                     <div
                     className="flex flex-col justify-center items-center w-3/12">
                         <div className="text-xl">Total Likes</div>
-                        <div><p className="inline text-xl">{ sample.data[week].totalLikes }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalLikes}</p></div>
+                        <div><p className="inline text-xl">{ sample[week].totalLikes }</p> 
+                        <p className={`inline text-sm ${sample[week].diffTotalLikes < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
+                            {sample[week].diffTotalShares}</p></div>
                     </div>
 
                     {/*Number of Posts*/}
                     <div
                     className="flex flex-col justify-center items-center w-3/12">
                         <div className="text-xl">Number of Posts</div>
-                        <div><p className="inline text-xl">{ sample.data[week].totalLikes }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalLikes}</p></div>
+                        <div><p className="inline text-xl">{ sample[week].totalPosts }</p> 
+                        <p className={`inline text-sm ${sample[week].diffTotalPosts < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
+                            {sample[week].diffTotalLikes}</p></div>
                     </div>
 
                     {/*Total Shares*/}
                     <div
                     className="flex flex-col justify-center items-center w-3/12">
                         <div className="text-xl">Total Shares</div>
-                        <div><p className="inline text-xl">{ sample.data[week].totalShares }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalShares}</p></div>
+                        <div><p className="inline text-xl">{ sample[week].totalShares }</p> 
+                        <p className={`inline text-sm ${sample[week].diffTotalShares < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
+                            {sample[week].diffTotalShares}</p></div>
                     </div>
                 </div>
 
@@ -43,27 +51,37 @@ const FacebookTotalGrowth = ({sample, week}) =>{
                     <div
                     className="flex flex-col justify-center items-center w-3/12">
                         <div className="text-xl">Total Comments</div>
-                        <div><p className="inline text-xl">{ sample.data[week].totalComments }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalComments}</p></div>
+                        <div><p className="inline text-xl">{ sample[week].totalComments }</p>
+                        <p className={`inline text-sm ${sample[week].diffTotalComments < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
+                        {sample[week].diffTotalComments}</p></div>
                     </div>
 
                     {/*totalEngagementRate*/}
                     <div
                     className="flex flex-col justify-center items-center w-3/12">
                         <div className="text-xl">Total Engagements</div>
-                        <div><p className="inline text-xl">{ sample.data[week].totalEngagementRate }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalEngagementRate}</p></div>
+                        <div><p className="inline text-xl">{  Math.round(sample[week].totalEngagementRate * 100) /100 }</p> 
+                        <p className={`inline text-sm ${sample[week].diffTotalEngagementRate < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
+                        {sample[week].diffEngagementRate  < 0? "-":"+"}{ Math.round(sample[week].diffTotalEngagementRate * 100) /100}</p></div>
                     </div>
 
                     {/*totalHahas*/}
                     <div
                     className="flex flex-col justify-center items-center w-3/12">
                         <div className="text-xl">Total Hahas</div>
-                        <div><p className="inline text-xl">{ sample.data[week].totalHahas }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalHahas}</p></div>
+                        <div><p className="inline text-xl">{ sample[week].totalHahas }</p> 
+                        <p className={`inline text-sm ${sample[week].diffTotalHahas < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
+                            {sample[week].diffTotalHahas}</p></div>
+
                     </div>
-                    {/*totalHahas*/}
+
+                    {/*totalhearts*/}
                     <div
                     className="flex flex-col justify-center items-center w-3/12">
                         <div className="text-xl">Total Hearts</div>
-                        <div><p className="inline text-xl">{ sample.data[week].totalHearts }</p> <p className="inline text-sm text-green-600  -mt-2 align-super relative  ">{sample.data[week].diffTotalHearts}</p></div>
+                        <div><p className="inline text-xl">{ sample[week].totalHearts }</p>
+                        <p className={`inline text-sm ${sample[week].diffTotalHearts < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
+                            {sample[week].diffTotalHahas}</p></div>
                     </div>
                 </div>
             </div>    

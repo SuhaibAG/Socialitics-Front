@@ -3,7 +3,7 @@ const TikTokPost = ({embedLink}) =>{
 
 
     return(
-                <div className="items-center overflow-y-auto ">
+                <div>
                     <div
                     className="flex flex-wrap rounded-lg  h-72 justify-center">
                         <iframe
