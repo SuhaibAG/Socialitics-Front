@@ -13,10 +13,10 @@ const TiktokPublish = ({postType, posts}) =>{
     useEffect(() =>{
       for(const post of posts){
         if(post.status === "published"){
-          setPosted([...poseted, post])
+          setPosted(prev => [...prev, post])
         }
         else if(post.status === "scheduled"){
-          setQueue([...queue, post])
+          setQueue(prev => [...prev, post])
         }
       }
 

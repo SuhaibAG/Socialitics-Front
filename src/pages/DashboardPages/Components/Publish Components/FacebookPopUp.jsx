@@ -11,16 +11,28 @@ const FacebookPopUp = ({setPosting}) =>{
    
 
     const addQueue = async () =>{
-
-        if(content !=null && date!=null){
-            const mediaURL = await UploadToR2(content, date)
-            if(mediaURL != null){
-
+        if(date!=null){
+            if(content != null){
+                const mediaURL = await UploadToR2(content, date)
+                if(mediaURL != null){
+                    const post ={
+                        "firebaseUID": user.firebaseUID,
+                        "content": text,
+                        "scheduleDate":date,
+                        "mediaUrl": mediaURL
+                    }
+                    sendFacebookPost(user.accessToken, post)
+                    setPosting(false)
+            }
+            
+            }
+            else{
+                console.log("post")
                 const post ={
                     "firebaseUID": user.firebaseUID,
                     "content": text,
                     "scheduleDate":date,
-                    "mediaUrl": mediaURL
+                    "mediaUrl": null
                 }
                 sendFacebookPost(user.accessToken, post)
                 setPosting(false)
