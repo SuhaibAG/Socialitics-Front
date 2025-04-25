@@ -2,11 +2,6 @@ import { useEffect } from "react";
 
 const FacebookPost = ({link}) =>{
     
-    useEffect(() => {
-        if (window.FB) {
-          window.FB.XFBML.parse();
-        }
-      }, []);
 
     return(
                 <div className="flex flex-wrap rounded-lg h-72 justify-center">

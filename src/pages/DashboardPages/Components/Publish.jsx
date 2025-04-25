@@ -43,25 +43,23 @@ const Publish = ({filteredAccount}) =>{
 
                     for (const post of newPosts) {
                         if (post.platform === "tiktok") {
-                        setTiktokPosts([...tikTokPosts, post]);
-                        
+                            setTiktokPosts(prev => [...prev, post]);
                         } else if (post.platform === "facebook") {
-                        setFacebookPosts([...facebookPosts, post]);
-
+                            setFacebookPosts(prev => [...prev, post]);
                         } else if (post.platform === "instagram") {
-                        setInstagramPosts([...instagramPosts, post]);
-
+                            setInstagramPosts(prev => [...prev, post]);
                         } else if (post.platform === "twitter") {
-                        setXPosts([...xPosts, post]);
-                        }
-                    }       
-                }
+                            setXPosts(prev => [...prev, post]);
+                        }    
+                    }
                 
             }
-            fetchPosts();
-          }, []);
-
-
+        }
+        fetchPosts();
+          
+        }, []);
+          
+    console.log(facebookPosts)
     return(
            <div className='bg-slate-50 '>
                 {/*if no social media account is chosen this will be shown*/}
