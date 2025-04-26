@@ -3,14 +3,16 @@ import WeekChooser from "./WeekChooser";
 import Graph from "./Graph";
 import InstagramTotalGrowth from "./InstagramTotalGrowth";
 import InstagramPost from "../Posts/InstagramPost";
-import { getInstagramAnalysis, getInstagramTopPosts } from "../../../../SocialMediaConnections/InstagramConnection";
+import { getInstagramAnalysis, getInstagramTopPosts, getInstagramTips } from "../../../../SocialMediaConnections/InstagramConnection";
 import { useUser } from "../../../../userhandlers/UserProvider";
+import Tips from "./Tips";
 
 const InstagramAnalysis = () =>{
     const { user } = useUser(false);
     const [week, setWeek] = useState(1)
     const [analysis, setAnalysis] = useState(null);
     const [topPost, setTopPost] =useState(null)
+    const [tips, setTips] =useState(null)
     useEffect(() => {
                 const getAnalysis = async () => {
                   try {
@@ -34,6 +36,20 @@ const InstagramAnalysis = () =>{
     
                   }
                 };
+
+                const getTips = async () => {
+                  try {
+                    if (topPost === null) {
+                      const result = await getInstagramTips(user.firebaseUID, user.accessToken);
+                      setTips(result.data.data);
+                    }
+                  } catch (error) {
+
+                  }
+                };
+
+                getTips();
+                
                 getAnalysis();
                 getTopPost();
             }, []);
@@ -64,6 +80,15 @@ const InstagramAnalysis = () =>{
                   <div>loading....</div>
                   }
                 </div>
+
+                <div className="flex mt-8 ">  
+                    {tips !== null?
+                      <Tips data={tips} week={week - 1}/>
+                    :
+                      <div>Loading</div>
+                    }                
+                    
+                  </div>
 
             </div>
           </div>

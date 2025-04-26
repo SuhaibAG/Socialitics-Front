@@ -6,7 +6,7 @@ const InstagramPublish = ({postType, posts}) =>{
       const [poseted, setPosted] = useState([])
       const [mapper, setMapper] = useState(queue)    
       const [posting, setPosting] = useState(false)
-
+  
 
       useEffect(() =>{
         for(const post of posts){

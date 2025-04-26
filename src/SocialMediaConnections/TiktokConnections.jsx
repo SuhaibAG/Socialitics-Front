@@ -100,3 +100,20 @@ export const sendTiktokPost = async ( accessToken, postData ) => {
     return null;
   }
 };
+
+export const getTiktokTips = async (firebaseUID, accessToken) => {
+  try{
+    const response = await axios.get(`${BACKEND_URL}/deepseekTips/tiktok/tips`,{
+        params:{ firebaseUID,},
+          headers:{
+             'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`, 
+          },
+        }
+      );
+    return(response)
+  } catch (error) {
+    console.error("Failed to authenticate user", error);
+    return null;
+  }
+}
