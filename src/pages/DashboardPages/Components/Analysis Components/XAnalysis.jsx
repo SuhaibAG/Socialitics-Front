@@ -1,16 +1,17 @@
 import { useUser } from "../../../../userhandlers/UserProvider";
 import XTotalGrowth from "./XTotalGrowth";
 import { useState, useEffect } from "react";
-import XGraph from "./Graph";
+import Tips from "./Tips";
 import WeekChooser from "./WeekChooser";
 import XPost from "../Posts/XPost";
 import Graph from "./Graph";
-import { getXAnalysis, getXTopPost } from "../../../../SocialMediaConnections/XConnections";
+import { getXAnalysis, getXTips, getXTopPost } from "../../../../SocialMediaConnections/XConnections";
 const XAnalysis = () =>{
 
       const [week, setWeek] = useState(1)
       const [analysis, setAnalysis] = useState(null);
       const [topPost, setTopPost] =useState(null)
+      const [tips, setTips] = useState(null)
       const { user } = useUser()
             useEffect(() => {
               const getAnalysis = async () => {
@@ -34,6 +35,18 @@ const XAnalysis = () =>{
 
                 }
               };
+
+              const getTips = async () => {
+                try {
+                  if (topPost === null) {
+                    const result = await getXTips(user.firebaseUID, user.accessToken);
+                    setTips(result.data.data);
+                  }
+                } catch (error) {
+
+                }
+              };            
+              getTips();              
               getAnalysis();
               getTopPost();
             }, []);
@@ -65,6 +78,14 @@ const XAnalysis = () =>{
                       <div>loading....</div>
                       }
                     </div>
+                    
+                  </div>
+                  <div className="flex mt-8 ">  
+                    {tips !== null?
+                      <Tips data={tips} week={week - 1}/>
+                    :
+                      <div>Loading</div>
+                    }                
                     
                   </div>
 

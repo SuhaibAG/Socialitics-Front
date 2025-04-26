@@ -25,7 +25,7 @@ export const UserProvider = ({ children }) => {
     if (user) {
       const userWithExpiry = {
         data: user,
-        expiry: Date.now() + 1000 * 60 * 30, 
+        expiry: Date.now() + 1000 * 60 * 90, 
       };
       localStorage.setItem("user", JSON.stringify(userWithExpiry));
     } else {

@@ -1,16 +1,17 @@
 import { useUser } from "../../../../userhandlers/UserProvider";
-import { getFacebookAnalysis, getFacebookTopPost } from "../../../../SocialMediaConnections/FacebookConnections";
+import { getFacebookAnalysis, getFacebookTips, getFacebookTopPost } from "../../../../SocialMediaConnections/FacebookConnections";
 import { useState, useEffect} from "react";
 import WeekChooser from "./WeekChooser";
 import Graph from "./Graph";
 import FacebookTotalGrowth from "./FacebookTotalGrowth";
 import FacebookPost from "../Posts/FacebookPost";
-
+import Tips from "./Tips";
 const FacebookAnalysis = () =>{
           const { user } = useUser(false);
           const [week, setWeek] = useState(1)
           const [analysis, setAnalysis] = useState(null);
           const [topPost, setTopPost] =useState(null)
+          const [tips, setTips] =useState(null)
           useEffect(() => {
             const getAnalysis = async () => {
               try {
@@ -34,6 +35,18 @@ const FacebookAnalysis = () =>{
 
               }
             };
+
+            const getTips = async () => {
+              try {
+                if (topPost === null) {
+                  const result = await getFacebookTips(user.firebaseUID, user.accessToken);
+                  setTips(result.data.data);
+                }
+              } catch (error) {
+
+              }
+            };            
+            getTips();
             getAnalysis();
             getTopPost();
           }, []);
@@ -61,7 +74,15 @@ const FacebookAnalysis = () =>{
                               :
                               <div>loading....</div>
                               }
-                            </div>
+                        </div>
+                        <div className="flex mt-8 ">  
+                          {tips !== null?
+                            <Tips data={tips} week={week - 1}/>
+                          :
+                            <div>Loading</div>
+                          }                
+                          
+                        </div>
           
                     </div>
                 </div>

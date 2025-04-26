@@ -35,7 +35,7 @@ const TiktokPublish = ({postType, posts}) =>{
 
     return(
       
-          
+      
       <div className="flex-col w-1/2">
         {posting?
             <div>
@@ -75,7 +75,6 @@ const TiktokPublish = ({postType, posts}) =>{
       ))}
 
     </div>
-
     </div>
     )
 
