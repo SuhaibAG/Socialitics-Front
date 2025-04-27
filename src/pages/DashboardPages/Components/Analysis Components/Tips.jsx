@@ -11,7 +11,7 @@ const Tips = ({data, week}) =>{
             <p className="w-11/12  ml-8 text-2xl">Tips:</p>
             {data !== null?
                 <div>
-                    {tips.tips.map((tip, index) =>(
+                    {tips.tips.map((tip) =>(
                         <li className="ml-12 p-4 w-11/12">{tip}:</li>
                     ))}
 

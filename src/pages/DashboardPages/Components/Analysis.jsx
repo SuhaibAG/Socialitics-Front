@@ -1,3 +1,4 @@
+import AllPageAnalysis from "./Analysis Components/AllPageAnalysis";
 import FacebookAnalysis from "./Analysis Components/FacebookAnalysis";
 import InstagramAnalysis from "./Analysis Components/InstagramAnalysis";
 import TikTokAnalysis from "./Analysis Components/TikTokAnalysis";
@@ -22,7 +23,7 @@ const Analysis = ({filteredAccount}) =>{
                 filteredAccount ==="Tiktok"?
                 <TikTokAnalysis />
                 :
-                <div>all filters</div>
+                <AllPageAnalysis />
                 }
            </div>
            
