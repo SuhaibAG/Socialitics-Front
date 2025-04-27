@@ -58,6 +58,12 @@ const Adverts = () =>{
                         <div className="flex text-xl justify-left m-4 text-gray-500">“Track trending hashtags and content types in your industry. Get smart, personalized tips on what to post and when—based on your audience's behavior.”</div>
                     </div>
                 </div>
+
+                <div className="flex p-4 m-24 justify-center">
+                    <div className="flex text-xl justify-left m-4">🚀 Ready to Take Your Social Media to the Next Level?</div>
+                    <div className="flex text-xl justify-left m-4 text-gray-500">"Sign up today and start optimizing your strategy with AI-powered insights!"</div>
+                </div>
+
             </div>
             
             {/*Footer*/}
