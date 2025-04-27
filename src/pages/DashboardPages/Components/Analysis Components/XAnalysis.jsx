@@ -66,7 +66,7 @@ const XAnalysis = () =>{
                       <WeekChooser setWeek={setWeek} sample={analysis} week={week}/>
                   </div>
 
-                  <div className="flex mt-8 w-auto h-2/6 ">
+                  <div className="flex mt-8 w-auto ">
                     <XTotalGrowth sample={analysis} week={week - 1}/>
                     
                     
