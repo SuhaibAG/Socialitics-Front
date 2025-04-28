@@ -68,8 +68,6 @@ const XAnalysis = () =>{
 
                   <div className="flex mt-8 w-auto ">
                     <XTotalGrowth sample={analysis} week={week - 1}/>
-                    
-                    
                       <div className="w-4/6 h-96 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20  flex  gap-4 flex-wrap justify-center bg-white">
                       <div className="flex-col  text-2xl pl-12 w-[100%] ">Top Post : </div>
                       {topPost != null?

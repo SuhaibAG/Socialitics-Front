@@ -57,8 +57,8 @@ const AllPageAnalysis = () =>{
       
 
         return(
-            <div className="flex-row">
-              <div className="m-12 overflow-scroll"> 
+            <div>
+              <div className="m-12 overflow-scroll "> 
                   <img
                         className='w-10 h-10' 
                               src='https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg'

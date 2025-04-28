@@ -51,7 +51,7 @@ const FacebookAnalysis = () =>{
             getTopPost();
           }, []);
       
-
+        
         return(
             analysis != null? (
                 <div>
@@ -69,7 +69,7 @@ const FacebookAnalysis = () =>{
                               {topPost != null?
                                 <div className="w-4/6 h-96 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20  flex  gap-4 flex-wrap justify-center bg-white">
                                 <div className="flex-col  text-2xl pl-12 w-[100%] ">Top Post : </div>
-                                <div className="w-[80%] overflow-y-scroll"><FacebookPost link={topPost[week -1].permalinkUrl}/></div>
+                                <div className="w-[80%] overflow-y-scroll"><FacebookPost link={topPost[week -1].permalinkUrl} week={week-1}/></div>
                               </div>
                               :
                               <div>loading....</div>
