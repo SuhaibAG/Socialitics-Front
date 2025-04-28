@@ -72,7 +72,7 @@ const InstagramAnalysis = () =>{
                   <InstagramTotalGrowth sample={analysis} week={week - 1}/>
                   
                   {topPost != null?
-                  <div className="w-4/6 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20  flex  gap-4 flex-wrap justify-center bg-white">
+                  <div className="w-4/6 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20 h-96 flex  gap-4 flex-wrap justify-center bg-white">
                     <div className="flex-col  text-2xl pl-12 w-[100%] ">Top Post : </div>
                     <div className="h-screen w-[80%]"><InstagramPost embedLink={topPost[week -1].embedUrl}/></div>
                   </div>

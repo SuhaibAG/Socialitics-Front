@@ -8,7 +8,7 @@ const Tips = ({data, week}) =>{
     },[week])
     return (
         <div  className="flex-row h-96 border-2 shadow-md rounded-lg mb-5 gap-4 bg-white w-6/6 p-4 w-full max-h-72 text-lg overflow-y-auto">
-            <p className="w-11/12  ml-8 text-2xl">Tips:</p>
+            <p className="w-11/12  ml-8 text-2xl mt-4">Tips:</p>
             {data !== null?
                 <div>
                     {tips.tips.map((tip) =>(
