@@ -3,7 +3,7 @@ const InstagramPost = ({embedLink}) =>{
 
 
     return(
-                <div className="items-center">
+                <div>
                     <div
                     className="flex flex-wrap rounded-lg  h-72 justify-center ">
                         <iframe

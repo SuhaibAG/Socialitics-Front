@@ -6,6 +6,10 @@ import Graph from "./Graph";
 import FacebookTotalGrowth from "./FacebookTotalGrowth";
 import FacebookPost from "../Posts/FacebookPost";
 import Tips from "./Tips";
+import XAnalysis from "./XAnalysis";
+import TikTokAnalysis from "./TikTokAnalysis";
+import InstagramAnalysis from "./InstagramAnalysis";
+import FacebookAnalysis from "./FacebookAnalysis";
 const AllPageAnalysis = () =>{
           const { user } = useUser(false);
           const [week, setWeek] = useState(1)
@@ -53,40 +57,48 @@ const AllPageAnalysis = () =>{
       
 
         return(
-            analysis != null? (
-                <div>
-                    <div className="flex-row mr-20 ml-20 h-screen ">
-                        <div className=" mt-10  flex h-5/12 overflow-auto max-w-full">                  
-                            <Graph data={analysis} collumns={["totalLikes", "totalFollowers"]}/>
-                        </div>
-          
-                        <div className="mt-12  flex justify-start w-auto  rounded-lg h-1/12 items-center">
-                            <WeekChooser setWeek={setWeek} sample={analysis} week={week}/>
-                        </div>
-          
-                        <div className="flex mt-8 ">
-                            <FacebookTotalGrowth sample={analysis} week={week - 1}/>
-                              {topPost != null?
-                                <div className="w-4/6 h-96 pt-4 pb-10 border-2 shadow-md rounded-lg ml-20  flex  gap-4 flex-wrap justify-center bg-white">
-                                <div className="flex-col  text-2xl pl-12 w-[100%] ">Top Post : </div>
-                                <div className="w-[80%] overflow-y-scroll"><FacebookPost link={topPost[week -1].permalinkUrl}/></div>
-                              </div>
-                              :
-                              <div>loading....</div>
-                              }
-                        </div>
-                        <div className="flex mt-8 ">  
-                          {tips !== null?
-                            <Tips data={tips} week={week - 1}/>
-                          :
-                            <div>Loading</div>
-                          }                
-                          
-                        </div>
-          
-                    </div>
+            <div className="flex-row">
+              <div className="m-12 overflow-scroll"> 
+                  <img
+                        className='w-10 h-10' 
+                              src='https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg'
+                              alt='X logo'
+                              >
+                  </img>
+                  <XAnalysis />
                 </div>
-        ) : <div>Loading...</div>
+
+              <div className="ml-12 border-t-2 border-black pt-5 overflow-scroll"> 
+                  <img
+                        className='w-10 h-10' 
+                              src='https://www.svgrepo.com/show/327400/logo-tiktok.svg'
+                              alt='X logo'
+                              >
+                  </img>
+                  <TikTokAnalysis />
+              </div>
+
+              <div className="ml-12 border-t-2 border-black pt-5 overflow-scroll"> 
+                  <img
+                        className='w-10 h-10' 
+                              src='https://upload.wikimedia.org/wikipedia/commons/thumb/e/e7/Instagram_logo_2016.svg/132px-Instagram_logo_2016.svg.png '
+                              alt='X logo'
+                              >
+                  </img>
+                  <InstagramAnalysis />
+                </div>
+
+              <div className="ml-12 border-t-2 border-black pt-5 overflow-scroll"> 
+                  <img
+                        className='w-10 h-10' 
+                              src='https://upload.wikimedia.org/wikipedia/en/thumb/0/04/Facebook_f_logo_%282021%29.svg/512px-Facebook_f_logo_%282021%29.svg.png?20210818083032'
+                              alt='X logo'
+                              >
+                  </img>
+                  <FacebookAnalysis />
+                </div>
+
+            </div>
         )
 }
 export default AllPageAnalysis;
