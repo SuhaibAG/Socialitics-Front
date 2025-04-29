@@ -72,8 +72,10 @@ const FacebookPublish = ({postType, posts}) =>{
 
             {postType != "Posted"?
                 <div className="flex justify-center ">
-                    <button className="bg-red-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400" onClick={()=> DeletePost(user.accessToken,post.postID)}>Delete</button>                    
-                    <button className="bg-blue-500 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400" onClick={()=> UpdatePost(user.accessToken,post.postID)}> Post Now</button>
+                    <button className="bg-red-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400" 
+                    onClick={()=> DeletePost(user.accessToken,post.postID,user.firebaseUID)}>Delete</button>                    
+                    <button className="bg-blue-500 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400" 
+                    onClick={()=> UpdatePost(user.accessToken,post.postID,user.firebaseUID)}> Post Now</button>
                 </div>
             :
                 <div></div>
