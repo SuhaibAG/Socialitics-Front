@@ -2,19 +2,19 @@ import { useState } from "react";
 import { useUser } from "../../../../userhandlers/UserProvider";
 import UploadToR2 from "../../../../storage/R2Storage";
 import { sendFacebookPost } from "../../../../SocialMediaConnections/FacebookConnections";
-// ❌ No need to import { Buffer } anymore
-
+import loading from '../../../Components/Images/Loading.gif'
 const FacebookPopUp = ({ setPosting }) => {
     const [content, setContent] = useState(null);
     const [text, setText] = useState(null);
     const [date, setDate] = useState(null);
+    const [uploading, setUploading] = useState(false)
     const { user } = useUser();
 
     const addQueue = async () => {
         if (date != null) {
             if (content != null) {
                 try {
-                    console.log("Starting upload...");
+                    setUploading(true)
                     const arrayBuffer = await content.arrayBuffer();
                     const filename = `${new Date().getTime()}-${content.name}`;
                     const mediaURL = await UploadToR2(arrayBuffer, filename, content.type); 
@@ -43,6 +43,7 @@ const FacebookPopUp = ({ setPosting }) => {
                 setPosting(false);
             }
         }
+        setUploading(false)
     };
 
     return (
@@ -91,8 +92,14 @@ const FacebookPopUp = ({ setPosting }) => {
                     <button
                         onClick={() => addQueue()}
                         className="bg-blue-500 text-white rounded-xl flex justify-center items-center w-4/12 hover:bg-blue-400 transition-color"
-                    >
-                        Add to Queue
+                    >   
+                        {uploading? 
+                        <img src={loading} className="h-6 w-6" ></img>
+                        :
+                        <p>Add to Queue</p>
+
+                        }
+                        
                     </button>
                 </div>
             </div>
