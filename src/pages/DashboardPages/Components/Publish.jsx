@@ -30,7 +30,7 @@ const Publish = ({filteredAccount}) =>{
             );
             return(response.data)
           } catch (error) {
-            console.error("Failed to authenticate user", error);
+            console.error(error);
             return null;
           }
         }
@@ -59,7 +59,7 @@ const Publish = ({filteredAccount}) =>{
           
         }, []);
           
-    console.log(facebookPosts)
+
     return(
            <div className='bg-slate-50 '>
                 {/*if no social media account is chosen this will be shown*/}

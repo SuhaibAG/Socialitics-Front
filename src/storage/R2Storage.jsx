@@ -1,4 +1,4 @@
-import axios from 'axios'
+import axios from 'axios';
 import AWS from 'aws-sdk';
 
 const accessKeyId = process.env.REACT_APP_R2_ACCESSKEY;
@@ -16,30 +16,28 @@ AWS.config.update({
 
 const s3 = new AWS.S3({
   signatureVersion: 'v4',
-  s3ForcePathStyle: true, 
+  s3ForcePathStyle: true,
 });
 
-export default async function UploadToR2(file) {
-  const filename = `${ new Date().getTime()}${file.name}`;
-    
+export default async function UploadToR2(buffer, filename, contentType) {
   const params = {
     Bucket: bucket,
-    Key: filename, 
+    Key: filename,
     Expires: 3600,
-    ContentType: file.type, 
+    ContentType: contentType,
   };
   
   try {
     const preSignedUrl = await s3.getSignedUrlPromise('putObject', params);
-    const res = await axios.put(preSignedUrl, file, {
+    const res = await axios.put(preSignedUrl, buffer, {
       headers: {
-        "Content-Type": file.type,
+        "Content-Type": contentType,
       },
     });
 
     if (res.status === 200) {
       alert("Upload successful");
-      return(`https://pub-818396e115b04010a25c6986301df2bc.r2.dev/${filename}`)
+      return(`https://pub-818396e115b04010a25c6986301df2bc.r2.dev/${filename}`);
     } else {
       alert(`Upload failed: ${res.statusText}`);
     }
