@@ -34,7 +34,7 @@ const Publish = ({filteredAccount}) =>{
             return null;
           }
         }
-
+        console.log(tikTokPosts)
         useEffect(() => {
             const fetchPosts = async () => {
                 if(posts === null){
