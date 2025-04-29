@@ -8,7 +8,7 @@ const TiktokPopUp = ({setPosting}) =>{
     const [text, setText] = useState(null)
     const [date, setDate] = useState(null)
     const { user } = useUser()
-    const {uploading, setUploading} = useState(false)
+    const [uploading, setUploading] = useState(false)
 
     const addQueue = async () =>{
         if(content !=null && date!=null){

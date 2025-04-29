@@ -9,12 +9,22 @@ const FacebookPublish = ({postType, posts}) =>{
 
 
   useEffect(() =>{
-    for(const post of posts){
-      if(post.status === "published"){
-        setPosted(prev => [...prev, post])
-      }
-      else if(post.status === "scheduled"){
-        setQueue(prev => [...prev, post])
+    for (const post of posts) {
+      if (post.status === "published") {
+        setPosted(prev => {
+          if (!prev.some(p => p.postID === post.postID)) {
+            return [...prev, post];
+          }
+          return prev;
+        });
+        
+      } else if (post.status === "scheduled") {
+        setQueue(prev => {
+          if (!prev.some(p => p.postID === post.postID)) {
+            return [...prev, post];
+          }
+          return prev;
+        });
       }
     }
   }, [posts])

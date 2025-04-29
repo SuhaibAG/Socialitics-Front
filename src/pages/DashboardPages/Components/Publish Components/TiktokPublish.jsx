@@ -12,16 +12,24 @@ const TiktokPublish = ({postType, posts}) =>{
 
 
     useEffect(() =>{
-      for(const post of posts){
-        if(post.status === "published"){
-          setPosted(prev => [...prev, post])
-        }
-        else if(post.status === "scheduled"){
-          setQueue(prev => [...prev, post])
+      for (const post of posts) {
+        if (post.status === "published") {
+          setPosted(prev => {
+            if (!prev.some(p => p.postID === post.postID)) {
+              return [...prev, post];
+            }
+            return prev;
+          });
+          
+        } else if (post.status === "scheduled") {
+          setQueue(prev => {
+            if (!prev.some(p => p.postID === post.postID)) {
+              return [...prev, post];
+            }
+            return prev;
+          });
         }
       }
-
-
     }, [posts])
 
     useEffect(()=>{
@@ -33,7 +41,7 @@ const TiktokPublish = ({postType, posts}) =>{
       }
 
     },[postType, queue])
-
+    console.log(poseted)
     return(
 
       <div className="flex-col w-1/2">
@@ -54,22 +62,23 @@ const TiktokPublish = ({postType, posts}) =>{
                           
               </div>
           }
-  
+
   
         <div className="flex flex-col justify-start items-center mt-24 shadow-md bg-white rounded-lg  space-y-4 p-4 ">  
         {mapper.map((post, index) => (
           <div key={index} className="flex-row justify-center h-full w-full mb-5">
   
               
-  
+             <FakeTikTokPost post={post}/>
+
               {postType != "Posted"?
                   <div className="flex justify-center ">
-                      <FakeTikTokPost post={post}/>
+
                       <button className="bg-red-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400">Delete</button>                    
                       <button className="bg-blue-500 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400"> Post Now</button>
                   </div>
               :
-                  <div><FakeTikTokPost post={post}/></div>
+                  <div></div>
               }
               
             </div>

@@ -1,12 +1,12 @@
 import { useEffect } from "react";
-
+import { useRef } from "react";
 const FakePost = ({post}) =>{
     
-    useEffect(() => {
-        if (window.FB) {
-          window.FB.XFBML.parse();
-        }
-      }, []);
+    const videoRef = useRef();
+    
+      useEffect(() => {    
+        videoRef.current?.load();
+      }, [post]);
 
     return(
                 <div className="flex flex-wrap rounded-lg justify-center border-2">
@@ -16,7 +16,7 @@ const FakePost = ({post}) =>{
                             <p className="w-full text-2xl ml-12 mb-4"> {post.content}</p>
                         
                         {post.mediaType === "video"?
-                            <video width="700" controls>
+                            <video width="700" controls ref={videoRef}>
                                 <source src={post.mediaUrl} type="video/mp4" />
                                 Your browser does not videos
                             </video>
