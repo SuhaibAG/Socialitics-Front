@@ -5,7 +5,7 @@ import FakeTiktokPost from "../Posts/FakeTiktokPost";
 import FakeTikTokPost from "../Posts/FakeTiktokPost";
 import { DeletePost, UpdatePost } from "../../../../SocialMediaConnections/PostHandler";
 import { UserProvider, useUser } from "../../../../userhandlers/UserProvider";
-const TiktokPublish = ({postType, posts}) =>{
+const TiktokPublish = ({postType, posts, setPosts}) =>{
 
     const [queue, setQueue] = useState([])
     const [poseted, setPosted] = useState([])
@@ -43,7 +43,21 @@ const TiktokPublish = ({postType, posts}) =>{
       }
 
     },[postType, queue])
-    console.log(poseted)
+
+
+    const HandleDelete = async (deletedPost)=>{
+      await DeletePost(user.accessToken,deletedPost.postID,user.firebaseUID)
+      alert("Post has been removed")
+      setQueue((prev) => prev.filter((post) => post !== deletedPost));
+      setPosts((prev) => prev.filter((post) => post !== deletedPost));
+
+    }
+
+    const PostNow = async(post)=>{
+      await UpdatePost(user.accessToken,post.postID,user.firebaseUID)
+      alert("Post has been forwarded")
+    }
+
     return(
 
       <div className="flex-col w-1/2">
@@ -76,9 +90,9 @@ const TiktokPublish = ({postType, posts}) =>{
               {postType != "Posted"?
                   <div className="flex justify-center ">
                       <button className="bg-red-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400" 
-                      onClick={()=> DeletePost(user.accessToken,post.postID,user.firebaseUID)}>Delete</button>                    
+                      onClick={()=> HandleDelete(post)}>Delete</button>                    
                       <button className="bg-blue-500 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400" 
-                      onClick={()=> UpdatePost(user.accessToken,post.postID,user.firebaseUID)}> Post Now</button>
+                      onClick={()=> PostNow(post)}> Post Now</button>
                   </div>
               :
                   <div></div>
