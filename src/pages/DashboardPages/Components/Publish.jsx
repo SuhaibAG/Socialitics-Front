@@ -117,16 +117,16 @@ const Publish = ({filteredAccount}) =>{
                     
                     <div className='-mt-10  flex justify-center'>
                         {filteredAccount =="X"?
-                        <XPublish  postType={postType} posts={xPosts}/>
+                        <XPublish  postType={postType} posts={xPosts} setPosts={setXPosts}/>
                         :
                         filteredAccount =="Instagram"?
-                        <InstagrmaPublish postType={postType} posts={instagramPosts}/>
+                        <InstagrmaPublish postType={postType} posts={instagramPosts} setPosts={setInstagramPosts}/>
                         :
                         filteredAccount =="Facebook"?
-                        <FacebookPublish postType={postType} posts={facebookPosts}/>
+                        <FacebookPublish postType={postType} posts={facebookPosts} setPosts={setFacebookPosts}/>
                         :
                         filteredAccount =="Tiktok"?
-                        <TiktokPublish postType={postType} posts={tikTokPosts}/>
+                        <TiktokPublish postType={postType} posts={tikTokPosts} setPosts={setTiktokPosts}/>
                         :
                         <div className="flex justify-center items-center h-[100%] w-[100%]">
                             <h1 className='ml'>Choose a Social media Account</h1>
