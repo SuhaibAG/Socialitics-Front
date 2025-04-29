@@ -3,13 +3,15 @@ import TikTokPost from "../Posts/TiktokPost";
 import TiktokPopUp from "./TiktokPopUp";
 import FakeTiktokPost from "../Posts/FakeTiktokPost";
 import FakeTikTokPost from "../Posts/FakeTiktokPost";
+import { DeletePost, UpdatePost } from "../../../../SocialMediaConnections/PostHandler";
+import { UserProvider, useUser } from "../../../../userhandlers/UserProvider";
 const TiktokPublish = ({postType, posts}) =>{
 
     const [queue, setQueue] = useState([])
     const [poseted, setPosted] = useState([])
     const [mapper, setMapper] = useState(queue)    
     const [posting, setPosting] = useState(false)
-
+    const { user } = useUser()
 
     useEffect(() =>{
       for (const post of posts) {
@@ -73,9 +75,8 @@ const TiktokPublish = ({postType, posts}) =>{
 
               {postType != "Posted"?
                   <div className="flex justify-center ">
-
-                      <button className="bg-red-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400">Delete</button>                    
-                      <button className="bg-blue-500 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400"> Post Now</button>
+                      <button className="bg-red-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400" onClick={()=> DeletePost(user.accessToken,post.postID)}>Delete</button>                    
+                      <button className="bg-blue-500 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400" onClick={()=> UpdatePost(user.accessToken,post.postID)}> Post Now</button>
                   </div>
               :
                   <div></div>
