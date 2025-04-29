@@ -43,14 +43,37 @@ const Publish = ({filteredAccount}) =>{
 
                     for (const post of newPosts) {
                         if (post.platform === "tiktok") {
-                            setTiktokPosts([...tikTokPosts, post]);
+                            setTiktokPosts(prev => {
+                                if (!prev.some(p => p.postID === post.postID)) {
+                                    return [...prev, post];
+                                }
+                                return prev;
+                            });
+                            
                         } else if (post.platform === "facebook") {
-                            setFacebookPosts([...facebookPosts, post]);
+                            setFacebookPosts(prev => {
+                                if (!prev.some(p => p.postID === post.postID)) {
+                                    return [...prev, post];
+                                }
+                                return prev;
+                            });
+
                         } else if (post.platform === "instagram") {
-                            setInstagramPosts([...instagramPosts, post]);
+                            setInstagramPosts(prev => {
+                                if (!prev.some(p => p.postID === post.postID)) {
+                                    return [...prev, post];
+                                }
+                                return prev;
+                            });
+
                         } else if (post.platform === "twitter") {
-                            setXPosts([...xPosts, post]);
-                        }    
+                            setXPosts(prev => {
+                                if (!prev.some(p => p.postID === post.postID)) {
+                                    return [...prev, post];
+                                }
+                                return prev;
+                            });
+                        }
                     }
                 
             }
