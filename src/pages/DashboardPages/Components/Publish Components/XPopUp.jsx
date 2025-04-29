@@ -2,12 +2,13 @@ import axios from "axios";
 import { useState } from "react";
 import { useUser } from "../../../../userhandlers/UserProvider";
 import { sendXPost } from "../../../../SocialMediaConnections/XConnections";
-const backend_url = process.env.REACT_APP_BACKEND_URL
-const XPopUP = ({queue, setQueue, setPosting}) =>{
+import loading from '../../../Components/Images/Loading.gif'
+
+const XPopUP = ({setPosting}) =>{
     const [content, setContent] = useState(null)
     const [date, setDate] = useState(null)
     const {user} = useUser()
-   
+    const [uploading, setUploading] = useState(false)
 
     const addQueue = () =>{
         const milliDate = new Date(date).getTime()
@@ -21,7 +22,7 @@ const XPopUP = ({queue, setQueue, setPosting}) =>{
                 sendXPost(user.accessToken, post)
             setPosting(false)
         }
-        
+        setUploading(false)
     }
 
 
@@ -48,7 +49,13 @@ const XPopUP = ({queue, setQueue, setPosting}) =>{
                     </div>
                     
                     <div className="mt-12 justify-center items-center mr-24">
-                        <button onClick={() => addQueue()} className=" bg-blue-500 text-white rounded-xl flex justify-center items-center w-4/12 hover:bg-blue-400 transition-color">Add to Queue</button>
+                        <button onClick={() => addQueue()} className=" bg-blue-500 text-white rounded-xl flex justify-center items-center w-4/12 hover:bg-blue-400 transition-color">
+                        {uploading? 
+                        <img src={loading} className="h-6 w-6" ></img>
+                        :
+                        <p>Add to Queue</p>
+                        }
+                        </button>
                     </div>
 
                     

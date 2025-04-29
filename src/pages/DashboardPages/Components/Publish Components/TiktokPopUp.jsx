@@ -2,16 +2,20 @@ import { useState } from "react";
 import { useUser } from "../../../../userhandlers/UserProvider";
 import UploadToR2 from "../../../../storage/R2Storage";
 import { sendTiktokPost } from "../../../../SocialMediaConnections/TiktokConnections";
+import loading from '../../../Components/Images/Loading.gif'
 const TiktokPopUp = ({setPosting}) =>{
     const [content, setContent] = useState(null)
     const [text, setText] = useState(null)
     const [date, setDate] = useState(null)
     const { user } = useUser()
-   
+    const {uploading, setUploading} = useState(false)
 
     const addQueue = async () =>{
         if(content !=null && date!=null){
-            const mediaURL = await UploadToR2(content, date)
+            setUploading(true)
+            const arrayBuffer = await content.arrayBuffer();
+            const filename = `${new Date().getTime()}-${content.name}`;
+            const mediaURL = await UploadToR2(arrayBuffer, filename, content.type); 
             if(mediaURL != null){
                 const post ={
                     "firebaseUID": user.firebaseUID,
@@ -24,6 +28,7 @@ const TiktokPopUp = ({setPosting}) =>{
             }
             
         }  
+        setUploading(false)
     }
 
   
@@ -63,7 +68,16 @@ const TiktokPopUp = ({setPosting}) =>{
                     </div>
                     
                     <div className="mt-12 justify-center items-center mr-24">
-                        <button onClick={() => addQueue()} className=" bg-blue-500 text-white rounded-xl flex justify-center items-center w-4/12 hover:bg-blue-400 transition-color">Add to Queue</button>
+                        <button onClick={() => addQueue()} className=" bg-blue-500 text-white rounded-xl flex justify-center items-center w-4/12 hover:bg-blue-400 transition-color">
+                            
+                        {uploading? 
+                        <img src={loading} className="h-6 w-6" ></img>
+                        :
+                        <p>Add to Queue</p>
+
+                        }
+                        
+                        </button>
                     </div>
 
                 </div>
