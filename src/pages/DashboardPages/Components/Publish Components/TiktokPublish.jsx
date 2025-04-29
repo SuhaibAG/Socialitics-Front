@@ -61,14 +61,14 @@ const TiktokPublish = ({postType, posts}) =>{
       {mapper.map((post, index) => (
         <div key={index} className="flex-row justify-center h-full w-full mb-5">
             <div className="mb-4 text-sm"></div>
-
+            <FakeTiktokPost post={post}/>
             {postType != "Posted"?
                 <div className="flex justify-center">
                     <button className="bg-red-600 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400">Delete</button>                    
                     <button className="bg-blue-500 text-white rounded-xl mt-3 p-3 flex justify-center items-center hover:bg-blue-400"> Post Now</button>
                 </div>
             :
-            <FakeTiktokPost post={post}/>
+                <div></div>
             }
             
           </div>
