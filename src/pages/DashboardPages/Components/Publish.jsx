@@ -37,19 +37,19 @@ const Publish = ({filteredAccount}) =>{
 
         useEffect(() => {
             const fetchPosts = async () => {
-                if(posts == null){
+                if(posts === null){
                     const newPosts = await getPosts();
                     setPosts(newPosts)
 
                     for (const post of newPosts) {
                         if (post.platform === "tiktok") {
-                            setTiktokPosts(prev => [...prev, post]);
+                            setTiktokPosts([...tikTokPosts, post]);
                         } else if (post.platform === "facebook") {
-                            setFacebookPosts(prev => [...prev, post]);
+                            setFacebookPosts([...facebookPosts, post]);
                         } else if (post.platform === "instagram") {
-                            setInstagramPosts(prev => [...prev, post]);
+                            setInstagramPosts([...instagramPosts, post]);
                         } else if (post.platform === "twitter") {
-                            setXPosts(prev => [...prev, post]);
+                            setXPosts([...xPosts, post]);
                         }    
                     }
                 
