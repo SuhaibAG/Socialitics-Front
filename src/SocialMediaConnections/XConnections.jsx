@@ -116,3 +116,27 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
       return null;
     }
   }
+
+  export const DeleteX = async ( accessToken ,firebaseUID) => {
+    
+    try {
+      const response = await axios.delete(`${BACKEND_URL}/api/connections/twitter`, 
+        {
+          headers:{
+             'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`, 
+          },
+          data:{
+             firebaseUID 
+          },
+        }
+       
+      );
+      alert("X Connection has been deleted")
+      return(true)
+      
+    } catch (error) {
+      console.error("Failed to authenticate user", error);
+      return null;
+    }
+  };

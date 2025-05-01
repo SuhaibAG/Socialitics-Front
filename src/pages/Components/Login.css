@@ -65,3 +65,7 @@ input{
     letter-spacing: 0.25px;
 
 }
+
+p{
+    display:block
+}
