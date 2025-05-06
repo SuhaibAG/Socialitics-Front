@@ -15,28 +15,29 @@ const DashboardSideBar = ({filteredAccount, setFilteredAccount, view}) =>{
     const [edit, setEdit] = useState(false)
     
     const handleDelete = async (type) => {
+        
         if(type === "facebook"){
-            const response = await DeleteFacebook
+            const response = await DeleteFacebook(user.accessToken, user.firebaseUID)
             if(response === true){
-                setTiktokUser(null)
+                setFacebookUser(null)
             }
         }
         else if(type === "tiktok"){
-            const response = await DeleteTiktok
+            const response = await DeleteTiktok(user.accessToken, user.firebaseUID)
             if(response === true){
                 setTiktokUser(null)
             }
         }
         else if(type === "x"){
-            const response = await DeleteX
+            const response = await DeleteX(user.accessToken, user.firebaseUID)
             if(response === true){
-                setTiktokUser(null)
+                setXUser(null)
             }
         }
         else if(type === "instagram"){
-            const response = await DeleteInstagram
+            const response = await DeleteInstagram(user.accessToken, user.firebaseUID)
             if(response === true){
-                setTiktokUser(null)
+                setinstagramUser(null)
             }
         }
     };

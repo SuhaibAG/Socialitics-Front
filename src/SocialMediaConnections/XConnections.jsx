@@ -118,9 +118,8 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
   }
 
   export const DeleteX = async ( accessToken ,firebaseUID) => {
-    
     try {
-      const response = await axios.delete(`${BACKEND_URL}/api/connections/twitter`, 
+      const response = await axios.delete(`${BACKEND_URL}/api/connections/twitter/delete`, 
         {
           headers:{
              'Content-Type': 'application/json',

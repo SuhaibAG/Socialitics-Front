@@ -67,9 +67,14 @@ const Login = () =>{
             params: { firebaseUID: uid },
           });
           
-
           if(response.data.isExist === true){
-            getUser(uid)
+            if(response.data.status === "suspended"){
+              alert("This user has been suspended")
+            }
+            else{
+              getUser(uid)
+            }
+
 
           }
 

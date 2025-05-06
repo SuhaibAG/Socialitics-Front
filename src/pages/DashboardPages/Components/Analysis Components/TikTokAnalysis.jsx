@@ -88,7 +88,7 @@ const TikTokAnalysis = () =>{
                   
               </div>
 
-    ) : <div>Loading...</div>
+    ) : <div>Connect to Tiktok!</div>
     )
 }
 export default TikTokAnalysis;

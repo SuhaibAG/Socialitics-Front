@@ -121,7 +121,7 @@ export const getTiktokTips = async (firebaseUID, accessToken) => {
 export const DeleteTiktok = async ( accessToken ,firebaseUID) => {
     
   try {
-    const response = await axios.delete(`${BACKEND_URL}/api/connections/tiktok`, 
+    const response = await axios.delete(`${BACKEND_URL}/api/connections/tiktok/delete`, 
       {
         headers:{
            'Content-Type': 'application/json',

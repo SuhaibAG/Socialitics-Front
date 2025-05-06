@@ -118,9 +118,10 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
   }
 
   export const DeleteFacebook = async ( accessToken ,firebaseUID) => {
-    
+
+    console.log(accessToken)
     try {
-      const response = await axios.delete(`${BACKEND_URL}/api/connections/facebook`, 
+      const response = await axios.delete(`${BACKEND_URL}/api/connections/facebook/delete`, 
         {
           headers:{
              'Content-Type': 'application/json',

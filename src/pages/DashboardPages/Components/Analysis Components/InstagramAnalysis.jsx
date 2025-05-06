@@ -92,7 +92,7 @@ const InstagramAnalysis = () =>{
 
             </div>
           </div>
-  ) : <div>Loading...</div>
+  ) : <div>Connect to Instagram</div>
   )
 }
 export default InstagramAnalysis;

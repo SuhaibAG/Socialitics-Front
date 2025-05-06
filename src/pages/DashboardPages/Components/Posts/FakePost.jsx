@@ -12,7 +12,7 @@ const FakePost = ({post}) =>{
                 <div className="flex flex-wrap rounded-lg justify-center border-2">
                     <div
                     className="flex flex-wrap rounded-lg  justify-center m-12  ">
-                            <p className="w-full mb-10 text-sm">Post Date:    {new Date(post.scheduleDate).toLocaleString()}</p>
+                            <p className="w-full mb-10 text-sm">Post Date:    {new Date(post.scheduleDate).toUTCString().slice(0,-3)} KSA</p>
                             <p className="w-full text-2xl ml-12 mb-4"> {post.content}</p>
                         
                         {post.mediaType === "video"?

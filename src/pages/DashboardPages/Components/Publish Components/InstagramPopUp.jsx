@@ -25,7 +25,6 @@ const InstagramPopUp = ({setPosting}) =>{
                                 scheduleDate: date,
                                 mediaUrl: mediaURL,
                             };
-                            console.log(post);
                             sendInstagramPost(user.accessToken, post);
                             setPosting(false);
                         }
