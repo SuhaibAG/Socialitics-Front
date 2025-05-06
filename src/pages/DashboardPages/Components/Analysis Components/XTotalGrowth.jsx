@@ -1,3 +1,5 @@
+import GrowthNode from "./GrowthNode";
+
 const XTotalGrowth = ({sample, week}) =>{
 
 
@@ -6,75 +8,19 @@ const XTotalGrowth = ({sample, week}) =>{
         <div 
             className=" h-96 border-2 shadow-md rounded-lg mb-5 flex  gap-4 flex-wrap  bg-white w-6/6 p-4">
                 <div className="flex-row h-1/12 text-xl pl-12 w-[100%]">Total Growth : </div>
-
-
+                {/*Firs Rows*/}
                 <div className="flex flex-row w-[100%]  h-2/6">
-                    {/*followers*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-lg">Followers</div>
-                        <div><p className="inline text-lg">{ sample[week].totalFollowers }</p> 
-                        <p className={`inline text-sm ${sample[week].diffTotalFollowers  < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
-                            {sample[week].diffTotalFollowers}</p></div>
-                    </div>
-
-                    {/*Likes*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-lg">Total Likes</div>
-                        <div><p className="inline text-lg">{ sample[week].totalLikes }</p>
-                        <p className={`inline text-sm ${sample[week].diffTotalLikes  < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
-                            {sample[week].diffTotalLikes}</p></div>
-                    </div>
-
-                    {/*Number of Posts*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-lg">Number of Posts</div>
-                        <div><p className="inline text-lg">{ sample[week].numOfPosts }</p> 
-                        <p className={`inline text-sm ${sample[week].diffNumOfPosts  < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
-                            {sample[week].diffNumOfPosts}</p></div>
-                    </div>
-
-                    {/*Total Retweets*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-lg">Total Retweets</div>
-                        <div><p className="inline text-lg">{ sample[week].totalRetweets }</p> 
-                        <p className={`inline text-sm ${sample[week].diffTotalRetweets  < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
-                            {sample[week].diffTotalRetweets}</p></div>
-                    </div>
+                    <GrowthNode paramName={"Total Followers"} param={ sample[week].totalFollowers } paramDiff={sample[week].diffTotalFollowers}/>
+                    <GrowthNode paramName={"Total Likes"} param={ sample[week].totalLikes } paramDiff={sample[week].diffTotalLikes}/>
+                    <GrowthNode paramName={"Number of Posts"} param={ sample[week].numOfPosts } paramDiff={sample[week].diffNumOfPosts}/>
+                    <GrowthNode paramName={"Total Retweets"} param={ sample[week].totalRetweets } paramDiff={sample[week].diffTotalRetweets}/>
                 </div>
 
+                {/*Second Rows*/}
                 <div className="flex flex-row w-[100%] h-2/6 ">
-                    {/*totalReplies*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-lg">Total Replies</div>
-                        <div><p className="inline text-lg">{ sample[week].totalReplies }</p> 
-                        <p className={`inline text-sm ${sample[week].diffTotalReplies  < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
-                            {sample[week].diffTotalReplies}</p></div>
-                    </div>
-
-                    {/*totalEngagements*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-lg">Total Engagements</div>
-                        <div><p className="inline text-lg">{ sample[week].totalEngagements }</p> 
-                        <p className={`inline text-sm ${sample[week].diffTotalEngagements  < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
-                            {sample[week].diffTotalEngagements}</p></div>
-                    </div>
-
-                    {/*Impressions*/}
-                    <div
-                    className="flex flex-col justify-center items-center w-3/12">
-                        <div className="text-lg">Total Impressions</div>
-                        <div><p className="inline text-lg">{ sample[week].totalImpressions }</p> 
-                        <p className={`inline text-sm ${sample[week].totalImpressions  < 0? `text-red-600`:`text-green-600`} -mt-2 align-super relative`}>
-                            {sample[week].diffTotalImpressions }</p></div>
-                    </div>
-
-
+                    <GrowthNode paramName={"Total Replies"} param={sample[week].totalReplies } paramDiff={sample[week].diffTotalReplies}/>
+                    <GrowthNode paramName={"Total Engagements"} param={sample[week].totalEngagements } paramDiff={sample[week].diffTotalEngagements}/>
+                    <GrowthNode paramName={"Total Impressions"} param={sample[week].totalImpressions } paramDiff={sample[week].diffTotalImpressions}/>
                 </div>
             </div>    
         </div>

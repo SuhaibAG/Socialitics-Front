@@ -89,7 +89,9 @@ const XAnalysis = () =>{
 
               </div>
             </div>
-    ) : <div>Loading...</div>
+    ) : 
+    
+    <div>Connect to X!  {user.TwitterUserName}</div>
     )
 }
 export default XAnalysis;

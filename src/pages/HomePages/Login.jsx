@@ -67,14 +67,18 @@ const Login = () =>{
             params: { firebaseUID: uid },
           });
           
-
           if(response.data.isExist === true){
-            getUser(uid)
+            if(response.data.status === "suspended"){
+              alert("This user has been suspended")
+            }
+            else{
+              getUser(uid)
+            }
+
 
           }
 
           else{
-            //should be changed later
             setExist(true)
           }
 
@@ -123,6 +127,7 @@ const Login = () =>{
         <div>
             <Header/>
             {!exist? 
+              
               <div className='login-box'>
                 <button className="google-btn" onClick={googlelogin}>
                     <img className= "google-icon" src="https://www.svgrepo.com/show/475656/google-color.svg"></img>

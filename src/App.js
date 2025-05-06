@@ -11,7 +11,8 @@ import InstagramCallBack from "./SocialMediaConnections/InstagramCallBack";
 import TOS from "./pages/HomePages/TOS";
 import Privacy from "./pages/HomePages/Privacy";
 import TiktokCallBack from "./SocialMediaConnections/TiktokCallBack";
-import Settings from "./pages/DashboardPages/Components/Settings";
+import AdminLogin from "./pages/AdminPages/AdminLogin";
+import Admin from "./pages/AdminPages/Admin";
 
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
           <Route path="/auth/callback/facebook" element={<FacebookCallBack/>} />
           <Route path="/auth/callback/instagram" element={<InstagramCallBack/>} />
           <Route path="/auth/callback/tiktok" element={<TiktokCallBack/>} />
+          <Route path="/admin" element={<AdminLogin/>} />
+          <Route path="/admin/manage" element={<Admin/>} />
           <Route path="*" element={<NoPage/>} />
 
 

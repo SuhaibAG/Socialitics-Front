@@ -86,7 +86,7 @@ const FacebookAnalysis = () =>{
           
                     </div>
                 </div>
-        ) : <div>Loading...</div>
+        ) : <div>Connect to Facebook!</div>
         )
 }
 export default FacebookAnalysis;

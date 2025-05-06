@@ -117,3 +117,27 @@ export const getTiktokTips = async (firebaseUID, accessToken) => {
     return null;
   }
 }
+
+export const DeleteTiktok = async ( accessToken ,firebaseUID) => {
+    
+  try {
+    const response = await axios.delete(`${BACKEND_URL}/api/connections/tiktok/delete`, 
+      {
+        headers:{
+           'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`, 
+        },
+        data:{
+           firebaseUID 
+        },
+      }
+     
+    );
+    alert("Tiktok Connection has been deleted")
+    return(true)
+    
+  } catch (error) {
+    console.error("Failed to authenticate user", error);
+    return null;
+  }
+};

@@ -10,7 +10,7 @@ const Adverts = () =>{
             {/*Welcome Message*/}
            <div className="flex-row p-4 mt-24">
                 <div className="flex text-5xl justify-center m-4 font-bold">Take Control of Your Social Media Strategy 🚀</div>
-                <div className="flex text-2xl justify-center m-4">"Analyze, plan, and optimize your social media with AI-powered insights, automation, and competitor analysis—all in one place."</div>
+                <div className="flex text-2xl justify-center m-4">"Analyze, plan, and optimize your social media with AI-powered insights, and automation in one place."</div>
             </div>
 
             {/*Double Image*/}
@@ -50,7 +50,7 @@ const Adverts = () =>{
                         <div className="flex text-xl justify-left m-4 text-gray-500">"Save time by automating post publishing and managing multiple platforms effortlessly."</div>
                     </div>
                     <div className='w-1/6'>
-                        <div className="flex text-xl justify-left m-4">📎 Generate Reports in One Click</div>
+                        <div className="flex text-xl justify-left m-4">📎 Generate Monthly Automated Reports</div>
                         <div className="flex text-xl justify-left m-4 text-gray-500">"Easily download weekly performance reports with insights to improve your strategy."</div>
                     </div>
                     <div className='w-1/6'>

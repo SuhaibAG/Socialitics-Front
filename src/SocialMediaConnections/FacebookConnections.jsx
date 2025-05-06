@@ -116,3 +116,28 @@ export const sendAuthCodeToBackend = async (authCode, accessToken) => {
       return null;
     }
   }
+
+  export const DeleteFacebook = async ( accessToken ,firebaseUID) => {
+
+    console.log(accessToken)
+    try {
+      const response = await axios.delete(`${BACKEND_URL}/api/connections/facebook/delete`, 
+        {
+          headers:{
+             'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`, 
+          },
+          data:{
+             firebaseUID 
+          },
+        }
+       
+      );
+      alert("Facebook Connection has been deleted")
+      return(true)
+      
+    } catch (error) {
+      console.error("Failed to authenticate user", error);
+      return null;
+    }
+  };
